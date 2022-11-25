@@ -1,0 +1,10 @@
+.search-bar-container {
+    transition: background-color 1s ease-in;
+    transition: color 1s ease-in;
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    padding: 1rem 2rem;
+    color: white;
+    z-index: 100;
+}

@@ -4,7 +4,6 @@ import Footer from '../../footer/Footer'
 import {FC} from "react";
 
 const HomeLayout: FC<{children: React.ReactNode}> = (children) => {
-    console.log(children);
     return (
         <>
             <Navbar />

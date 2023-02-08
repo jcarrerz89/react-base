@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const SIGN_UP = gql`
-        mutation signUp($email: String!) { 
-            signUp(email: $email){
+        mutation signUp($username: String!, $email: String!, $password: String!) { 
+            signUp(username: $username, email: $email, password: $password){
                 email
             } 
         }

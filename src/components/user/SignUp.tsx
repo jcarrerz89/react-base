@@ -4,71 +4,121 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {SIGN_UP} from '../../server/Mutations/user.mutations';
-import { gql, useMutation } from '@apollo/client';
-import {FC} from 'react';
+import {useMutation} from '@apollo/client';
+import {Alert} from "@mui/material";
+import {Label} from "@mui/icons-material";
+import Grid from "@mui/material/Grid";
 
-
-const SignUp: FC = () => {
+const SignUp: React.FC = () => {
 
     const [open, setOpen] = React.useState(false);
+    const [formState, setFormState] = React.useState({
+        username: '',
+        email: '',
+        password: ''
+    })
 
-    let input: any;
-    const [addTodo, { data, loading, error }] = useMutation(SIGN_UP);
+    const [signUp, {data, loading, error}] = useMutation(SIGN_UP);
 
-    if (loading) return 'Submitting...';
-    if (error) return `Submission error! ${error.message}`;
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+    if (loading) return (<label>'Submitting...'</label>);
+    if (error) return (<label>`Submission error! ${error.message}`</label>);
+    if (data) return (
+        <Alert severity="success">
+            This is a success alert — <strong>check it out!</strong>
+        </Alert>
+    )
 
     return (
-        <>
-            <Button variant="outlined" className="pull-right" onClick={handleClickOpen}>
+        <div>
+            <Button variant="contained" className="pull-right" onClick={() => {
+                setOpen(true)
+            }}>
                 Sign up
             </Button>
-            <Dialog open={open} onClose={handleClose}>
-
+            <Dialog open={open} onClose={() => {
+                setOpen(false)
+            }}>
                 <form
-                    onSubmit={e => {
-                        e.preventDefault();
-                        addTodo({ variables: { type: input.value } });
-                        input.value = '';
-                    }}
-                >
+                    onSubmit={(event) => {
+                        event.preventDefault();
+
+                        signUp({
+                            variables: {
+                                username: formState.username,
+                                email: formState.email,
+                                password: formState.password
+                            }
+                        })
+                    }}>
                     <DialogTitle>
                         Sign up
                     </DialogTitle>
                     <DialogContent>
-                        <DialogContentText>
-                            Email address
-                        </DialogContentText>
-                        <TextField
-                            ref={node => {
-                                input = node;
-                            }}
-                            autoFocus
-                            margin="dense"
-                            id="email"
-                            label="Email Address"
-                            type="email"
-                            fullWidth
-                            variant="standard"></TextField>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    autoFocus
+                                    // variant="standard"
+                                    id="username"
+                                    label="Username"
+                                    type="text"
+                                    value={formState.username}
+                                    fullWidth
+                                    onChange={(e) =>
+                                        setFormState({
+                                            ...formState,
+                                            username: e.target.value
+                                        })
+                                    }></TextField>
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <TextField
+                                    autoFocus
+                                    // variant="standard"
+                                    id="email"
+                                    label="Email Address"
+                                    type="email"
+                                    fullWidth
+                                    value={formState.email}
+                                    onChange={(e) => setFormState({
+                                        ...formState,
+                                        email: e.target.value
+                                    })}></TextField>
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <TextField autoFocus
+                                           id="user"
+                                           label="Password"
+                                           type="password"
+                                           value={formState.password}
+                                           onChange={e => {
+                                               setFormState({
+                                                   ...formState,
+                                                   password: e.target.value
+                                               })
+                                           }}
+                                           fullWidth></TextField>
+                                <br/>
+                            </Grid>
+
+                            <Grid item xs={8}>
+                                <label>Already have an account? Sign in</label>
+                            </Grid>
+                        </Grid>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button type="submit">Sign up</Button>
+                        <Button variant="text" onClick={() => {
+                            setOpen(false)
+                        }}>Cancel</Button>
+                        <Button variant="contained" type="submit">Sign up</Button>
                     </DialogActions>
                 </form>
             </Dialog>
-        </>
+        </div>
     );
 }
 

@@ -9,14 +9,12 @@ const errorLink = onError(({graphQLErrors, networkError}) => {
     }
 });
 
-const link = from([
-    errorLink,
-    new HttpLink({uri: 'http://localhost:4000/graphql'})
-]);
-
 const ApolloClientInstance = new ApolloClient({
     cache: new InMemoryCache(),
-    link: link
+    link: from([
+        errorLink,
+        new HttpLink({uri: process.env.BB_BFF})
+    ])
 });
 
 export default ApolloClientInstance;

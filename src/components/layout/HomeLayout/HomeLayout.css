@@ -2,8 +2,8 @@
 .cover {
     height: 90vh;
     width: 100vw;
-    background-image: url('/src/assets/images/kitset.jpeg');
-    background-position: center;
+    background-image: url('/src/assets/images/wellcome_cover.jpeg');
+    background-position: bottom;
     background-size: cover;
 
 }

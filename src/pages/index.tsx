@@ -12,8 +12,9 @@ export default function Home() {
                     <link rel="icon" href="/favicon.ico"/>
                 </head>
                 <body>
-                    <Grid>
-                        <h2>What's new</h2>
+                <h2>What's new</h2>
+
+                <Grid>
                     </Grid>
                     <Grid>
                     </Grid>

@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import SearchBar from '../searchBar/SearchBar';
 import Logo from '../common/Brand/Logo';
 import SignUp from '../user/SignUp';
+import SignIn from '../user/SignIn';
 import {FC} from 'react';
 
 const Navbar: FC = () => {
@@ -63,13 +64,13 @@ const Navbar: FC = () => {
         <div className="search-bar-container">
             <div className='navbar'>
                 <Grid container spacing={3}>
-                    <Grid item xs={3}>
+                    <Grid item xs={8}>
                         <Logo></Logo>
                     </Grid>
-                    <Grid item xs={6}>
-                        <SearchBar></SearchBar>
+                    <Grid item xs={2} alignItems={"right"}>
+                        <SignIn></SignIn>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={2} alignContent={'right'} rowGap={4}>
                         <SignUp></SignUp>
                     </Grid>
                 </Grid>

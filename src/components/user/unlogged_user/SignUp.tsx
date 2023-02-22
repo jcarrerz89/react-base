@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import {SIGN_UP} from '../../server/Mutations/user.mutations';
+import {SIGN_UP} from '../../../server/Mutations/user.mutations';
 import {useMutation} from '@apollo/client';
 import {Alert} from "@mui/material";
 import {Label} from "@mui/icons-material";
@@ -18,7 +18,7 @@ const SignUp: React.FC = () => {
         username: '',
         email: '',
         password: ''
-    })
+    });
 
     const [signUp, {data, loading, error}] = useMutation(SIGN_UP);
 

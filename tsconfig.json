@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "baseUrl": ".",
     "paths": {
-      "@": ["./src"],
-      "@/*": ["./src/*"],
-      "@components": ["./src/Components"],
-      "@pages": ["./src/Pages"],
-      "@server": ["./src/Server"],
+      "@enum/*": ["src/enum/*"]
     },
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -25,9 +22,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve"
   },
   "include": [
     "src"
-  ]
+, "src/enum"  ]
 }

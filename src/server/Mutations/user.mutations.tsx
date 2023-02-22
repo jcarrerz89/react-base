@@ -8,6 +8,17 @@ export const SIGN_UP = gql`
         }
     `;
 
+export const LOGIN = gql`
+        mutation login($request: LoginRequest!) {
+            login(request: $request) {
+                user { 
+                    username
+                }, 
+                access_token
+            }
+        }
+`;
+
 export const REGISTER = gql`
         mutation register($email: String!) { 
             signUp(email: $email){

@@ -3,14 +3,19 @@ import './App.css';
 import {ApolloProvider} from "@apollo/client";
 import ApolloClient from './server/ApolloClient';
 import HomeLayout from './components/layout/HomeLayout/HomeLayout';
+import { UserContextProvider } from './context/UserContextProvider';
 
 function App() {
-  return (
-      <ApolloProvider client={ApolloClient}>
-          <HomeLayout>
+  
 
-          </HomeLayout>
-      </ApolloProvider>
+  return (
+      <UserContextProvider>
+        <ApolloProvider client={ApolloClient}>
+            <HomeLayout>
+
+            </HomeLayout>
+        </ApolloProvider>
+      </UserContextProvider>
   );
 }
 

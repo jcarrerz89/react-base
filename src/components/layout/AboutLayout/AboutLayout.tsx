@@ -2,12 +2,12 @@ import './AboutLayout.css';
 import Navbar from '../../navbar/Navbar'
 import Footer from '../../footer/Footer'
 import {FC} from "react";
-import AppNavbar from '../../navbar/AppNavbar';
+import AppNavbar from '../../navbar/Navbar';
 
 const AboutLayout: FC<{children: React.ReactNode}> = (children) => {
     return (
         <div className='about-layout'>
-            <AppNavbar />
+            <Navbar />
             <div className={'cover'}>
             </div>
 

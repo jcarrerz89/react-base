@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { ReactElement, ReactNode } from 'react';
 
-const AppTitle: React.FC<{text: string}> = (children) => {
+const AppTitle: React.FC<{children: string}> = ({children}) => {
     return <Typography
         variant="h1"
         noWrap
@@ -11,11 +11,12 @@ const AppTitle: React.FC<{text: string}> = (children) => {
             display: { xs: 'none', md: 'flex' },
             fontFamily: 'cursive',
             fontWeight: 700,
+            fontSize: 36,
             letterSpacing: '.3rem',
             color: 'inherit',
             textDecoration: 'none',
         }}>
-            {children.text}
+            {children}
     </Typography>
 }
 

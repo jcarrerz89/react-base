@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack'
 import Container from '@mui/material/Container'
 import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
-import AppSubTitle from '../common/Text/AppSubTitle'
+import AppTitle from '../common/Text/AppTitle'
 
 const FooterContainer = styled(Paper)(({theme}) => ({
     backgroundColor: '#05204A',
@@ -18,7 +18,7 @@ const Footer = () => {
             <Container fixed>
                 <Grid container spacing={6}>
                     <Grid item xs={4}>
-                        <AppSubTitle>Blue Bells</AppSubTitle>
+                        <AppTitle>Blue Bells</AppTitle>
                     </Grid>
                     <Grid item xs={4}>
                         <Stack spacing={3}>

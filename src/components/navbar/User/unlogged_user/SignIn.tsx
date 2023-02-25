@@ -6,11 +6,11 @@ import DialogContent from "@mui/material/DialogContent";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import DialogActions from "@mui/material/DialogActions";
-import {LOGIN} from "../../../server/Mutations/user.mutations";
+import {LOGIN} from "../../../../server/Mutations/user.mutations";
 import { useMutation } from '@apollo/client';
 import { setCookie } from 'typescript-cookie';
-import Characters from '../../../enum/char';
-import { UserContext, UserType } from '../../../context/UserContextProvider';
+import Characters from '../../../../enum/char';
+import { UserContext, UserType } from '../../../../context/UserContextProvider';
 
 const SignIn: React.FC = () => {
 

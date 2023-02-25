@@ -6,6 +6,7 @@ import { UserContextProvider } from './context/UserContextProvider';
 import './App.css';
 import Home from './pages/home';
 import About from './pages/about';
+import Profile from './pages/user/profile';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+
+            {/* Protected pages */}
+            <Route path="/profile"  element={<Profile />} />
           </Routes>
         </ApolloProvider>
       </UserContextProvider>

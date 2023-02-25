@@ -1,10 +1,10 @@
 // import { HELLO_USER } from "@/server/Queries/user.queries";
-import { HELLO_USER } from "../../server/Queries/user.queries";
+import { HELLO_USER } from "../../../server/Queries/user.queries";
 import { useQuery } from "@apollo/client";
 import React, { useContext, useEffect } from "react";
 import LoggedUser from "./logged_user/LoggedUser";
 import UnloggedUser from "./unlogged_user/UnloggedUser";
-import { UserContext, UserType } from "../../context/UserContextProvider";
+import { UserContext, UserType } from "../../../context/UserContextProvider";
 import { useCookies } from "react-cookie";
 import Box from "@mui/material/Box";
 
@@ -14,7 +14,7 @@ const UserNavbar: React.FC = () => {
     const [cookie] = useCookies(['jwt-auth-token']);
 
     const skip = userContext.user !== null || cookie !== null;
-    const { data, loading, error } = useQuery(HELLO_USER, { skip: userContext.user !== null });
+    const { data, loading, error } = useQuery(HELLO_USER, { skip: skip });
 
     useEffect(() => {
         console.log('useEffect')
@@ -37,7 +37,6 @@ const UserNavbar: React.FC = () => {
 
         userContext.setUser(user);
     }
-
 
     return <LoggedUser />;
 }

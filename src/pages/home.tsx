@@ -7,19 +7,12 @@ const Home: React.FC = () => {
     return (
         <HomeLayout>
             <Container fixed>
-                <head>
-                    <title>Blue Bells</title>
-                    <meta name="description" content="Blue Bells"/>
-                    <link rel="icon" href="/favicon.ico"/>
-                </head>
-                <body>
                 <AppSubTitle>What's new</AppSubTitle>
 
                 <Grid>
-                    </Grid>
-                    <Grid>
-                    </Grid>
-                </body>
+                </Grid>
+                <Grid>
+                </Grid>
             </Container>
         </HomeLayout>
     )

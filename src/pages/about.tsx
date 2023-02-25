@@ -1,6 +1,8 @@
 import AboutLayout from '../components/layout/AboutLayout/AboutLayout';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import AppSubTitle from '../components/common/Text/AppSubTitle';
+import AppTextBlock from '../components/common/Text/AppTextBlock';
 
 const About = () => {
     return (
@@ -9,30 +11,34 @@ const About = () => {
                 <Grid container>
                     <Grid item xs={12}>
                         <div className="content">
-                            <h2>Why we built Blue Bells?</h2>
-                            <div>
-                                <p>Let's face it, who want to buy a house today?</p>
+                            <AppSubTitle>Why we built Blue Bells?</AppSubTitle>
+                                <AppTextBlock>Let's face it, who want to buy a house today?</AppTextBlock>
 
-                                <p>Society changes and our life styles are changing with it.
-                                    What was before the goal of a lifetime, for the previous generations,
-                                    it's not there anymore. Not when the price of a property
-                                    makes it so painful to afford, and not when it's so
-                                    funny to travel and discover new places to live. We live in
-                                    globilized world, in a digital era, and we should maximize
-                                    the opportunieties that </p>
+                                <AppTextBlock>Society changes and our life styles cheanges along with it, and what used to be
+                                    the goal of a lifete on previous generations, it is not anymore. 
+                                    
+                                    Price when up. When whant's to assume a 30 years mortage today? 
+                                    Not when is so funny to travel and to move around, and work in remote! 
+                                </AppTextBlock>
+                                <AppTextBlock>
+                                    We live in globilized world, in a digital era, and we should maximize
+                                    the opportunieties that's bringing to us. </AppTextBlock>
 
-                                <p> However, it's not that easy to find the right place to live.
-                                    It's a bit of a risk, isn't? </p>
+                                <AppTextBlock> And yet, find a place to stay for long terms is not an easy thing. Is not 
+                                    about finding accommodation, is find a new place to call home. That's what 
+                                    Blue Bells is for. 
+                                </AppTextBlock>
 
-                                <p> That's what Blue Bells is for. We build Blue Bells to make your
-                                    experience of looking for a new home, something incredible easy.</p>
+                                <AppTextBlock> We build Blue Bells to make your
+                                    experience of looking for a new home, something incredible easy.</AppTextBlock>
 
-                                <p>Either if you like to travel only with a single bag, or you are bringing you own bed with you.
+                                <AppTextBlock>Either if you visitng a city for a few months and with a single bag, 
+                                    or you are bringing you own bed with you and moving houses around. 
                                     Either if you are moving to a country and you're struggling
-                                    with the language. either if you're looking for a long term agreament or a short one.
-                                    There is always someone looking to share his place with the right person. </p>
-                                <p>Let's find it.</p>
-                            </div>
+                                    to speak the language, there is always someone looking to share his 
+                                    place with the right person. </AppTextBlock>
+
+                                <AppTextBlock>Let's find it!</AppTextBlock>
                         </div>
                     </Grid>
                 </Grid>

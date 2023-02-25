@@ -1,9 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@enum/*": ["src/enum/*"]
-    },
     "target": "es5",
     "lib": [
       "dom",
@@ -25,6 +21,7 @@
     "jsx": "preserve"
   },
   "include": [
-    "src"
-, "src/enum"  ]
+    "src",
+    "src/enum"
+  ]
 }

@@ -1,13 +1,14 @@
 import React from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import Box from "@mui/material/Box";
 
 const UnloggedUser = () => {
     return (
-        <div>
+        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <SignIn></SignIn>
             <SignUp></SignUp>
-        </div>
+        </Box>
     );
 }
 

@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack'
 import Container from '@mui/material/Container'
 import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
+import AppSubTitle from '../common/Text/AppSubTitle'
 
 const FooterContainer = styled(Paper)(({theme}) => ({
     backgroundColor: '#05204A',
@@ -17,18 +18,15 @@ const Footer = () => {
             <Container fixed>
                 <Grid container spacing={6}>
                     <Grid item xs={4}>
-                        <h1>Blue Bells</h1>
+                        <AppSubTitle>Blue Bells</AppSubTitle>
                     </Grid>
                     <Grid item xs={4}>
                         <Stack spacing={3}>
                             <a href={'/about'}>
                                 About
                             </a>
-                            <a href={'/who-use-us'}>
-                                What's new
-                            </a>
-                            <a href={'/about'}>
-                                Who use use
+                            <a href={'/contact'}>
+                                Contact
                             </a>
                         </Stack>
                     </Grid>
@@ -40,7 +38,7 @@ const Footer = () => {
                 </Grid>
                 <Grid container spacing={1}>
                     <Grid item xs={6}>
-                        <small>Created by team L&J</small>
+                        <small>Created by @AuraFactoy</small>
                     </Grid>
                     <Grid item xs={6}>
                     </Grid>

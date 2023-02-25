@@ -1,7 +1,8 @@
 import { Alert, Button } from "@mui/material";
 import React, { ReactPropTypes, useContext, useEffect } from "react";
-import { UserType, UserContext } from "src/context/UserContextProvider";
 import { useCookies } from 'react-cookie';
+import { UserContext } from "../../../context/UserContextProvider";
+import Box from "@mui/material/Box";
 
 const LoggedUser: React.FC = () => {
 
@@ -26,13 +27,13 @@ const LoggedUser: React.FC = () => {
     return (
         <UserContext.Consumer>
             { data => {
-                return <div>
+                return <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     <label>{data?.user?.username}</label>
                     <Button variant="outlined" className="pull-right" onClick={() => {
                         logout();
                         }}>Logout
                     </Button>
-                </div>
+                </Box>
             }} 
         </UserContext.Consumer>
     )

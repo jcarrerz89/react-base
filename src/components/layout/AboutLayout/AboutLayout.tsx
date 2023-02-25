@@ -1,23 +1,20 @@
+import './AboutLayout.css';
 import Navbar from '../../navbar/Navbar'
 import Footer from '../../footer/Footer'
-import Grid from "@mui/material/Grid";
 import {FC} from "react";
+import AppNavbar from '../../navbar/AppNavbar';
 
 const AboutLayout: FC<{children: React.ReactNode}> = (children) => {
     return (
-        <>
-            <Navbar/>
-
-            <div className='cover'>
+        <div className='about-layout'>
+            <AppNavbar />
+            <div className={'cover'}>
             </div>
-            {children}
 
-            <Grid container columns={12}>
-                <Grid item spacing={6}>
-                </Grid>
-            </Grid>
-            <Footer/>
-        </>
+            {children.children}
+
+            <Footer />
+        </div>
     )
 }
 

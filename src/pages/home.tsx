@@ -1,8 +1,9 @@
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
+import AppSubTitle from '../components/common/Text/AppSubTitle'
 import HomeLayout from '../components/layout/HomeLayout/HomeLayout'
 
-export default function Home() {
+const Home: React.FC = () => {
     return (
         <HomeLayout>
             <Container fixed>
@@ -12,7 +13,7 @@ export default function Home() {
                     <link rel="icon" href="/favicon.ico"/>
                 </head>
                 <body>
-                <h2>What's new</h2>
+                <AppSubTitle>What's new</AppSubTitle>
 
                 <Grid>
                     </Grid>
@@ -23,3 +24,5 @@ export default function Home() {
         </HomeLayout>
     )
 }
+
+export default Home;

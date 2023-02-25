@@ -1,5 +1,5 @@
 
-.cover {
+.home-layout .cover {
     height: 90vh;
     width: 100vw;
     background-image: url('/src/assets/images/wellcome_cover.jpeg');
@@ -7,7 +7,7 @@
     background-size: cover;
 
 }
-.cover::after {
+.home-layout .cover::after {
     height: 90vh;
     width: 100vw;
     background-color: black;

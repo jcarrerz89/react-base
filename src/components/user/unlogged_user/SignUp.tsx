@@ -12,7 +12,6 @@ import {Label} from "@mui/icons-material";
 import Grid from "@mui/material/Grid";
 
 const SignUp: React.FC = () => {
-
     const [open, setOpen] = React.useState(false);
     const [formState, setFormState] = React.useState({
         username: '',
@@ -32,7 +31,11 @@ const SignUp: React.FC = () => {
 
     return (
         <div>
-            <Button variant="contained" className="pull-right" onClick={() => {
+            <Button 
+                variant="outlined" 
+                className="pull-right"
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => {
                 setOpen(true)
             }}>
                 Sign up

@@ -1,8 +1,6 @@
 import {useEffect, useState} from 'react';
 import './Navbar.css';
 import Grid from "@mui/material/Grid"
-import Button from '@mui/material/Button';
-import SearchBar from '../searchBar/SearchBar';
 import Logo from '../common/Brand/Logo';
 import {FC} from 'react';
 import SessionOptions from '../user/UserNavbar';
@@ -13,16 +11,22 @@ const Navbar: FC = () => {
     const [fontColor, setFontColor] = useState("white");
     const [padding, setPadding] = useState('1rem 2rem');
 
+    const style = {
+        backgroundColor: backgroundColor,
+        fontColor: fontColor,
+        padding: padding,
+    }
+
     const transparentMode = () => {
         setBackgroundColor('transparent');
         setFontColor('white');
-        // onCollapse(false);
+        setPadding('1rem 2rem');
     };
 
     const whiteMode = () => {
-        setBackgroundColor('white');
+        setBackgroundColor('rgba(0, 0, 0, .7)');
         setFontColor('black');
-        // onCollapse(true);
+        setPadding('0.1rem 2rem');
     }
 
     const darkMode = () => {
@@ -38,14 +42,14 @@ const Navbar: FC = () => {
         }
     }
 
-
     useEffect(() => {
         const toggle = () => {
-            let scrollPosition = window.pageYOffset
+            let scrollPosition = window.pageYOffset;
+
             if (scrollPosition < 100) {
-                transparentMode()
+                transparentMode();
             } else {
-                whiteMode()
+                whiteMode();
             }
         }
 
@@ -54,13 +58,14 @@ const Navbar: FC = () => {
         }
 
         watchScroll();
+
         return () => {
             window.removeEventListener("scroll", toggle);
         };
     });
 
     return (
-        <div className="search-bar-container">
+        <div className="search-bar-container" style={style}>
             <div className='navbar'>
                 <Grid container spacing={3}>
                     <Grid item xs={10}>
@@ -75,4 +80,4 @@ const Navbar: FC = () => {
     )
 }
 
-export default Navbar
+export default Navbar;

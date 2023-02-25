@@ -10,9 +10,7 @@ import {LOGIN} from "../../../server/Mutations/user.mutations";
 import { useMutation } from '@apollo/client';
 import { setCookie } from 'typescript-cookie';
 import Characters from '../../../enum/char';
-// import { BluetoothAudio, ForkRight, ReduceCapacity, WatchOutlined, WhatsApp, YoutubeSearchedFor } from '@mui/icons-material';
-// import { setEmitFlags } from 'typescript';
-import { UserContext, UserType } from 'src/context/UserContextProvider';
+import { UserContext, UserType } from '../../../context/UserContextProvider';
 
 const SignIn: React.FC = () => {
 
@@ -38,7 +36,10 @@ const SignIn: React.FC = () => {
 
     return (
         <div>
-            <Button variant="outlined" className="pull-right" onClick={() => {
+            <Button 
+                className="pull-right"
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => {
                 setModalState(true);
             }}>Sign In
             </Button>

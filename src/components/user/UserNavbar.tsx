@@ -4,16 +4,17 @@ import { useQuery } from "@apollo/client";
 import React, { useContext, useEffect } from "react";
 import LoggedUser from "./logged_user/LoggedUser";
 import UnloggedUser from "./unlogged_user/UnloggedUser";
-import { UserContext, UserType } from "src/context/UserContextProvider"; 
+import { UserContext, UserType } from "../../context/UserContextProvider";
 import { useCookies } from "react-cookie";
+import Box from "@mui/material/Box";
 
 const UserNavbar: React.FC = () => {
-    
+
     const userContext = useContext(UserContext);
     const [cookie] = useCookies(['jwt-auth-token']);
 
     const skip = userContext.user !== null || cookie !== null;
-    const {data, loading, error} = useQuery(HELLO_USER, {skip: userContext.user !== null});
+    const { data, loading, error } = useQuery(HELLO_USER, { skip: userContext.user !== null });
 
     useEffect(() => {
         console.log('useEffect')
@@ -23,10 +24,8 @@ const UserNavbar: React.FC = () => {
         return <label>Loading...</label>
     }
 
-    if (error) { 
-        return (
-            <UnloggedUser></UnloggedUser>
-        );
+    if (error) {
+        return <UnloggedUser />;
     }
 
     if (data && data.helloUser) {
@@ -40,13 +39,7 @@ const UserNavbar: React.FC = () => {
     }
 
 
-    return (
-        <UserContext.Consumer>
-            { data => {
-                return <LoggedUser></LoggedUser>
-            }} 
-        </UserContext.Consumer>
-    );
+    return <LoggedUser />;
 }
 
 export default UserNavbar;

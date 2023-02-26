@@ -8,6 +8,7 @@ const AboutLayout: FC<{children: React.ReactNode}> = (children) => {
     return (
         <div className='about-layout'>
             <Navbar />
+            
             <div className={'cover'}>
             </div>
 
@@ -15,7 +16,7 @@ const AboutLayout: FC<{children: React.ReactNode}> = (children) => {
 
             <Footer />
         </div>
-    )
+    );
 }
 
 export default AboutLayout;

@@ -15,7 +15,7 @@ const HomeLayout: FC<{children: React.ReactNode}> = (children) => {
 
             <Footer />
         </div>
-    )
+    );
 }
 
 export default HomeLayout;

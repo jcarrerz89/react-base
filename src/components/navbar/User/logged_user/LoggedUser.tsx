@@ -20,10 +20,6 @@ const LoggedUser: React.FC = () => {
         setAnchorElNav(null);
     };
 
-    useEffect(() => {
-
-    }, [userContext]);
-
     const logout = () => {
         userContext.setUser(null);
         removeCookie('jwt-auth-token', { path: '/', domain: 'localhost' });
@@ -46,9 +42,7 @@ const LoggedUser: React.FC = () => {
                                 sx={{ my: 2, color: 'white', display: 'block' }}>
                                 {data?.user?.username}
                             </Button>
-                            <Button variant="outlined" onClick={() => {
-                                logout();
-                            }}>Logout
+                            <Button variant="outlined" onClick={logout}>Logout
                             </Button>
                         </Box>
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -82,8 +76,7 @@ const LoggedUser: React.FC = () => {
                                 <MenuItem>
                                     Profile
                                 </MenuItem>
-                                <hr />
-                                <MenuItem onClick={handleCloseNavMenu}>
+                                <MenuItem onClick={logout}>
                                     <Typography textAlign="center">Logout</Typography>
                                 </MenuItem>
                             </Menu>

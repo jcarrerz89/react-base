@@ -15,7 +15,7 @@ const Home: React.FC = () => {
                 </Grid>
             </Container>
         </HomeLayout>
-    )
+    );
 }
 
 export default Home;

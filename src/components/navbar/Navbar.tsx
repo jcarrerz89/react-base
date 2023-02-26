@@ -42,10 +42,6 @@ const Navbar: React.FC = () => {
         });
     }
 
-    const darkMode = () => {
-
-    }
-
     useEffect(() => {
         const toggle = () => {
             let scrollPosition = window.pageYOffset;

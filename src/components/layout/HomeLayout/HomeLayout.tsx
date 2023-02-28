@@ -6,7 +6,7 @@ import {FC} from "react";
 const HomeLayout: FC<{children: React.ReactNode}> = (children) => {
     return (
         <div className='home-layout'>
-            <Navbar />
+            <Navbar fixed={false} minimize={false}/>
             
             <div className={'cover'}>
             </div>

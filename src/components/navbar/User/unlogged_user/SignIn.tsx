@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import DialogActions from "@mui/material/DialogActions";
-import {LOGIN} from "../../../../server/Mutations/user.mutations";
+import { LOGIN } from "../../../../server/Mutations/user.mutations";
 import { useMutation } from '@apollo/client';
 import { setCookie } from 'typescript-cookie';
 import Characters from '../../../../enum/char';
@@ -21,9 +21,8 @@ const SignIn: React.FC = () => {
         password: String(Characters.EMPTY)
     });
 
-    const [login, {data, loading, error}] = useMutation(LOGIN, {
+    const [login, { data, loading, error }] = useMutation(LOGIN, {
         onCompleted: (data) => {
-            console.log(data);
             setCookie('jwt-auth-token', data.login.access_token);
             const user: UserType = {
                 id: data?.login.user.id,
@@ -36,12 +35,12 @@ const SignIn: React.FC = () => {
 
     return (
         <div>
-            <Button 
+            <Button
                 className="pull-right"
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 onClick={() => {
-                setModalState(true);
-            }}>Sign In
+                    setModalState(true);
+                }}>Sign In
             </Button>
 
             <Dialog open={open} onClose={() => {
@@ -61,36 +60,36 @@ const SignIn: React.FC = () => {
                 }}>
                     <DialogTitle>Sign In</DialogTitle>
                     <DialogContent>
-                        <br/>
+                        <br />
                         <Grid container direction="row" justifyContent={"flex-start"} alignItems="flex-start"
                             rowSpacing={4}>
                             <Grid item lg={12}>
                                 <TextField autoFocus
-                                        id="user"
-                                        label="Email or Username"
-                                        type="text"
-                                        value={formState.user}
-                                        onChange={e => {
-                                            setFormState({
-                                                ...formState,
-                                                user: e.target.value
-                                            })
-                                        }}
-                                        fullWidth></TextField>
+                                    id="user"
+                                    label="Email or Username"
+                                    type="text"
+                                    value={formState.user}
+                                    onChange={e => {
+                                        setFormState({
+                                            ...formState,
+                                            user: e.target.value
+                                        })
+                                    }}
+                                    fullWidth></TextField>
                             </Grid>
                             <Grid item lg={12}>
                                 <TextField autoFocus
-                                        id="user"
-                                        label="Password"
-                                        type="password"
-                                        value={formState.password}
-                                        onChange={e => {
-                                            setFormState({
-                                                ...formState,
-                                                password: e.target.value
-                                            })
-                                        }}
-                                        fullWidth></TextField>
+                                    id="user"
+                                    label="Password"
+                                    type="password"
+                                    value={formState.password}
+                                    onChange={e => {
+                                        setFormState({
+                                            ...formState,
+                                            password: e.target.value
+                                        })
+                                    }}
+                                    fullWidth></TextField>
                             </Grid>
                         </Grid>
                     </DialogContent>

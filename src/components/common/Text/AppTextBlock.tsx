@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import { ReactElement, ReactNode } from 'react';
 
 const AppTextBlock: React.FC<{children: string}> = ({children}) => {
-    return <Typography
+    return <Typography paragraph
         padding={0}
         component="p"
         sx={{

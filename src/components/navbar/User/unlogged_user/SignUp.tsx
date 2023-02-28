@@ -5,10 +5,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import {SIGN_UP} from '../../../../server/Mutations/user.mutations';
-import {useMutation} from '@apollo/client';
-import {Alert} from "@mui/material";
-import {Label} from "@mui/icons-material";
+import { SIGN_UP } from '../../../../server/Mutations/user.mutations';
+import { useMutation } from '@apollo/client';
+import { Alert } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
 const SignUp: React.FC = () => {
@@ -19,7 +18,7 @@ const SignUp: React.FC = () => {
         password: ''
     });
 
-    const [signUp, {data, loading, error}] = useMutation(SIGN_UP);
+    const [signUp, { data, loading, error }] = useMutation(SIGN_UP);
 
     if (loading) return (<label>'Submitting...'</label>);
     if (error) return (<label>`Submission error! ${error.message}`</label>);
@@ -31,13 +30,13 @@ const SignUp: React.FC = () => {
 
     return (
         <div>
-            <Button 
-                variant="outlined" 
+            <Button
+                variant="outlined"
                 className="pull-right"
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 onClick={() => {
-                setOpen(true)
-            }}>
+                    setOpen(true)
+                }}>
                 Sign up
             </Button>
             <Dialog open={open} onClose={() => {
@@ -94,18 +93,18 @@ const SignUp: React.FC = () => {
 
                             <Grid item xs={12}>
                                 <TextField autoFocus
-                                           id="user"
-                                           label="Password"
-                                           type="password"
-                                           value={formState.password}
-                                           onChange={e => {
-                                               setFormState({
-                                                   ...formState,
-                                                   password: e.target.value
-                                               })
-                                           }}
-                                           fullWidth></TextField>
-                                <br/>
+                                    id="user"
+                                    label="Password"
+                                    type="password"
+                                    value={formState.password}
+                                    onChange={e => {
+                                        setFormState({
+                                            ...formState,
+                                            password: e.target.value
+                                        })
+                                    }}
+                                    fullWidth></TextField>
+                                <br />
                             </Grid>
 
                             <Grid item xs={8}>

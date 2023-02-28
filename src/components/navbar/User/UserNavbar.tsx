@@ -29,7 +29,6 @@ const UserNavbar: React.FC = () => {
     
             userContext.setUser(user);
         }
-
     }, [data]);
 
     if (loading) {

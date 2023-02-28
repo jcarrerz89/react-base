@@ -5,7 +5,8 @@ import React from "react";
 const ContentLayout: React.FC<{children: React.ReactNode}> = (children) => {
     return (
         <>
-            <Navbar />
+            <Navbar fixed={false} minimize={false}/>
+            
             <div className='cover'>
             </div>
 

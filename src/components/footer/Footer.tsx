@@ -5,6 +5,7 @@ import Container from '@mui/material/Container'
 import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import AppTitle from '../common/Text/AppTitle'
+import { Button } from '@mui/material'
 
 const FooterContainer = styled(Paper)(({theme}) => ({
     backgroundColor: '#05204A',
@@ -17,17 +18,21 @@ const Footer = () => {
         <FooterContainer>
             <Container fixed>
                 <Grid container spacing={6}>
-                    <Grid item xs={4}>
+                    <Grid item md={4} xs={12}>
                         <AppTitle>Blue Bells</AppTitle>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item md={4}>
                         <Stack spacing={3}>
-                            <a href={'/about'}>
+                            <Button 
+                                href="/about"
+                                sx={{ my: 2, color: 'white', display: 'block' }}>
                                 About
-                            </a>
-                            <a href={'/contact'}>
+                            </Button>
+                            <Button 
+                                href="/contact"
+                                sx={{ my: 2, color: 'white', display: 'block' }}>
                                 Contact
-                            </a>
+                            </Button>
                         </Stack>
                     </Grid>
 

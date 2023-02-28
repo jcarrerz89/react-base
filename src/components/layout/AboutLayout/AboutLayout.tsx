@@ -1,14 +1,14 @@
 import './AboutLayout.css';
 import Navbar from '../../navbar/Navbar'
 import Footer from '../../footer/Footer'
-import {FC} from "react";
+import { FC } from "react";
 import AppNavbar from '../../navbar/Navbar';
 
-const AboutLayout: FC<{children: React.ReactNode}> = (children) => {
+const AboutLayout: FC<{ children: React.ReactNode }> = (children) => {
     return (
         <div className='about-layout'>
-            <Navbar />
-            
+            <Navbar fixed={false} minimize={false}/>
+
             <div className={'cover'}>
             </div>
 

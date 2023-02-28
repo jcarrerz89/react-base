@@ -9,27 +9,43 @@ import UserNavbar from './User/UserNavbar';
 
 const pages = ['Search', 'About', 'Contact'];
 
-const Navbar: React.FC = () => {
+const defaultStyle = {
+    backgroundColor: 'transparent',
+    fontColor: 'white',
+    padding: '1rem 2rem'
+}
+
+const Navbar: React.FC<{ fixed: boolean, minimize: boolean }> = ({ fixed, minimize }) => {
 
     const [state, setState] = useState({
         collapse: false,
-        style: {
-            backgroundColor: 'transparent',
-            fontColor: 'white',
-            padding: '1rem 2rem'
+        style: defaultStyle
+    });
+
+    useEffect(() => {
+        const toggle = () => {
+            let scrollPosition = window.pageYOffset;
+
+            console.log('toogle');
+            if (!fixed) {
+                scrollPosition < 100 ?
+                    transparentMode() : whiteMode();
+            }
         }
-    })
+
+        window.addEventListener("scroll", toggle);
+
+        return () => {
+            window.removeEventListener("scroll", toggle);
+        };
+    });
 
     const transparentMode = () => {
         setState({
             collapse: false,
-            style: {
-                backgroundColor: 'transparent',
-                fontColor: 'white',
-                padding: '1rem 2rem'
-            }
+            style: defaultStyle
         });
-    };
+    }
 
     const whiteMode = () => {
         setState({
@@ -42,23 +58,7 @@ const Navbar: React.FC = () => {
         });
     }
 
-    useEffect(() => {
-        const toggle = () => {
-            let scrollPosition = window.pageYOffset;
-
-            if (scrollPosition < 100) {
-                transparentMode();
-            } else {
-                whiteMode();
-            }
-        }
-
-        window.addEventListener("scroll", toggle);
-
-        return () => {
-            window.removeEventListener("scroll", toggle);
-        };
-    });
+    // toggle();
 
     return (
         <AppBar position="fixed" style={state.style}>

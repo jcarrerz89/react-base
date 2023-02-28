@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie';
 import { UserContext } from "../../../../context/UserContextProvider";
 import Box from "@mui/material/Box";
 import MenuIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const LoggedUser: React.FC = () => {
 
@@ -28,7 +29,7 @@ const LoggedUser: React.FC = () => {
             <Alert severity="success">
                 This is a success alert — <strong>check it out!</strong>
             </Alert>
-        )
+        );
     }
 
     return (
@@ -37,12 +38,13 @@ const LoggedUser: React.FC = () => {
                 return (
                     <Toolbar>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <Button href="/profile"
-
+                            <Button
+                                href="/profile"
                                 sx={{ my: 2, color: 'white', display: 'block' }}>
                                 {data?.user?.username}
                             </Button>
-                            <Button variant="outlined" onClick={logout}>Logout
+                            <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={logout}>
+                                    <LogoutIcon />
                             </Button>
                         </Box>
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -77,7 +79,7 @@ const LoggedUser: React.FC = () => {
                                     Profile
                                 </MenuItem>
                                 <MenuItem onClick={logout}>
-                                    <Typography textAlign="center">Logout</Typography>
+                                    <LogoutIcon />
                                 </MenuItem>
                             </Menu>
                         </Box>

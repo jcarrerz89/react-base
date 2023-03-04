@@ -6,6 +6,7 @@ import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import AppTitle from '../common/Text/AppTitle'
 import { Button } from '@mui/material'
+import Logo from '../common/Brand/Logo'
 
 const FooterContainer = styled(Paper)(({theme}) => ({
     backgroundColor: '#05204A',
@@ -19,7 +20,7 @@ const Footer = () => {
             <Container fixed>
                 <Grid container spacing={6}>
                     <Grid item md={4} xs={12}>
-                        <AppTitle>Blue Bells</AppTitle>
+                        <Logo />
                     </Grid>
                     <Grid item md={4}>
                         <Stack spacing={3}>

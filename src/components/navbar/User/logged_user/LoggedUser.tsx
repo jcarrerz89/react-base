@@ -40,10 +40,10 @@ const LoggedUser: React.FC = () => {
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             <Button
                                 href="/profile"
-                                sx={{ my: 2, color: 'white', display: 'block' }}>
+                                sx={{ my: 2, display: 'block' }}>
                                 {data?.user?.username}
                             </Button>
-                            <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={logout}>
+                            <Button sx={{ my: 2, display: 'block' }} onClick={logout}>
                                     <LogoutIcon />
                             </Button>
                         </Box>

@@ -1,10 +1,11 @@
 import { Button, FormControl, TextField, FormGroup } from "@mui/material";
 import { useState } from "react";
+import Characters from "../../../enum/char";
 
-const UserProfile = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+const UserProfileForm = () => {
+  const [name, setName] = useState(Characters.EMPTY);
+  const [email, setEmail] = useState(Characters.EMPTY);
+  const [message, setMessage] = useState(Characters.EMPTY);
 
   const handleNameChange = (e: any) => {
     setName(e.target.value);
@@ -65,4 +66,4 @@ const UserProfile = () => {
   );
 }
 
-export default UserProfile;
+export default UserProfileForm;

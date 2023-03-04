@@ -11,7 +11,7 @@ const isEqual = require("react-fast-compare");
 // TODO: Optimize.
 // This component is rendered more than the strictly necessary due to the effect 
 // done by the higher component, which render based in the scroll change event. 
-const UserNavbar: React.FC = () => {
+const MenuUser: React.FC = () => {
 
     const userContext = useContext(UserContext);
     const [cookie] = useCookies(['jwt-auth-token']);
@@ -42,4 +42,4 @@ const UserNavbar: React.FC = () => {
     return <UnloggedUser />;
 }
 
-export default UserNavbar;
+export default MenuUser;

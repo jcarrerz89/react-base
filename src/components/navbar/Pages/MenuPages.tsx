@@ -8,9 +8,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Search', 'About', 'Contact'];
+const pages = ['search', 'about', 'contact'];
 
-const Pages: React.FC = () => {
+const MenuPages: React.FC = () => {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -28,9 +28,10 @@ const Pages: React.FC = () => {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
                     <Button
+                        href={page}
                         key={page}
                         onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: 'white', display: 'block' }}>
+                        sx={{ my: 2, display: 'block' }}>
                         {page}
                     </Button>
                 ))}
@@ -76,4 +77,4 @@ const Pages: React.FC = () => {
         </Toolbar>
     );
 };
-export default Pages;
+export default MenuPages;

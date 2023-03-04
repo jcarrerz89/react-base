@@ -6,7 +6,9 @@ import { UserContextProvider } from './context/UserContextProvider';
 import './App.css';
 import Home from './pages/home';
 import About from './pages/about';
-import Profile from './pages/user/profile';
+import Profile from './pages/user/Profile';
+import Property from './pages/user/Property';
+import Contact from './pages/contact';
 
 function App() {
   return (
@@ -16,9 +18,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
 
             {/* Protected pages */}
             <Route path="/profile"  element={<Profile />} />
+            <Route path="/profile/properties"  element={<Property />} />
           </Routes>
         </ApolloProvider>
       </UserContextProvider>

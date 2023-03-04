@@ -9,7 +9,7 @@ const AppSubTitle: React.FC<{children: string}> = ({children}) => {
         sx={{
             mr: 2,
             display: { xs: 'none', md: 'flex' },
-            fontFamily: 'initial',
+            fontFamily: 'revert',
             fontWeight: 700,
             fontSize: 30,
             letterSpacing: '.2rem',

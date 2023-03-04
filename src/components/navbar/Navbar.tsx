@@ -4,8 +4,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import AdbIcon from '@mui/icons-material/AcUnit';
-import Pages from './Pages/Pages';
-import UserNavbar from './User/UserNavbar';
+import MenuPages from './Pages/MenuPages';
+import MenuUser from './User/MenuUser';
+import { makeStyles } from '@mui/material';
+import { Box } from '@mui/system';
+import Logo from '../common/Brand/Logo';
 
 const pages = ['Search', 'About', 'Contact'];
 
@@ -63,46 +66,12 @@ const Navbar: React.FC<{ fixed: boolean, minimize: boolean }> = ({ fixed, minimi
     return (
         <AppBar position="fixed" style={state.style}>
             <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'cursive',
-                            fontWeight: 700,
-                            letterSpacing: '.2rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}> Blue Bells
-                    </Typography>
+                <Toolbar sx={{ 'justify-content': 'space-between'}}>
+                    <Logo />
 
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'cursive',
-                            fontWeight: 700,
-                            letterSpacing: '.1rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}>
-                        Blue Bells
-                    </Typography>
+                    {/* <MenuPages /> */}
 
-                    <Pages />
-
-                    <UserNavbar />
+                    <MenuUser />
                 </Toolbar>
             </Container>
         </AppBar>

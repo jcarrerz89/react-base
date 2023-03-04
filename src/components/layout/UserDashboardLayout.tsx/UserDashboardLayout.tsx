@@ -21,7 +21,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import NightShelterIcon from '@mui/icons-material/NightShelter';
 import MailIcon from '@mui/icons-material/Mail';
 import ExtensionIcon from '@mui/icons-material/Extension';
-import UserProfile from '../../user/Profile';
+import WhiteNavbar from '../../navbar/WhiteNavbar';
+import UserMenu from '../../../pages/user/Menu/UserMenu';
 
 const drawerWidth = 240;
 
@@ -107,80 +108,15 @@ const UserDashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                    </IconButton>
-                </DrawerHeader>
-                <Divider />
-                <List>
-                    <ListItem key={'profile'} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}>
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}>
-                                <PersonIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'property'} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}>
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}>
-                                <NightShelterIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Property" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem key="Extension" disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}>
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}>
-                                <ExtensionIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Extension" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-            </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                {/* <DrawerHeader /> */}
-                
-                <UserProfile />
+        <>
+            <WhiteNavbar />
+            <Box sx={{ display: 'flex' }}>
+                <UserMenu />
+                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                    {children}
+                </Box>
             </Box>
-        </Box>
+        </>
     );
 }
 

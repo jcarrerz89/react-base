@@ -1,13 +1,13 @@
 import React from 'react';
 import UserDashboardLayout from '../../components/layout/UserDashboardLayout.tsx/UserDashboardLayout';
-import Navbar from '../../components/navbar/Navbar';
+import UserProfileForm from './profile/UserProfileForm';
+
 
 const Profile: React.FC = () => {
 
     return (
         <UserDashboardLayout>
-            <Navbar fixed={true} minimize={true}/>
-
+            <UserProfileForm></UserProfileForm>
 
         </UserDashboardLayout>
     );

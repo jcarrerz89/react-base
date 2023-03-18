@@ -7,7 +7,7 @@ const Property: React.FC = () => {
 
     return (
         <UserDashboardLayout>
-            <PropertyMenu />
+            {/* <PropertyMenu /> */}
 
             <PropertiesList />
         </UserDashboardLayout>

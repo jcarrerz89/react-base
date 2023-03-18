@@ -1,30 +1,44 @@
-import { useMutation } from '@apollo/client';
-import { Alert, Box, Button, Dialog, DialogContent, DialogTitle, FormControl, FormGroup, Grid, IconButton, TextField, Tooltip } from '@mui/material';
-import React, { useState } from 'react';
-import Characters from '../../../enum/char';
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import { CREATE_PROPERTY } from '../../../server/Mutations/property.mutation';
-import { render } from 'react-dom';
+import { useMutation } from "@apollo/client";
+import {
+    Alert,
+    Box,
+    Button,
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    FormControl,
+    FormGroup,
+    Grid,
+    IconButton,
+    TextField,
+    Tooltip,
+} from "@mui/material";
+import React, { useState } from "react";
+import Characters from "../../../enum/char";
+import AddCircleRoundedIcon from "@mui/icons-material/Add";
+import { CREATE_PROPERTY } from "../../../server/Mutations/property.mutation";
+import { render } from "react-dom";
 
 const CreateProperty: React.FC = () => {
-
     const [open, setOpen] = useState(false);
 
-    const [createProperty, { data, loading, error }] = useMutation(CREATE_PROPERTY, {
-        onError: (error) => {
+    const [createProperty, { data, loading, error }] = useMutation(
+        CREATE_PROPERTY,
+        {
+            onError: (error) => {},
         }
-    });
+    );
 
     const [alias, setAlias] = useState(Characters.EMPTY);
     const [propertyData, setPropertyData] = useState({
-        alias: 'alias',
-        country: 'country',
-        district: 'district',
-        city: 'city',
-        suburb: 'suburb',
-        street: 'street',
-        number: 1,
-        flat: 'flat',
+        alias: "Bridgewater appartment",
+        country: "New Zealand",
+        district: "Auckland",
+        city: "Auckland",
+        suburb: "Parnell",
+        street: "Bridgewater rd",
+        number: 12,
+        flat: "3",
         // alias: String(Characters.EMPTY),
         // country: String(Characters.EMPTY),
         // district: String(Characters.EMPTY),
@@ -42,29 +56,42 @@ const CreateProperty: React.FC = () => {
                     onClick={() => {
                         setOpen(true);
                     }}
-                    sx={{ my: 2, color: 'Black', display: 'block' }}>
+                    sx={{ my: 2, color: "Black", display: "block" }}
+                >
                     <AddCircleRoundedIcon />
                 </IconButton>
             </Tooltip>
 
-            <Dialog open={open} onClose={() => {
-                setOpen(false);
-            }}>
+            <Dialog
+                open={open}
+                onClose={() => {
+                    setOpen(false);
+                }}
+            >
                 <DialogTitle>Create property</DialogTitle>
                 <DialogContent>
-                    <form onSubmit={(event) => {
-                        event.preventDefault();
+                    <form
+                        onSubmit={(event) => {
+                            event.preventDefault();
 
-                        createProperty({
-                            variables: {
-                                request: propertyData
-                            }
-                        });
-                    }}>
-                        <FormGroup >
-                            <Grid container spacing={2} rowGap={2} columnGap={1} columnSpacing={1} padding={2} justifyContent={'space-between'}>
-                                <Grid xs={12} item columns={10}>
-                                </Grid>
+                            createProperty({
+                                variables: {
+                                    request: propertyData,
+                                },
+                            });
+                        }}
+                    >
+                        <FormGroup>
+                            <Grid
+                                container
+                                spacing={2}
+                                rowGap={2}
+                                columnGap={1}
+                                columnSpacing={1}
+                                padding={2}
+                                justifyContent={"space-between"}
+                            >
+                                <Grid xs={12} item columns={10}></Grid>
                                 <Grid xs={12} item>
                                     <TextField
                                         label="Alias"
@@ -72,12 +99,13 @@ const CreateProperty: React.FC = () => {
                                         value={propertyData.alias}
                                         type="text"
                                         fullWidth
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                alias: e.target.value
+                                                alias: e.target.value,
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid xs={6} item>
                                     <TextField
@@ -85,12 +113,13 @@ const CreateProperty: React.FC = () => {
                                         variant="outlined"
                                         value={propertyData.country}
                                         fullWidth
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                country: e.target.value
+                                                country: e.target.value,
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid xs={5} item>
                                     <TextField
@@ -98,12 +127,13 @@ const CreateProperty: React.FC = () => {
                                         variant="outlined"
                                         value={propertyData.district}
                                         fullWidth
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                district: e.target.value
+                                                district: e.target.value,
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid xs={6} item>
                                     <TextField
@@ -111,12 +141,13 @@ const CreateProperty: React.FC = () => {
                                         variant="outlined"
                                         value={propertyData.city}
                                         fullWidth
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                city: e.target.value
+                                                city: e.target.value,
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid xs={5} item>
                                     <TextField
@@ -124,12 +155,13 @@ const CreateProperty: React.FC = () => {
                                         variant="outlined"
                                         value={propertyData.suburb}
                                         fullWidth
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                suburb: e.target.value
+                                                suburb: e.target.value,
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid xs={5} item>
                                     <TextField
@@ -137,12 +169,13 @@ const CreateProperty: React.FC = () => {
                                         variant="outlined"
                                         value={propertyData.street}
                                         fullWidth
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                street: e.target.value
+                                                street: e.target.value,
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid xs={3} item>
                                     <TextField
@@ -150,12 +183,13 @@ const CreateProperty: React.FC = () => {
                                         variant="outlined"
                                         type="number"
                                         value={propertyData.number}
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                number: Number(e.target.value)
+                                                number: Number(e.target.value),
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid xs={3} item>
                                     <TextField
@@ -163,19 +197,28 @@ const CreateProperty: React.FC = () => {
                                         variant="outlined"
                                         value={propertyData.flat}
                                         fullWidth
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             setPropertyData({
                                                 ...propertyData,
-                                                flat: e.target.value
+                                                flat: e.target.value,
                                             });
-                                        }} />
+                                        }}
+                                    />
                                 </Grid>
-                                <Grid xs={12} item container justifyContent={'space-between'}>
+                                <Grid
+                                    xs={12}
+                                    item
+                                    container
+                                    justifyContent={"space-between"}
+                                >
                                     <Grid xs={2} item>
                                         <Button type="reset">Cancel</Button>
                                     </Grid>
                                     <Grid xs={2} item>
-                                        <Button type="submit" variant="contained">
+                                        <Button
+                                            type="submit"
+                                            variant="contained"
+                                        >
                                             Create
                                         </Button>
                                     </Grid>
@@ -187,6 +230,6 @@ const CreateProperty: React.FC = () => {
             </Dialog>
         </>
     );
-}
+};
 
 export default CreateProperty;

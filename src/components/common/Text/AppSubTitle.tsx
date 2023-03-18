@@ -8,7 +8,7 @@ const AppSubTitle: React.FC<{children: string}> = ({children}) => {
         component="h3"
         sx={{
             mr: 2,
-            display: { xs: 'none', md: 'flex' },
+            display: { sx: 'flex', md: 'flex' },
             fontFamily: 'revert',
             fontWeight: 700,
             fontSize: 30,

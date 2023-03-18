@@ -9,12 +9,11 @@ import { useCookies } from "react-cookie";
 const isEqual = require("react-fast-compare");
 
 // TODO: Optimize.
-// This component is rendered more than the strictly necessary due to the effect 
-// done by the higher component, which render based in the scroll change event. 
+// This component is rendered more than the strictly necessary due to the effect
+// done by the higher component, which render based in the scroll change event.
 const MenuUser: React.FC = () => {
-
     const userContext = useContext(UserContext);
-    const [cookie] = useCookies(['jwt-auth-token']);
+    const [cookie] = useCookies(["jwt-auth-token"]);
 
     const skip = userContext.user !== null || isEqual(cookie, {});
     const { data, loading, error } = useQuery(HELLO_USER, { skip: skip });
@@ -24,22 +23,22 @@ const MenuUser: React.FC = () => {
             const user: UserType = {
                 id: data.helloUser.id,
                 username: data.helloUser.username,
-                email: data.helloUser.email
-            }
-    
+                email: data.helloUser.email,
+            };
+
             userContext.setUser(user);
         }
     }, [data]);
 
     if (loading) {
-        return <label>Loading...</label>
+        return <label>Loading...</label>;
     }
-    
+
     if (userContext.user) {
         return <LoggedUser />;
     }
 
     return <UnloggedUser />;
-}
+};
 
 export default MenuUser;

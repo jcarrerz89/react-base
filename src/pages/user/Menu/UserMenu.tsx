@@ -11,6 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import EmailIcon from '@mui/icons-material/Email';
 import NightShelterIcon from '@mui/icons-material/NightShelter';
 import PersonIcon from '@mui/icons-material/Person';
 import ExtensionIcon from '@mui/icons-material/Extension';
@@ -110,6 +111,24 @@ const UserMenu: React.FC = () => {
             </DrawerHeader>
             <Divider />
             <List>
+                <ListItem key={'inbox'} disablePadding sx={{ display: 'block' }}>
+                    <ListItemButton href='/inbox'
+                        sx={{
+                            minHeight: 48,
+                            justifyContent: open ? 'initial' : 'center',
+                            px: 2.5,
+                        }}>
+                        <ListItemIcon
+                            sx={{
+                                minWidth: 0,
+                                mr: open ? 3 : 'auto',
+                                justifyContent: 'center',
+                            }}>
+                            <EmailIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
+                    </ListItemButton>
+                </ListItem>
                 <ListItem key={'profile'} disablePadding sx={{ display: 'block' }}>
                     <ListItemButton href='/profile'
                         sx={{

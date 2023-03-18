@@ -10,12 +10,9 @@ const PropertyMenu = () => {
     }
     return (
         <Container>
-            <Toolbar sx={{justifyContent: 'space-evenly'}}>
+            <Toolbar>
                 <Box sx={{ flexGrow: 1}}>
                     <AppSubTitle>Property</AppSubTitle>
-                </Box>
-                <Box sx={{ flexGrow: 1}}>
-                    <CreateProperty />
                 </Box>
             </Toolbar>
         </Container>

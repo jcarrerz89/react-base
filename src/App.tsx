@@ -1,33 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
+import ApplicationRoutes from './ApplicationRoutes';
 import {ApolloProvider} from "@apollo/client";
 import ApolloClient from './server/ApolloClient';
-import { UserContextProvider } from './context/UserContextProvider';
+import {UserContextProvider} from './context/UserContextProvider';
 import './App.css';
-import Home from './pages/home';
-import About from './pages/about';
-import Profile from './pages/user/Profile';
-import Property from './pages/user/Property';
-import Contact from './pages/contact';
+import Init from "./Init";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <UserContextProvider>
+    return (
         <ApolloProvider client={ApolloClient}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-
-            {/* Protected pages */}
-            <Route path="/profile"  element={<Profile />} />
-            <Route path="/profile/properties"  element={<Property />} />
-          </Routes>
+            <React.StrictMode>
+                <UserContextProvider>
+                    <BrowserRouter>
+                        <ApplicationRoutes/>
+                    </BrowserRouter>
+                </UserContextProvider>
+            </React.StrictMode>
         </ApolloProvider>
-      </UserContextProvider>
-    </BrowserRouter>
-  );
+    );
 }
 
 export default App;

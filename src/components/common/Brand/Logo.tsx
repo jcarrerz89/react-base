@@ -3,7 +3,7 @@ import AdbIcon from '@mui/icons-material/AcUnit';
 
 const Logo = () => {
     return <Toolbar>
-        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />*/}
         <Typography
             variant="h6"
             noWrap
@@ -12,7 +12,7 @@ const Logo = () => {
             sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
-                fontFamily: 'cursive',
+                fontFamily: 'revert-layer',
                 fontWeight: 700,
                 letterSpacing: '.2rem',
                 color: 'inherit',
@@ -20,7 +20,7 @@ const Logo = () => {
             }}> Blue Bells
         </Typography>
 
-        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+        {/*<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />*/}
         <Typography
             variant="h5"
             noWrap
@@ -30,7 +30,7 @@ const Logo = () => {
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
                 flexGrow: 1,
-                fontFamily: 'cursive',
+                fontFamily: 'revert-layer',
                 fontWeight: 700,
                 letterSpacing: '.1rem',
                 color: 'inherit',

@@ -9,13 +9,18 @@ import {
     TextField,
     Tooltip,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
-import Characters from "enum/char";
-import { CREATE_ROOM } from "server/Mutations/room.mutation";
-import { useMutation } from "@apollo/client";
+import {CREATE_ROOM} from "server/Mutations/room.mutation";
+import {useMutation} from "@apollo/client";
+import {IRoomType} from "../types/IRoomType";
 
-const CreateRoom: React.FC<{propertyId: number}> = ({propertyId}) => {
+interface ICreateRoom {
+    propertyId: number,
+    onCreateRoom: (room: IRoomType) => void
+}
+
+const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
     const [open, setOpen] = useState(false);
     const [roomData, setRoomData] = useState({
         alias: "Master bedroom",
@@ -26,9 +31,26 @@ const CreateRoom: React.FC<{propertyId: number}> = ({propertyId}) => {
         // max_ocupants: 1,
     });
 
+    const onClose = () => {
+        setOpen(false);
+    }
+
+    const onOpen = () => {
+        setOpen(true);
+    }
+
     const [createRoom, {data, loading, error}] = useMutation(CREATE_ROOM, {
         onCompleted: (data) => {
             console.log(data);
+            let room: IRoomType = {
+                id: data.createRoom?.id,
+                alias: data.createRoom?.alias,
+                m2: data.createRoom?.m2,
+                maxOccupants: data.createRoom?.max_occupants,
+                coverPicture: data.createRoom?.cover_picture,
+                pictures: data.createRoom?.pictures
+            }
+            onCreateRoom(room);
         },
         onError: (error) => {
             console.error(error);
@@ -40,17 +62,17 @@ const CreateRoom: React.FC<{propertyId: number}> = ({propertyId}) => {
             <Tooltip title="Create a new property">
                 <IconButton
                     onClick={() => {
-                        setOpen(true);
+                        onOpen();
                     }}
-                    sx={{ my: 2, color: "Black", display: "block" }}
+                    sx={{my: 2, color: "Black", display: "block"}}
                 >
-                    <AddCircleRoundedIcon />
+                    <AddCircleRoundedIcon/>
                 </IconButton>
             </Tooltip>
             <Dialog
                 open={open}
                 onClose={() => {
-                    setOpen(false);
+                    onClose();
                 }}
             >
                 <DialogTitle>Add room</DialogTitle>
@@ -65,6 +87,8 @@ const CreateRoom: React.FC<{propertyId: number}> = ({propertyId}) => {
                                     propertyId: propertyId
                                 },
                             });
+
+                            onClose();
                         }}
                     >
                         <FormGroup>
@@ -102,7 +126,7 @@ const CreateRoom: React.FC<{propertyId: number}> = ({propertyId}) => {
                                         variant="outlined"
                                         type="number"
                                         value={roomData.m2}
-                                        inputProps={{ min: 1}}
+                                        inputProps={{min: 1}}
                                         onChange={(e) => {
                                             setRoomData({
                                                 ...roomData,
@@ -118,7 +142,7 @@ const CreateRoom: React.FC<{propertyId: number}> = ({propertyId}) => {
                                         variant="outlined"
                                         type="number"
                                         value={roomData.max_occupants}
-                                        inputProps={{ min: 1}}
+                                        inputProps={{min: 1}}
                                         onChange={(e) => {
                                             setRoomData({
                                                 ...roomData,
@@ -137,13 +161,17 @@ const CreateRoom: React.FC<{propertyId: number}> = ({propertyId}) => {
                                     justifyContent={"space-between"}
                                 >
                                     <Grid xs={2} item>
-                                        <Button type="reset">Cancel</Button>
+                                        <Button type="reset"
+                                            onClick={() => {
+                                                onClose();
+                                            }}>
+                                            Cancel
+                                        </Button>
                                     </Grid>
                                     <Grid xs={2} item>
                                         <Button
                                             type="submit"
-                                            variant="contained"
-                                        >
+                                            variant="contained">
                                             Create
                                         </Button>
                                     </Grid>

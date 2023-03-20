@@ -1,33 +1,61 @@
-import { useMutation } from "@apollo/client";
+import {useMutation} from "@apollo/client";
 import {
-    Alert,
-    Box,
     Button,
     Dialog,
     DialogContent,
     DialogTitle,
-    FormControl,
     FormGroup,
     Grid,
     IconButton,
     TextField,
     Tooltip,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Characters from "../../../enum/char";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
-import { CREATE_PROPERTY } from "../../../server/Mutations/property.mutation";
-import { render } from "react-dom";
+import {CREATE_PROPERTY} from "../../../server/Mutations/property.mutation";
+import {IPropertyType} from "../types/IPropertyType";
 
-const CreateProperty: React.FC = () => {
+interface ICreateProperty {
+    onCreateProperty: (property: IPropertyType) => void
+}
+
+const CreateProperty: React.FC<ICreateProperty> = ({onCreateProperty}) => {
     const [open, setOpen] = useState(false);
 
-    const [createProperty, { data, loading, error }] = useMutation(
+    const [createProperty, {data, loading, error}] = useMutation(
         CREATE_PROPERTY,
         {
-            onError: (error) => {},
+            onError: (error) => {
+            },
+            onCompleted: (data) => {
+                const property: IPropertyType = {
+                    id: data.createProperty?.id,
+                    alias: data.createProperty?.alias,
+                    country: data.createProperty?.country,
+                    district: data.createProperty?.district,
+                    city: data.createProperty?.city,
+                    suburb: data.createProperty?.suburb,
+                    street: data.createProperty?.street,
+                    number: data.createProperty?.number,
+                    flat: data.createProperty?.flat,
+                    coverPicture: data.createProperty?.coverPicture,
+                    pictures: data.createProperty?.pictures,
+                    rooms: []
+                }
+
+                onCreateProperty(property);
+            }
         }
     );
+
+    const onOpen = () => {
+        setOpen(true);
+    }
+
+    const onClose = () => {
+        setOpen(false);
+    }
 
     const [alias, setAlias] = useState(Characters.EMPTY);
     const [propertyData, setPropertyData] = useState({
@@ -54,18 +82,17 @@ const CreateProperty: React.FC = () => {
             <Tooltip title="Create a new property">
                 <IconButton
                     onClick={() => {
-                        setOpen(true);
+                        onOpen();
                     }}
-                    sx={{ my: 2, color: "Black", display: "block" }}
-                >
-                    <AddCircleRoundedIcon />
+                    sx={{my: 2, color: "Black", display: "block"}}>
+                    <AddCircleRoundedIcon/>
                 </IconButton>
             </Tooltip>
 
             <Dialog
                 open={open}
                 onClose={() => {
-                    setOpen(false);
+                    onClose();
                 }}
             >
                 <DialogTitle>Create property</DialogTitle>
@@ -79,6 +106,8 @@ const CreateProperty: React.FC = () => {
                                     request: propertyData,
                                 },
                             });
+
+                            onClose();
                         }}
                     >
                         <FormGroup>
@@ -212,7 +241,9 @@ const CreateProperty: React.FC = () => {
                                     justifyContent={"space-between"}
                                 >
                                     <Grid xs={2} item>
-                                        <Button type="reset">Cancel</Button>
+                                        <Button type="reset" onClick={() => {
+                                            onClose();
+                                        }}>Cancel</Button>
                                     </Grid>
                                     <Grid xs={2} item>
                                         <Button

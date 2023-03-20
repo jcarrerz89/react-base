@@ -21,7 +21,6 @@ const UserProfileForm = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("Form submitted");
   };
 
   return (

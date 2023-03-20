@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import CreateRoom from "./CreateRoom";
-import { IRoomType } from "../property/PropertyItem";
-import { url } from "inspector";
-import { Grid, ImageList, ImageListItem, ImageListItemBar, Paper } from "@mui/material";
+import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import Constants from "enum/constants";
+import {IRoomType} from "../types/IRoomType";
 
 const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ rooms, propertyId }) => {
+
+    const [roomList, setRoomList] = useState<IRoomType[]>(rooms);
+
+    const onCreateRoom = (room: IRoomType) => {
+        let rooms = roomList.concat(room);
+        setRoomList(rooms);
+    }
+
     return (
         <>
             <ImageList variant="masonry" cols={3} gap={8}>
-                {rooms.map((room) => (
+                {roomList.map((room) => (
                     <ImageListItem key={room.id}>
                         <img
                             src={`${room.coverPicture || Constants.DEFAULT_ROOM_COVER_PICTURE}?w=248&fit=crop&auto=format`}
@@ -18,13 +25,12 @@ const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ ro
                             loading="lazy"
                         />
 
-                        <ImageListItemBar title={room.alias} >
-                            </ImageListItemBar>
+                        <ImageListItemBar title={room.alias} />
                     </ImageListItem>
                 ))}
             </ImageList>
 
-            <CreateRoom propertyId={propertyId} />
+            <CreateRoom propertyId={propertyId} onCreateRoom={onCreateRoom}/>
         </>
     );
 };

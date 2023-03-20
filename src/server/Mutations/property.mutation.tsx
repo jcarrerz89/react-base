@@ -12,7 +12,9 @@ export const CREATE_PROPERTY = gql`
             suburb,
             street,
             number, 
-            flat 
+            flat,
+            cover_picture,
+            pictures
         }
     }
 `;

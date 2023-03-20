@@ -1,16 +1,26 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
-import Paper from "@mui/material/Paper";
 import { GET_PROPERTIES_BY_USER } from "../../../server/Queries/property.queries";
 import { useQuery } from "@apollo/client";
 import PropertyItem from "./PropertyItem";
 import CreateProperty from "./CreateProperty";
-import { Container, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
+import {useState} from "react";
+import {IPropertyType} from "../types/IPropertyType";
 
-export default function CollapsibleTable() {
-    const { data, loading, error } = useQuery(GET_PROPERTIES_BY_USER, {});
+const PropertiesList = () => {
+
+    const aux: IPropertyType[] = [];
+    const [properties, setProperties] = useState(aux);
+
+    const { data, loading, error } = useQuery(GET_PROPERTIES_BY_USER, {
+        onCompleted: (data) => {
+            setProperties(data?.getPropertiesByUser);
+        }
+    });
+
+    const onCreateProperty = (property: IPropertyType) => {
+        setProperties(properties?.concat(property));
+    }
 
     if (loading) {
         return <label>loading...</label>;
@@ -23,11 +33,13 @@ export default function CollapsibleTable() {
     return (
         <>
             <Grid container rowGap={2} padding={2}>
-                {data.getPropertiesByUser.map((property: any) => (
-                    <PropertyItem property={property} />
+                {properties.map((property: any) => (
+                    <PropertyItem property={property} key={property.id}/>
                 ))}
             </Grid>
-            <CreateProperty />
+            <CreateProperty onCreateProperty={onCreateProperty}/>
         </>
     );
 }
+
+export default PropertiesList;

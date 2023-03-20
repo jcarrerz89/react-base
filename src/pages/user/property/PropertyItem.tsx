@@ -1,45 +1,12 @@
 import React from "react";
 import { DeleteForever, KeyboardArrowUp } from "@mui/icons-material";
-import { Collapse, Grid, TableCell, TableRow, IconButton, Paper } from "@mui/material";
+import { Collapse, Grid, IconButton, Paper } from "@mui/material";
 import RoomListItem from "../room/RoomListItem";
 import Constants from "enum/constants";
 import AppSubTitle from "components/common/Text/AppSubTitle";
-import { styled } from "@mui/material/styles";
-import { borderRadius } from "@mui/system";
+import {IPropertyType} from "../types/IPropertyType";
 
-export interface PropertyItem {
-    id: number;
-    alias: string;
-    country: string;
-    district: string;
-    city: string;
-    suburb: string;
-    street: string;
-    number: string;
-    flat: string;
-    cover_picture: string;
-    pictures: string[];
-    rooms: IRoomType[];
-}
-
-export interface IRoomType {
-    id: number;
-    alias: string;
-    m2: number;
-    maxOccuppants: number;
-    coverPicture: string;
-    pictures: string[];
-}
-
-const PropertyHeader = styled(Grid)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    border: "1px solid #CCC",
-    borderRadius: "10px",
-}));
-
-const PropertyItem: React.FC<{ property: PropertyItem }> = ({ property }) => {
+const PropertyItem: React.FC<{ property: IPropertyType }> = ({ property }) => {
     const [open, setOpen] = React.useState(false);
 
     return (
@@ -61,7 +28,7 @@ const PropertyItem: React.FC<{ property: PropertyItem }> = ({ property }) => {
                             <Grid item sm={6}>
                                 <img
                                     style={{ width: "100%", borderRadius: 10 }}
-                                    src={property.cover_picture || Constants.DEFAULT_PROPERTY_COVER_PICTURE}
+                                    src={property.coverPicture || Constants.DEFAULT_PROPERTY_COVER_PICTURE}
                                 />
                             </Grid>
 

@@ -26,24 +26,36 @@ export const UserContextProvider = ({children}: UserContextProviderProps) => {
     const userContext = useContext(UserContext);
     const [cookie] = useCookies(["jwt-auth-token"]);
     const skip = userContext.user !== undefined || isEqual(cookie, {});
-    const {data, loading, error} = useQuery(HELLO_USER, {skip: skip});
     const [user, setUser] = useState<UserType | null>(null);
+    const [onCompleted, setOnCompleted] = useState<Boolean>(skip);
 
-    useEffect(() => {
-        if (data && data.helloUser) {
-            const user: UserType = {
-                id: data.helloUser.id,
-                username: data.helloUser.username,
-                email: data.helloUser.email,
-            };
+    const {data, loading, error} = useQuery(HELLO_USER, {
+        skip: skip,
+        onCompleted: (data) => {
+            if (data && data.helloUser) {
+                const user: UserType = {
+                    id: data.helloUser.id,
+                    username: data.helloUser.username,
+                    email: data.helloUser.email,
+                };
 
-            setUser(user);
+                setUser(user);
+            }
+            setOnCompleted(true);
+        },
+        onError: (error) => {
+            setOnCompleted(true);
         }
-    }, [data]);
+    });
+
+    if (!onCompleted) {
+        // Improve On Loading animation / page
+        return <>loading...</>
+    }
 
     return (
         <UserContext.Provider value={{user, setUser}}>
-            {children}
+            {onCompleted && children}
         </UserContext.Provider>
     );
 }

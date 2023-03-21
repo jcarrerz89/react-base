@@ -16,12 +16,9 @@ const ApplicationRoutes = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/about" element={<About/>}/>
             <Route path="/contact" element={<Contact/>}/>
-            {/*<Route path="/profile" element={userContext.user ? <Profile/> : <Navigate to="/"/>}/>*/}
-            {/*<Route path="/profile/properties"*/}
-            {/*       element={userContext.user ? <Property/> : <Navigate to="/"/>}/>*/}
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/profile" element={userContext.user ? <Profile/> : <Navigate to="/"/>}/>
             <Route path="/profile/properties"
-                   element={<Property/>}/>
+                   element={userContext.user ? <Property/> : <Navigate to="/"/>}/>
         </Routes>
     )
 }

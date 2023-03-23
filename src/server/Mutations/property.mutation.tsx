@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 
 export const CREATE_PROPERTY = gql`
-    mutation createproperty($request: PropertyInput!) {
+    mutation createProperty($request: PropertyInput!) {
         createProperty(request: $request) {
             id,
             alias,
@@ -16,5 +16,15 @@ export const CREATE_PROPERTY = gql`
             cover_picture,
             pictures
         }
+    }
+`;
+
+export const DELETE_PROPERTY = gql`
+    mutation deleteProperty($propertyId: Float!) {
+      deleteProperty(propertyId: $propertyId) {
+        id,
+        alias,
+        deleted_at
+      }
     }
 `;

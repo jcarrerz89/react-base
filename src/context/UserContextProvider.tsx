@@ -29,7 +29,7 @@ export const UserContextProvider = ({children}: UserContextProviderProps) => {
     const [user, setUser] = useState<UserType | null>(null);
     const [onCompleted, setOnCompleted] = useState<Boolean>(skip);
 
-    const {data, loading, error} = useQuery(HELLO_USER, {
+    useQuery(HELLO_USER, {
         skip: skip,
         onCompleted: (data) => {
             if (data && data.helloUser) {
@@ -41,6 +41,7 @@ export const UserContextProvider = ({children}: UserContextProviderProps) => {
 
                 setUser(user);
             }
+
             setOnCompleted(true);
         },
         onError: (error) => {

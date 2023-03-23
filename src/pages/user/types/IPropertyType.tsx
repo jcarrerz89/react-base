@@ -13,4 +13,7 @@ export interface IPropertyType {
     coverPicture: string;
     pictures: string[];
     rooms: IRoomType[];
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date | null;
 }

@@ -1,13 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import { DeleteForever, KeyboardArrowUp } from "@mui/icons-material";
 import { Collapse, Grid, IconButton, Paper } from "@mui/material";
 import RoomListItem from "../room/RoomListItem";
 import Constants from "enum/constants";
 import AppSubTitle from "components/common/Text/AppSubTitle";
 import {IPropertyType} from "../types/IPropertyType";
+import DeleteProperty from "./DeleteProperty";
 
-const PropertyItem: React.FC<{ property: IPropertyType }> = ({ property }) => {
-    const [open, setOpen] = React.useState(false);
+interface IPropertyItem {
+    property: IPropertyType,
+    onDeleteProperty: (propertyId: number) => void
+}
+
+const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) => {
+    const [open, setOpen] = useState(false);
 
     return (
         <Grid item sm={12}>
@@ -34,7 +40,7 @@ const PropertyItem: React.FC<{ property: IPropertyType }> = ({ property }) => {
 
                             <Grid item sm={5}>
                                 <RoomListItem rooms={property.rooms} propertyId={property.id} />
-                                <DeleteForever />
+                                <DeleteProperty property={property} onDeleteProperty={onDeleteProperty} />
                             </Grid>
                         </Grid>
                     </Collapse>

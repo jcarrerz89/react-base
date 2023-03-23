@@ -41,7 +41,8 @@ const CreateProperty: React.FC<ICreateProperty> = ({onCreateProperty}) => {
                     flat: data.createProperty?.flat,
                     coverPicture: data.createProperty?.coverPicture,
                     pictures: data.createProperty?.pictures,
-                    rooms: []
+                    rooms: [],
+                    deletedAt: null
                 }
 
                 onCreateProperty(property);

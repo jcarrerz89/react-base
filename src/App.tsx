@@ -5,17 +5,22 @@ import {ApolloProvider} from "@apollo/client";
 import ApolloClient from './server/ApolloClient';
 import {UserContextProvider} from './context/UserContextProvider';
 import './App.css';
-import Init from "./Init";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
 
 function App() {
     return (
         <ApolloProvider client={ApolloClient}>
+
             <React.StrictMode>
-                <UserContextProvider>
-                    <BrowserRouter>
-                        <ApplicationRoutes/>
-                    </BrowserRouter>
-                </UserContextProvider>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <UserContextProvider>
+                        <BrowserRouter>
+                            <ApplicationRoutes/>
+                        </BrowserRouter>
+                    </UserContextProvider>
+                </LocalizationProvider>
             </React.StrictMode>
         </ApolloProvider>
     );

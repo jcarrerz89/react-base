@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import {styled, useTheme, Theme, CSSObject} from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar, {AppBarProps as MuiAppBarProps} from '@mui/material/AppBar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -15,12 +15,12 @@ import EmailIcon from '@mui/icons-material/Email';
 import NightShelterIcon from '@mui/icons-material/NightShelter';
 import PersonIcon from '@mui/icons-material/Person';
 import ExtensionIcon from '@mui/icons-material/Extension';
+import {Paper} from "@mui/material";
 
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
     position: 'relative',
-    border: '1px solid red',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -42,7 +42,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     },
 });
 
-const DrawerHeader = styled('div')(({ theme }) => ({
+const DrawerHeader = styled('div')(({theme}) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -55,7 +55,7 @@ interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
 }
 
-const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open' })<AppBarProps>(({ theme, open }) => ({
+const AppBar = styled(MuiAppBar, {shouldForwardProp: (prop) => prop !== 'open'})<AppBarProps>(({theme, open}) => ({
     zIndex: theme.zIndex.drawer + 1,
     position: 'relative',
 
@@ -73,8 +73,8 @@ const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
+const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
+    ({theme, open}) => ({
         width: drawerWidth,
         flexShrink: 0,
         whiteSpace: 'nowrap',
@@ -103,91 +103,94 @@ const UserMenu: React.FC = () => {
     };
 
     return (
-        <Drawer variant="permanent" open={open} >
-            <DrawerHeader>
-                <IconButton onClick={handleDrawerClose}>
-                    {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                </IconButton>
-            </DrawerHeader>
-            <Divider />
-            <List>
-                <ListItem key={'inbox'} disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton href='/inbox'
-                        sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                        <ListItemIcon
+
+        <Paper elevation={3} style={{marginTop: 20}}>
+            <Drawer variant="permanent" open={open}>
+                <DrawerHeader>
+                    <IconButton onClick={open ? handleDrawerClose : handleDrawerOpen}>
+                        {open ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
+                    </IconButton>
+                </DrawerHeader>
+                <Divider/>
+                <List>
+                    <ListItem key={'inbox'} disablePadding sx={{display: 'block'}}>
+                        <ListItemButton href='/inbox'
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: open ? 'initial' : 'center',
+                                            px: 2.5,
+                                        }}>
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}>
+                                <EmailIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Profile" sx={{opacity: open ? 1 : 0}}/>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem key={'profile'} disablePadding sx={{display: 'block'}}>
+                        <ListItemButton href='/profile'
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: open ? 'initial' : 'center',
+                                            px: 2.5,
+                                        }}>
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}>
+                                <PersonIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Profile" sx={{opacity: open ? 1 : 0}}/>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem key={'property'} disablePadding sx={{display: 'block'}}>
+                        <ListItemButton href='/profile/properties'
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: open ? 'initial' : 'center',
+                                            px: 2.5,
+                                        }}>
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}>
+                                <NightShelterIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Property" sx={{opacity: open ? 1 : 0}}/>
+                        </ListItemButton>
+                    </ListItem>
+                </List>
+                <Divider/>
+                <List>
+                    <ListItem key="Extension" disablePadding sx={{display: 'block'}}>
+                        <ListItemButton
                             sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
                             }}>
-                            <EmailIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem key={'profile'} disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton href='/profile'
-                        sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                        <ListItemIcon
-                            sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                            <PersonIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem key={'property'} disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton href='/profile/properties'
-                        sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                        <ListItemIcon
-                            sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                            <NightShelterIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Property" sx={{ opacity: open ? 1 : 0 }} />
-                    </ListItemButton>
-                </ListItem>
-            </List>
-            <Divider />
-            <List>
-                <ListItem key="Extension" disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton
-                        sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                        <ListItemIcon
-                            sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                            <ExtensionIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Extension" sx={{ opacity: open ? 1 : 0 }} />
-                    </ListItemButton>
-                </ListItem>
-            </List>
-        </Drawer>
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}>
+                                <ExtensionIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Extension" sx={{opacity: open ? 1 : 0}}/>
+                        </ListItemButton>
+                    </ListItem>
+                </List>
+            </Drawer>
+        </Paper>
     );
 }
 

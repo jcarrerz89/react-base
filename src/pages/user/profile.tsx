@@ -1,13 +1,13 @@
 import React from 'react';
 import UserDashboardLayout from '../../components/layout/UserDashboardLayout.tsx/UserDashboardLayout';
-import UserProfileForm from './profile/UserProfileForm';
-
+import UserInfo from "./profile/UserInfo";
 
 const Profile: React.FC = () => {
 
     return (
         <UserDashboardLayout>
-            <UserProfileForm></UserProfileForm>
+            <UserInfo></UserInfo>
+
 
         </UserDashboardLayout>
     );

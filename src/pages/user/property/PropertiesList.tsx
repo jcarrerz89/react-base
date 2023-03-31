@@ -1,9 +1,9 @@
 import * as React from "react";
-import { GET_PROPERTIES_BY_USER } from "../../../server/Queries/property.queries";
-import { useQuery } from "@apollo/client";
+import {GET_PROPERTIES_BY_USER} from "../../../server/Queries/property.queries";
+import {useQuery} from "@apollo/client";
 import PropertyItem from "./PropertyItem";
 import CreateProperty from "./CreateProperty";
-import { Grid } from "@mui/material";
+import {Grid} from "@mui/material";
 import {useState} from "react";
 import {IPropertyType} from "../types/IPropertyType";
 
@@ -12,7 +12,7 @@ const PropertiesList = () => {
     const aux: IPropertyType[] = [];
     const [properties, setProperties] = useState(aux);
 
-    const { data, loading, error } = useQuery(GET_PROPERTIES_BY_USER, {
+    const {data, loading, error} = useQuery(GET_PROPERTIES_BY_USER, {
         onCompleted: (data) => {
             const properties = data?.getPropertiesByUser.map((item: any) => {
                 const property: IPropertyType = {
@@ -57,12 +57,10 @@ const PropertiesList = () => {
 
     return (
         <>
-            <Grid container rowGap={2} padding={2}>
-                {properties.filter((property: IPropertyType) => !property.deletedAt).map((property: any) => (
-                    <PropertyItem property={property} key={property.id} onDeleteProperty={onDeleteProperty} />
-                ))}
-            </Grid>
-            <CreateProperty onSaveProperty={onCreateProperty} />
+            {properties.filter((property: IPropertyType) => !property.deletedAt).map((property: any) => (
+                <PropertyItem property={property} key={property.id} onDeleteProperty={onDeleteProperty}/>
+            ))}
+            <CreateProperty onSaveProperty={onCreateProperty}/>
         </>
     );
 }

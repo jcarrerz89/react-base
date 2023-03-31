@@ -7,8 +7,6 @@ const Profile: React.FC = () => {
     return (
         <UserDashboardLayout>
             <UserInfo></UserInfo>
-
-
         </UserDashboardLayout>
     );
 }

@@ -36,12 +36,11 @@ const DeleteProperty: React.FC<IDeleteProperty> = ({property, onDeleteProperty})
         <>
             <Tooltip title="Create a new property">
                 <IconButton
+                    sx={{my: 2, color: "Black", display: "block"}}
                     onClick={() => {
                         onOpen();
-                    }}
-                    sx={{my: 2, color: "Black", display: "block"}}
-                >
-                    <DeleteForever/>
+                    }}>
+                    <DeleteForever/> Delete
                 </IconButton>
             </Tooltip>
             <Dialog fullWidth open={open} onClose={() => {
@@ -51,15 +50,13 @@ const DeleteProperty: React.FC<IDeleteProperty> = ({property, onDeleteProperty})
                 <DialogContent>
                     <Grid container>
                         <Grid item sm={12}>
-
                             <p>Are you sure you want to delete this property?</p>
                         </Grid>
                         <Grid
                             xs={12}
                             item
                             container
-                            justifyContent={"space-between"}
-                        >
+                            justifyContent={"space-between"}>
                             <Grid xs={2} item>
                                 <Button type="reset" onClick={() => {
                                     onClose();
@@ -85,7 +82,6 @@ const DeleteProperty: React.FC<IDeleteProperty> = ({property, onDeleteProperty})
                     </Grid>
                 </DialogContent>
             </Dialog>
-
         </>
     );
 }

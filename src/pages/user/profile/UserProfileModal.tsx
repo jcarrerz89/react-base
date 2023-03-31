@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Characters from "../../../enum/char";
 import {Button, DialogTitle, IconButton, Tooltip} from "@mui/material";
-import AddCircleRoundedIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import Grid from "@mui/material/Grid";
@@ -73,7 +73,7 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({profile, onUpdateProfile
                         onOpen();
                     }}
                     sx={{my: 2, color: "Black", display: "block"}}>
-                    <AddCircleRoundedIcon/>
+                    <EditIcon /> Edit
                 </IconButton>
             </Tooltip>
 
@@ -97,8 +97,7 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({profile, onUpdateProfile
 
                         onClose();
                     }}>
-                        <Grid container rowGap={2} paddingTop={5}>
-
+                        <Grid container rowGap={2} paddingTop={1}>
                             <Grid item container sm={12}>
                                 <Grid item sm={6}>
 

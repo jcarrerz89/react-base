@@ -5,7 +5,7 @@ import {
     DialogTitle,
     FormGroup,
     Grid,
-    IconButton,
+    IconButton, ImageListItem,
     TextField,
     Tooltip,
 } from "@mui/material";
@@ -60,14 +60,17 @@ const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
     return (
         <>
             <Tooltip title="Create a new property">
-                <IconButton
-                    onClick={() => {
-                        onOpen();
-                    }}
-                    sx={{my: 2, color: "Black", display: "block"}}
-                >
-                    <AddCircleRoundedIcon/>
-                </IconButton>
+
+                <ImageListItem>
+                    <IconButton
+                        onClick={() => {
+                            onOpen();
+                        }}
+                        sx={{my: 2, color: "Black", display: "block"}}
+                    >
+                        <AddCircleRoundedIcon/>
+                    </IconButton>
+                </ImageListItem>
             </Tooltip>
             <Dialog
                 open={open}
@@ -162,9 +165,9 @@ const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
                                 >
                                     <Grid xs={2} item>
                                         <Button type="reset"
-                                            onClick={() => {
-                                                onClose();
-                                            }}>
+                                                onClick={() => {
+                                                    onClose();
+                                                }}>
                                             Cancel
                                         </Button>
                                     </Grid>

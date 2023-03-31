@@ -10,42 +10,44 @@ import {
     TextField,
     Tooltip,
 } from "@mui/material";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Characters from "../../../enum/char";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
-import {CREATE_PROPERTY} from "../../../server/Mutations/property.mutation";
+import EditIcon from "@mui/icons-material/Edit";
+import {SAVE_PROPERTY} from "../../../server/Mutations/property.mutation";
 import {IPropertyType} from "../types/IPropertyType";
 
 interface ICreateProperty {
-    onCreateProperty: (property: IPropertyType) => void
+    property?: IPropertyType,
+    onSaveProperty: (property: IPropertyType) => void
 }
 
-const CreateProperty: React.FC<ICreateProperty> = ({onCreateProperty}) => {
+const CreateProperty: React.FC<ICreateProperty> = ({property, onSaveProperty}) => {
     const [open, setOpen] = useState(false);
 
     const [createProperty, {data, loading, error}] = useMutation(
-        CREATE_PROPERTY,
+        SAVE_PROPERTY,
         {
             onError: (error) => {
             },
             onCompleted: (data) => {
                 const property: IPropertyType = {
-                    id: data.createProperty?.id,
-                    alias: data.createProperty?.alias,
-                    country: data.createProperty?.country,
-                    district: data.createProperty?.district,
-                    city: data.createProperty?.city,
-                    suburb: data.createProperty?.suburb,
-                    street: data.createProperty?.street,
-                    number: data.createProperty?.number,
-                    flat: data.createProperty?.flat,
-                    coverPicture: data.createProperty?.coverPicture,
-                    pictures: data.createProperty?.pictures,
+                    id: data.saveProperty?.id,
+                    alias: data.saveProperty?.alias,
+                    country: data.saveProperty?.country,
+                    district: data.saveProperty?.district,
+                    city: data.saveProperty?.city,
+                    suburb: data.saveProperty?.suburb,
+                    street: data.saveProperty?.street,
+                    number: data.saveProperty?.number,
+                    flat: data.saveProperty?.flat,
+                    coverPicture: data.saveProperty?.coverPicture,
+                    pictures: data.saveProperty?.pictures,
                     rooms: [],
                     deletedAt: null
                 }
 
-                onCreateProperty(property);
+                onSaveProperty(property);
             }
         }
     );
@@ -58,25 +60,36 @@ const CreateProperty: React.FC<ICreateProperty> = ({onCreateProperty}) => {
         setOpen(false);
     }
 
-    const [alias, setAlias] = useState(Characters.EMPTY);
     const [propertyData, setPropertyData] = useState({
-        alias: "Bridgewater appartment",
-        country: "New Zealand",
-        district: "Auckland",
-        city: "Auckland",
-        suburb: "Parnell",
-        street: "Bridgewater rd",
-        number: 12,
-        flat: "3",
-        // alias: String(Characters.EMPTY),
-        // country: String(Characters.EMPTY),
-        // district: String(Characters.EMPTY),
-        // city: String(Characters.EMPTY),
-        // suburb: String(Characters.EMPTY),
-        // street: String(Characters.EMPTY),
-        // number: String(Characters.EMPTY),
-        // flat: String(Characters.EMPTY),
+        id: 0,
+        alias: String(Characters.EMPTY),
+        country: String(Characters.EMPTY),
+        district: String(Characters.EMPTY),
+        city: String(Characters.EMPTY),
+        suburb: String(Characters.EMPTY),
+        street: String(Characters.EMPTY),
+        number: Number(Characters.EMPTY),
+        flat: String(Characters.EMPTY),
     });
+
+    useEffect(() => {
+        if (property) {
+            setPropertyData({
+                id: property.id,
+                alias: property.alias,
+                country: property.country,
+                district: property.district,
+                city: property.city,
+                suburb: property.suburb,
+                street: property.suburb,
+                number: property.number,
+                flat: property.flat,
+            });
+        }
+    }, [property]);
+
+    const icon = property ?
+        <> <EditIcon/> Edit</> : <><AddCircleRoundedIcon/> </>
 
     return (
         <>
@@ -86,7 +99,7 @@ const CreateProperty: React.FC<ICreateProperty> = ({onCreateProperty}) => {
                         onOpen();
                     }}
                     sx={{my: 2, color: "Black", display: "block"}}>
-                    <AddCircleRoundedIcon/>
+                    {icon}
                 </IconButton>
             </Tooltip>
 
@@ -251,7 +264,7 @@ const CreateProperty: React.FC<ICreateProperty> = ({onCreateProperty}) => {
                                             type="submit"
                                             variant="contained"
                                         >
-                                            Create
+                                            {property ? 'Edit' : 'Create'}
                                         </Button>
                                     </Grid>
                                 </Grid>

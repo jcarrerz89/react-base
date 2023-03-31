@@ -1,12 +1,14 @@
 import React, {useContext, useState} from "react";
-import {Grid, Container, Skeleton} from "@mui/material";
+import {Grid, Container, Skeleton, Paper} from "@mui/material";
 import {UserContext} from "../../../context/UserContextProvider";
 import {useQuery} from "@apollo/client";
 import {GET_PROFILE} from "../../../server/Queries/profile.queries";
-import {styled} from "@mui/system";
 import UserProfileModal from "./UserProfileModal";
 import {IProfileType} from "../types/IProfileType";
-
+import AppSubTitle from "../../../components/common/Text/AppSubTitle";
+import SectionMenu from "../../../components/common/Menu/SectionMenu";
+import AppElementTitle from "../../../components/common/Text/AppElementTitle";
+import SectionContainer from "../../../components/common/Section/SectionContainer";
 
 const UserData: React.FC = () => {
     const [profile, setProfile] = useState<IProfileType | null>(null);
@@ -34,17 +36,26 @@ const UserData: React.FC = () => {
         setProfile(profile);
     }
 
-    const Title = styled('label')(() => ({
-        color: '#515050',
-        fontSize: 12
-    }));
-
     const skeleton = <Skeleton variant="text" width={210} height={118}/>
 
     return (
-        <Container>
+        <SectionContainer>
+            <Grid
+                xs={12}
+                item
+                container
+                justifyContent={"space-between"}
+            >
+                <Grid xs={10} item>
+                    <AppSubTitle>Profile</AppSubTitle>
+                </Grid>
+                <Grid xs={1} item>
+                    <SectionMenu>
+                        <UserProfileModal profile={profile} onUpdateProfile={onUpdateProfile}/>
+                    </SectionMenu>
+                </Grid>
+            </Grid>
             <Grid container rowGap={5}>
-
                 <Grid item container sm={12}>
                     <Grid item sm={6}>
                         {profile ? <img src={profile.image}/> : skeleton}
@@ -52,7 +63,7 @@ const UserData: React.FC = () => {
                     <Grid item container sm={6} rowGap={5}>
                         <Grid item container sm={12}>
                             <Grid item sm={12}>
-                                <Title>Username</Title>
+                                <AppElementTitle>Username</AppElementTitle>
                             </Grid>
                             <Grid item sm={12}>
                                 {profile ? userContext.user?.username : skeleton}
@@ -60,7 +71,7 @@ const UserData: React.FC = () => {
                         </Grid>
                         <Grid item container sm={12}>
                             <Grid item sm={12}>
-                                <Title>Email</Title>
+                                <AppElementTitle>Email</AppElementTitle>
                             </Grid>
                             <Grid item sm={12}>
                                 {profile ? userContext.user?.email : skeleton}
@@ -71,7 +82,7 @@ const UserData: React.FC = () => {
 
                 <Grid item container sm={4}>
                     <Grid item sm={12}>
-                        <Title>Name</Title>
+                        <AppElementTitle>Name</AppElementTitle>
                     </Grid>
                     <Grid item sm={12}>
                         {profile ? profile.name : skeleton}
@@ -79,7 +90,7 @@ const UserData: React.FC = () => {
                 </Grid>
                 <Grid item container sm={4}>
                     <Grid item sm={12}>
-                        <Title>Surname</Title>
+                        <AppElementTitle>Surname</AppElementTitle>
                     </Grid>
                     <Grid item sm={12}>
                         {profile ? profile.surname : skeleton}
@@ -87,7 +98,7 @@ const UserData: React.FC = () => {
                 </Grid>
                 <Grid item container sm={4}>
                     <Grid item sm={12}>
-                        <Title>Date of birth</Title>
+                        <AppElementTitle>Date of birth</AppElementTitle>
                     </Grid>
                     <Grid item sm={12}>
                         {profile ? profile.dateOfBirth : skeleton}
@@ -95,7 +106,7 @@ const UserData: React.FC = () => {
                 </Grid>
                 <Grid item container sm={4}>
                     <Grid item sm={12}>
-                        <Title>Nationality</Title>
+                        <AppElementTitle>Nationality</AppElementTitle>
                     </Grid>
                     <Grid item sm={12}>
                         {profile ? profile.nationality : skeleton}
@@ -103,7 +114,7 @@ const UserData: React.FC = () => {
                 </Grid>
                 <Grid item container sm={4}>
                     <Grid item sm={12}>
-                        <Title>Updated at</Title>
+                        <AppElementTitle>Updated at</AppElementTitle>
                     </Grid>
                     <Grid item sm={12}>
                         {/*{profile ? profile.updatedAt : skeleton}*/}
@@ -111,26 +122,14 @@ const UserData: React.FC = () => {
                 </Grid>
                 <Grid item container sm={12}>
                     <Grid item sm={12}>
-                        <Title>About me</Title>
+                        <AppElementTitle>About me</AppElementTitle>
                     </Grid>
                     <Grid item sm={12}>
                         {profile ? profile.description : skeleton}
                     </Grid>
                 </Grid>
-                <Grid
-                    xs={12}
-                    item
-                    container
-                    justifyContent={"space-between"}
-                >
-                    <Grid xs={2} item>
-                    </Grid>
-                    <Grid xs={2} item>
-                        <UserProfileModal profile={profile} onUpdateProfile={onUpdateProfile}/>
-                    </Grid>
-                </Grid>
             </Grid>
-        </Container>
+        </SectionContainer>
     )
 }
 

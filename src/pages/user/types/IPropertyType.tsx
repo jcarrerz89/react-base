@@ -8,7 +8,7 @@ export interface IPropertyType {
     city: string;
     suburb: string;
     street: string;
-    number: string;
+    number: number;
     flat: string;
     coverPicture: string;
     pictures: string[];

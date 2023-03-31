@@ -50,7 +50,7 @@ const SignIn: React.FC = () => {
                 }}>Sign In
             </Button>
 
-            <Dialog open={open} onClose={() => {
+            <Dialog fullWidth open={open} onClose={() => {
                 onOpen();
             }}>
                 <form onSubmit={(event) => {
@@ -67,7 +67,7 @@ const SignIn: React.FC = () => {
                 }}>
                     <DialogTitle>Sign In</DialogTitle>
                     <DialogContent>
-                        <Grid container rowSpacing={4}>
+                        <Grid container rowSpacing={4} paddingTop={2}>
                             <Grid item sm={12}>
                                 <TextField autoFocus
                                            id="user"
@@ -100,8 +100,7 @@ const SignIn: React.FC = () => {
 
                     <DialogActions>
                         <Grid
-                            xs={12}
-                            item
+                            paddingBottom={2}
                             container
                             justifyContent={"space-between"}
                         >

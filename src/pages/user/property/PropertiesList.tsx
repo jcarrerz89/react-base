@@ -62,7 +62,7 @@ const PropertiesList = () => {
                     <PropertyItem property={property} key={property.id} onDeleteProperty={onDeleteProperty} />
                 ))}
             </Grid>
-            <CreateProperty onCreateProperty={onCreateProperty}/>
+            <CreateProperty onSaveProperty={onCreateProperty} />
         </>
     );
 }

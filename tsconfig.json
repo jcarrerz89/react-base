@@ -3,7 +3,8 @@
     "baseUrl": "./src/",
     "paths": {
       "@server": ["server/*"],
-      "@enum": ["enum/*"]
+      "@enum": ["enum/*"],
+      "@components": ["src/components/*"]
     },
     "target": "es5",
     "lib": [

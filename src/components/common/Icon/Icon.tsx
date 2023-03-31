@@ -1,9 +1,15 @@
-// import {} from '@mui/icons-material/'
-
 import {FC} from "react";
+import SvgIcon from "@mui/material/SvgIcon";
 
-const Icon:FC = (props) => {
-    return <svg data-testid='{props.icon}'></svg>
+interface IICon {
+    icon: typeof SvgIcon,
+    label?: string
+}
+
+const Icon:FC<IICon> = (props) => {
+    return <>
+        {props.icon} {props.label}
+    </>
 }
 
 export default Icon

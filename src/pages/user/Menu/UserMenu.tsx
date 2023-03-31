@@ -104,7 +104,7 @@ const UserMenu: React.FC = () => {
 
     return (
 
-        <Paper elevation={3} style={{marginTop: 20}}>
+        <Paper elevation={3} style={{marginTop: 24}}>
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
                     <IconButton onClick={open ? handleDrawerClose : handleDrawerOpen}>
@@ -114,7 +114,7 @@ const UserMenu: React.FC = () => {
                 <Divider/>
                 <List>
                     <ListItem key={'inbox'} disablePadding sx={{display: 'block'}}>
-                        <ListItemButton href='/inbox'
+                        <ListItemButton href='/profile/inbox'
                                         sx={{
                                             minHeight: 48,
                                             justifyContent: open ? 'initial' : 'center',

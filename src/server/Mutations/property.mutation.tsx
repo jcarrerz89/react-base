@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
 
-export const CREATE_PROPERTY = gql`
-    mutation createProperty($request: PropertyInput!) {
-        createProperty(request: $request) {
+export const SAVE_PROPERTY = gql`
+    mutation saveProperty($request: PropertyInput!) {
+        saveProperty(request: $request) {
             id,
             alias,
             country,

@@ -4,7 +4,7 @@ import SectionHeader from "../../components/common/Section/SectionHeader";
 import AppSubTitle from "../../components/common/Text/AppSubTitle";
 import UserDashboardLayout from "../../components/layout/UserDashboardLayout.tsx/UserDashboardLayout";
 
-const Inbox = () => {
+const UserInbox = () => {
     return (
         <UserDashboardLayout>
             <SectionContainer>
@@ -16,4 +16,4 @@ const Inbox = () => {
     );
 }
 
-export default Inbox;
+export default UserInbox;

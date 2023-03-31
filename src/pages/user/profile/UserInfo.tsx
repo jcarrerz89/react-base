@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {Grid, Container, Skeleton, Paper} from "@mui/material";
+import {Grid, Skeleton} from "@mui/material";
 import {UserContext} from "../../../context/UserContextProvider";
 import {useQuery} from "@apollo/client";
 import {GET_PROFILE} from "../../../server/Queries/profile.queries";
@@ -9,10 +9,10 @@ import AppSubTitle from "../../../components/common/Text/AppSubTitle";
 import SectionMenu from "../../../components/common/Menu/SectionMenu";
 import AppElementTitle from "../../../components/common/Text/AppElementTitle";
 import SectionContainer from "../../../components/common/Section/SectionContainer";
+import SectionHeader from "../../../components/common/Section/SectionHeader";
 
 const UserData: React.FC = () => {
     const [profile, setProfile] = useState<IProfileType | null>(null);
-    const [edit, setEdit] = useState(false);
     const userContext = useContext(UserContext);
     const {data, loading, error} = useQuery(GET_PROFILE, {
         onCompleted: (data) => {
@@ -40,21 +40,12 @@ const UserData: React.FC = () => {
 
     return (
         <SectionContainer>
-            <Grid
-                xs={12}
-                item
-                container
-                justifyContent={"space-between"}
-            >
-                <Grid xs={10} item>
-                    <AppSubTitle>Profile</AppSubTitle>
-                </Grid>
-                <Grid xs={1} item>
-                    <SectionMenu>
-                        <UserProfileModal profile={profile} onUpdateProfile={onUpdateProfile}/>
-                    </SectionMenu>
-                </Grid>
-            </Grid>
+            <SectionHeader>
+                <AppSubTitle>Profile</AppSubTitle>
+                <SectionMenu>
+                    <UserProfileModal profile={profile} onUpdateProfile={onUpdateProfile}/>
+                </SectionMenu>
+            </SectionHeader>
             <Grid container rowGap={5}>
                 <Grid item container sm={12}>
                     <Grid item sm={6}>

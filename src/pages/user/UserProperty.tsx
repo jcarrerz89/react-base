@@ -3,7 +3,7 @@ import UserDashboardLayout from '../../components/layout/UserDashboardLayout.tsx
 import PropertiesList from './property/PropertiesList';
 import PropertyMenu from './property/PropertyMenu';
 
-const Property: React.FC = () => {
+const UserProperty: React.FC = () => {
 
     return (
         <UserDashboardLayout>
@@ -14,4 +14,4 @@ const Property: React.FC = () => {
     );
 }
 
-export default Property; 
+export default UserProperty;

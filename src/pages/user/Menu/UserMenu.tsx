@@ -128,7 +128,7 @@ const UserMenu: React.FC = () => {
                                 }}>
                                 <EmailIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Profile" sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary="UserProfile" sx={{opacity: open ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                     <ListItem key={'profile'} disablePadding sx={{display: 'block'}}>
@@ -146,7 +146,7 @@ const UserMenu: React.FC = () => {
                                 }}>
                                 <PersonIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Profile" sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary="UserProfile" sx={{opacity: open ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                     <ListItem key={'property'} disablePadding sx={{display: 'block'}}>
@@ -164,14 +164,14 @@ const UserMenu: React.FC = () => {
                                 }}>
                                 <NightShelterIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Property" sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary="UserProperty" sx={{opacity: open ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                 </List>
                 <Divider/>
                 <List>
                     <ListItem key="Extension" disablePadding sx={{display: 'block'}}>
-                        <ListItemButton
+                        <ListItemButton href="/profile/settings"
                             sx={{
                                 minHeight: 48,
                                 justifyContent: open ? 'initial' : 'center',

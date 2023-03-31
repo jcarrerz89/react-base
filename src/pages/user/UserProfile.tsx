@@ -2,7 +2,7 @@ import React from 'react';
 import UserDashboardLayout from '../../components/layout/UserDashboardLayout.tsx/UserDashboardLayout';
 import UserInfo from "./profile/UserInfo";
 
-const Profile: React.FC = () => {
+const UserProfile: React.FC = () => {
 
     return (
         <UserDashboardLayout>
@@ -11,4 +11,4 @@ const Profile: React.FC = () => {
     );
 }
 
-export default Profile;
+export default UserProfile;

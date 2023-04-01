@@ -16,13 +16,14 @@ import AddCircleRoundedIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import {SAVE_PROPERTY} from "../../../server/Mutations/property.mutation";
 import {IPropertyType} from "../types/IPropertyType";
+import DialogActions from "@mui/material/DialogActions";
 
 interface ICreateProperty {
     property?: IPropertyType,
     onSaveProperty: (property: IPropertyType) => void
 }
 
-const CreateProperty: React.FC<ICreateProperty> = ({property, onSaveProperty}) => {
+const CreatePropertyModal: React.FC<ICreateProperty> = ({property, onSaveProperty}) => {
     const [open, setOpen] = useState(false);
 
     const [createProperty, {data, loading, error}] = useMutation(
@@ -109,29 +110,28 @@ const CreateProperty: React.FC<ICreateProperty> = ({property, onSaveProperty}) =
                     onClose();
                 }}
             >
-                <DialogTitle>Create property</DialogTitle>
-                <DialogContent>
-                    <form
-                        onSubmit={(event) => {
-                            event.preventDefault();
+                <form
+                    onSubmit={(event) => {
+                        event.preventDefault();
 
-                            createProperty({
-                                variables: {
-                                    request: propertyData,
-                                },
-                            });
+                        createProperty({
+                            variables: {
+                                request: propertyData,
+                            },
+                        });
 
-                            onClose();
-                        }}
-                    >
-                        <FormGroup>
+                        onClose();
+                    }}
+                >
+                    <FormGroup>
+                        <DialogTitle>Create property</DialogTitle>
+                        <DialogContent>
                             <Grid
                                 container
                                 spacing={2}
                                 rowGap={2}
                                 columnGap={1}
                                 columnSpacing={1}
-                                padding={2}
                                 justifyContent={"space-between"}
                             >
                                 <Grid xs={12} item columns={10}></Grid>
@@ -248,33 +248,24 @@ const CreateProperty: React.FC<ICreateProperty> = ({property, onSaveProperty}) =
                                         }}
                                     />
                                 </Grid>
-                                <Grid
-                                    xs={12}
-                                    item
-                                    container
-                                    justifyContent={"space-between"}
-                                >
-                                    <Grid xs={2} item>
-                                        <Button type="reset" onClick={() => {
-                                            onClose();
-                                        }}>Cancel</Button>
-                                    </Grid>
-                                    <Grid xs={2} item>
-                                        <Button
-                                            type="submit"
-                                            variant="contained"
-                                        >
-                                            {property ? 'Edit' : 'Create'}
-                                        </Button>
-                                    </Grid>
-                                </Grid>
                             </Grid>
-                        </FormGroup>
-                    </form>
-                </DialogContent>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button type="reset" onClick={() => {
+                                onClose();
+                            }}>Cancel</Button>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                            >
+                                {property ? 'Edit' : 'Create'}
+                            </Button>
+                        </DialogActions>
+                    </FormGroup>
+                </form>
             </Dialog>
         </>
     );
 };
 
-export default CreateProperty;
+export default CreatePropertyModal;

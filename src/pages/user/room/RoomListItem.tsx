@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import CreateRoom from "./CreateRoom";
+import CreateRoomModal from "./CreateRoomModal";
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import Constants from "enum/constants";
 import {IRoomType} from "../types/IRoomType";
+import RoomDetails from "./RoomDetails";
+import {IPropertyType} from "../types/IPropertyType";
 
 const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ rooms, propertyId }) => {
 
@@ -17,30 +19,21 @@ const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ ro
         console.log(room);
     }
 
+    const onDeleteRoom = (roomId: number) => {
+        setRoomList(roomList.filter((room: IRoomType) => room.id !== roomId));
+    }
+
     const addRoomComponent = roomList.length < 9 ?
-        <CreateRoom propertyId={propertyId} onCreateRoom={onCreateRoom}/> : null;
+        <CreateRoomModal propertyId={propertyId} onSaveRoom={onCreateRoom}/> : null;
 
     return (
         <>
-            <ImageList variant="masonry" cols={3} gap={8}>
-                {roomList.map((room) => (
-                    <ImageListItem key={room.id} onClick={() => {
-                        onEditRoom(room);
-                    }} style={{cursor: 'pointer'}}>
-                        <img
-                            src={`${room.coverPicture || Constants.DEFAULT_ROOM_COVER_PICTURE}?w=248&fit=crop&auto=format`}
-                            srcSet={`${room.coverPicture || Constants.DEFAULT_ROOM_COVER_PICTURE}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                            alt={room.coverPicture || Constants.DEFAULT_ROOM_COVER_PICTURE}
-                            loading="lazy"
-                        />
-
-                        <ImageListItemBar title={room.alias} />
-                    </ImageListItem>
+            <ImageList variant="masonry" cols={2} gap={8}>
+                {roomList.map((room, key) => (
+                    <RoomDetails room={room} onDeleteRoom={onDeleteRoom} key={key}/>
                 ))}
-
                 { addRoomComponent }
             </ImageList>
-
         </>
     );
 };

@@ -1,14 +1,29 @@
 import {gql} from "@apollo/client";
 
-export const CREATE_ROOM = gql`
-    mutation createRoom($request: RoomInput!, $propertyId: Float!) {
-        createRoom(request: $request, property_id: $propertyId) {
+export const CREATE_ROOM = gql(`
+    mutation saveRoom($request: RoomInput!, $propertyId: Float!) {
+        saveRoom(request: $request, property_id: $propertyId) {
             id,
             alias, 
-            cover_picture,
+            coverPicture,
             m2,
-            max_occupants,
-            pictures
+            maxOccupants,
+            pictures,
+            propertyId
         }
     }
-`;
+`);
+
+export const DELETE_ROOM = gql(`
+    mutation deleteRoom($id: Float!) {
+        deleteRoom(id: $id) {
+            id,
+            alias, 
+            coverPicture,
+            m2,
+            maxOccupants,
+            pictures,
+            propertyId,
+        }
+    }
+`);

@@ -6,7 +6,7 @@ export const UPDATE_PROFILE = gql(`
         updateProfile(request: $request) {
             name, 
             surname,
-            date_of_birth,
+            dateOfBirth,
             nationality,
             description,
             image

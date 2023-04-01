@@ -92,7 +92,7 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
 
 const UserMenu: React.FC = () => {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -128,7 +128,7 @@ const UserMenu: React.FC = () => {
                                 }}>
                                 <EmailIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="UserProfile" sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary="Inbox" sx={{opacity: open ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                     <ListItem key={'profile'} disablePadding sx={{display: 'block'}}>
@@ -146,7 +146,7 @@ const UserMenu: React.FC = () => {
                                 }}>
                                 <PersonIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="UserProfile" sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary="Profile" sx={{opacity: open ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                     <ListItem key={'property'} disablePadding sx={{display: 'block'}}>
@@ -164,7 +164,7 @@ const UserMenu: React.FC = () => {
                                 }}>
                                 <NightShelterIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="UserProperty" sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary="Property" sx={{opacity: open ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                 </List>
@@ -185,7 +185,7 @@ const UserMenu: React.FC = () => {
                                 }}>
                                 <ExtensionIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Extension" sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary="Settings" sx={{opacity: open ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                 </List>

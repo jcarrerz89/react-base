@@ -10,25 +10,42 @@ import SectionMenu from "../../../components/common/Menu/SectionMenu";
 import AppElementTitle from "../../../components/common/Text/AppElementTitle";
 import SectionContainer from "../../../components/common/Section/SectionContainer";
 import SectionHeader from "../../../components/common/Section/SectionHeader";
+import Characters from "../../../enum/char";
 
-const UserData: React.FC = () => {
-    const [profile, setProfile] = useState<IProfileType | null>(null);
+const UserDatails: React.FC = () => {
+    const initProfile: IProfileType = {
+        id: 0,
+        name: String(Characters.EMPTY),
+        surname: String(Characters.EMPTY),
+        nationality: String(Characters.EMPTY),
+        dateOfBirth: String(Characters.EMPTY),
+        image: String(Characters.EMPTY),
+        description: String(Characters.EMPTY),
+        createdAt: new Date(),
+        updatedAt: new Date()
+    }
+    const [profile, setProfile] = useState<IProfileType | null>(initProfile);
     const userContext = useContext(UserContext);
+
     const {data, loading, error} = useQuery(GET_PROFILE, {
         onCompleted: (data) => {
-            const existingProfile: IProfileType = {
-                id: data.getUserProfile.id,
-                name: data.getUserProfile.name,
-                surname: data.getUserProfile.surname,
-                nationality: data.getUserProfile.nationality,
-                dateOfBirth: data.getUserProfile.date_of_birth,
-                image: data.getUserProfile.image,
-                description: data.getUserProfile.description,
-                createdAt: data.getUserProfile.created_at,
-                updatedAt: data.getUserProfile.updated_at
+            if (data.getUserProfile) {
+                const existingProfile: IProfileType = {
+                    id: data.getUserProfile.id,
+                    name: data.getUserProfile.name,
+                    surname: data.getUserProfile.surname,
+                    nationality: data.getUserProfile.nationality,
+                    dateOfBirth: data.getUserProfile.dateOfBirth,
+                    image: data.getUserProfile.image,
+                    description: data.getUserProfile.description,
+                    createdAt: data.getUserProfile.createdAt,
+                    updatedAt: data.getUserProfile.updatedAt
+                }
+                setProfile(existingProfile);
             }
-
-            setProfile(existingProfile);
+        },
+        onError: (error) => {
+            console.error(error);
         }
     });
 
@@ -124,4 +141,4 @@ const UserData: React.FC = () => {
     )
 }
 
-export default UserData;
+export default UserDatails;

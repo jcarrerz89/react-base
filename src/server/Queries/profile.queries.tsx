@@ -6,13 +6,13 @@ export const GET_PROFILE = gql`
             id
             name
             surname
-            date_of_birth
+            dateOfBirth
             nationality
             image
             description
-            created_at
-            updated_at
-            deleted_at
+            createdAt
+            updatedAt
+            deletedAt
         }
     }
 `;

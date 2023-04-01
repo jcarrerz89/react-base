@@ -2,7 +2,7 @@ import * as React from "react";
 import {GET_PROPERTIES_BY_USER} from "../../../server/Queries/property.queries";
 import {useQuery} from "@apollo/client";
 import PropertyItem from "./PropertyItem";
-import CreateProperty from "./CreateProperty";
+import CreatePropertyModal from "./CreatePropertyModal";
 import {Grid} from "@mui/material";
 import {useState} from "react";
 import {IPropertyType} from "../types/IPropertyType";
@@ -28,9 +28,9 @@ const PropertiesList = () => {
                     coverPicture: item.coverPicture,
                     pictures: item.pictures,
                     rooms: item.rooms,
-                    createdAt: item.created_at,
-                    updatedAt: item.updated_at,
-                    deletedAt: item.deleted_at,
+                    createdAt: item.createdAt,
+                    updatedAt: item.updatedAt,
+                    deletedAt: item.deletedAt,
                 }
 
                 return property;
@@ -60,7 +60,7 @@ const PropertiesList = () => {
             {properties.filter((property: IPropertyType) => !property.deletedAt).map((property: any) => (
                 <PropertyItem property={property} key={property.id} onDeleteProperty={onDeleteProperty}/>
             ))}
-            <CreateProperty onSaveProperty={onCreateProperty}/>
+            <CreatePropertyModal onSaveProperty={onCreateProperty}/>
         </>
     );
 }

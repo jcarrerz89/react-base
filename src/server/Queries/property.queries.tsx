@@ -12,15 +12,16 @@ export const GET_PROPERTIES_BY_USER = gql`
             street,
             number,
             flat,
-            cover_picture,
+            coverPicture,
             pictures,
             rooms {
                 id,
                 alias,
-                max_occupants,
+                maxOccupants,
                 m2,
-                cover_picture,
-                pictures
+                coverPicture,
+                pictures,
+                propertyId
             }
         }
     }

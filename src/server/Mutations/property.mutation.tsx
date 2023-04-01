@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from "@apollo/client";
 
 
 export const SAVE_PROPERTY = gql`
@@ -13,7 +13,7 @@ export const SAVE_PROPERTY = gql`
             street,
             number, 
             flat,
-            cover_picture,
+            coverPicture,
             pictures
         }
     }
@@ -21,10 +21,10 @@ export const SAVE_PROPERTY = gql`
 
 export const DELETE_PROPERTY = gql`
     mutation deleteProperty($propertyId: Float!) {
-      deleteProperty(propertyId: $propertyId) {
-        id,
-        alias,
-        deleted_at
-      }
+        deleteProperty(propertyId: $propertyId) {
+            id,
+            alias,
+            deletedAt
+        }
     }
 `;

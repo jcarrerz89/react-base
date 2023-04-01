@@ -9,26 +9,28 @@ import {
     TextField,
     Tooltip,
 } from "@mui/material";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import {CREATE_ROOM} from "server/Mutations/room.mutation";
 import {useMutation} from "@apollo/client";
 import {IRoomType} from "../types/IRoomType";
+import Characters from "../../../enum/char";
+import DialogActions from "@mui/material/DialogActions";
 
 interface ICreateRoom {
+    room?: IRoomType,
     propertyId: number,
-    onCreateRoom: (room: IRoomType) => void
+    onSaveRoom: (room: IRoomType) => void
 }
 
-const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
+const CreateRoomModal: React.FC<ICreateRoom> = ({room, propertyId, onSaveRoom}) => {
     const [open, setOpen] = useState(false);
     const [roomData, setRoomData] = useState({
-        alias: "Master bedroom",
+        id: Number(null),
+        alias: String(Characters.EMPTY),
         m2: 1,
-        max_occupants: 2,
-        // alias: String(Characters.EMPTY),
-        // m2: 1,
-        // max_ocupants: 1,
+        maxOccupants: 1,
     });
 
     const onClose = () => {
@@ -41,21 +43,37 @@ const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
 
     const [createRoom, {data, loading, error}] = useMutation(CREATE_ROOM, {
         onCompleted: (data) => {
-            console.log(data);
-            let room: IRoomType = {
-                id: data.createRoom?.id,
-                alias: data.createRoom?.alias,
-                m2: data.createRoom?.m2,
-                maxOccupants: data.createRoom?.max_occupants,
-                coverPicture: data.createRoom?.cover_picture,
-                pictures: data.createRoom?.pictures
+            if (data.createRoom) {
+                let responseRoom: IRoomType = {
+                    id: data.createRoom.id,
+                    alias: data.createRoom.alias,
+                    m2: data.createRoom.m2,
+                    maxOccupants: data.createRoom.maxOccupants,
+                    coverPicture: data.createRoom.coverPicture,
+                    pictures: data.createRoom.pictures,
+                    propertyId: data.createRoom.propertyId
+                }
+                onSaveRoom(responseRoom);
             }
-            onCreateRoom(room);
         },
         onError: (error) => {
             console.error(error);
         }
     });
+
+    useEffect(() => {
+        if (room) {
+            setRoomData({
+                id: room.id,
+                alias: room.alias,
+                m2: room.m2,
+                maxOccupants: room.maxOccupants,
+            });
+        }
+    }, [room])
+
+    const icon = room ?
+        <><EditIcon /> Edit</> : <><AddCircleRoundedIcon/></>
 
     return (
         <>
@@ -68,7 +86,7 @@ const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
                         }}
                         sx={{my: 2, color: "Black", display: "block"}}
                     >
-                        <AddCircleRoundedIcon/>
+                        {icon}
                     </IconButton>
                 </ImageListItem>
             </Tooltip>
@@ -78,23 +96,24 @@ const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
                     onClose();
                 }}
             >
-                <DialogTitle>Add room</DialogTitle>
-                <DialogContent>
-                    <form
-                        onSubmit={(event) => {
-                            event.preventDefault();
+                <form
+                    onSubmit={(event) => {
+                        event.preventDefault();
 
-                            createRoom({
-                                variables: {
-                                    request: roomData,
-                                    propertyId: propertyId
-                                },
-                            });
+                        createRoom({
+                            variables: {
+                                request: roomData,
+                                propertyId: propertyId
+                            },
+                        });
 
-                            onClose();
-                        }}
-                    >
-                        <FormGroup>
+                        onClose();
+                    }}
+                >
+                    <FormGroup>
+                        <DialogTitle>Add room</DialogTitle>
+                        <DialogContent>
+
                             <Grid
                                 container
                                 spacing={2}
@@ -144,12 +163,12 @@ const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
                                         label="max occupants"
                                         variant="outlined"
                                         type="number"
-                                        value={roomData.max_occupants}
+                                        value={roomData.maxOccupants}
                                         inputProps={{min: 1}}
                                         onChange={(e) => {
                                             setRoomData({
                                                 ...roomData,
-                                                max_occupants: Number(
+                                                maxOccupants: Number(
                                                     e.target.value
                                                 ),
                                             });
@@ -157,35 +176,27 @@ const CreateRoom: React.FC<ICreateRoom> = ({propertyId, onCreateRoom}) => {
                                     />
                                 </Grid>
 
-                                <Grid
-                                    xs={12}
-                                    item
-                                    container
-                                    justifyContent={"space-between"}
-                                >
-                                    <Grid xs={2} item>
-                                        <Button type="reset"
-                                                onClick={() => {
-                                                    onClose();
-                                                }}>
-                                            Cancel
-                                        </Button>
-                                    </Grid>
-                                    <Grid xs={2} item>
-                                        <Button
-                                            type="submit"
-                                            variant="contained">
-                                            Create
-                                        </Button>
-                                    </Grid>
-                                </Grid>
+
                             </Grid>
-                        </FormGroup>
-                    </form>
-                </DialogContent>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button type="reset"
+                                    onClick={() => {
+                                        onClose();
+                                    }}>
+                                Cancel
+                            </Button>
+                            <Button
+                                type="submit"
+                                variant="contained">
+                                {room ? 'Save' : 'Create'}
+                            </Button>
+                        </DialogActions>
+                    </FormGroup>
+                </form>
             </Dialog>
         </>
     );
 };
 
-export default CreateRoom;
+export default CreateRoomModal;

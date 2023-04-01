@@ -9,7 +9,7 @@ import DeleteProperty from "./DeleteProperty";
 import SectionContainer from "../../../components/common/Section/SectionContainer";
 import SectionHeader from "../../../components/common/Section/SectionHeader";
 import SectionMenu from "../../../components/common/Menu/SectionMenu";
-import CreateProperty from "./CreateProperty";
+import CreatePropertyModal from "./CreatePropertyModal";
 
 interface IPropertyItem {
     property: IPropertyType,
@@ -33,7 +33,7 @@ const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) =
                     {open ? <KeyboardArrowUp /> : <KeyboardArrowUp />}
                 </IconButton>
                 <SectionMenu>
-                    <CreateProperty property={item} onSaveProperty={onUpdateProperty} />
+                    <CreatePropertyModal property={item} onSaveProperty={onUpdateProperty} />
                     <DeleteProperty property={item} onDeleteProperty={onDeleteProperty} />
                 </SectionMenu>
             </SectionHeader>

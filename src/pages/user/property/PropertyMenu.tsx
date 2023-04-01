@@ -2,7 +2,7 @@ import { Box, Toolbar, Tooltip, IconButton } from '@mui/material';
 import React from 'react';
 import AppSubTitle from '../../../components/common/Text/AppSubTitle';
 import { Container } from '@mui/system';
-import CreateProperty from './CreateProperty';
+import CreatePropertyModal from './CreatePropertyModal';
 
 const PropertyMenu = () => {
     const create = () => {

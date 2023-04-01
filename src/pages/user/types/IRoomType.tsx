@@ -5,4 +5,5 @@ export interface IRoomType {
     maxOccupants: number;
     coverPicture: string;
     pictures: string[];
+    propertyId: number;
 }

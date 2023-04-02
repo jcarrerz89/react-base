@@ -7,6 +7,7 @@ import {Button, Grid, IconButton, Tooltip} from "@mui/material";
 import {DeleteForever} from "@mui/icons-material";
 import {useMutation} from "@apollo/client";
 import {DELETE_PROPERTY} from "../../../server/Mutations/property.mutation";
+import DialogActions from "@mui/material/DialogActions";
 
 interface IDeleteProperty {
     property: IPropertyType,
@@ -52,35 +53,27 @@ const DeleteProperty: React.FC<IDeleteProperty> = ({property, onDeleteProperty})
                         <Grid item sm={12}>
                             <p>Are you sure you want to delete this property?</p>
                         </Grid>
-                        <Grid
-                            xs={12}
-                            item
-                            container
-                            justifyContent={"space-between"}>
-                            <Grid xs={2} item>
-                                <Button type="reset" onClick={() => {
-                                    onClose();
-                                }}>Cancel</Button>
-                            </Grid>
-                            <Grid xs={2} item>
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    onClick={(event: React.UIEvent) => {
-                                        event.preventDefault();
-
-                                        deleteProperty({
-                                            variables: {
-                                                propertyId: property.id
-                                            }
-                                        });
-                                    }}>
-                                    Delete
-                                </Button>
-                            </Grid>
-                        </Grid>
                     </Grid>
                 </DialogContent>
+                <DialogActions>
+                    <Button type="reset" onClick={() => {
+                        onClose();
+                    }}>Cancel</Button>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        onClick={(event: React.UIEvent) => {
+                            event.preventDefault();
+
+                            deleteProperty({
+                                variables: {
+                                    propertyId: property.id
+                                }
+                            });
+                        }}>
+                        Delete
+                    </Button>
+                </DialogActions>
             </Dialog>
         </>
     );

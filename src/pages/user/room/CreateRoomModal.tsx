@@ -12,7 +12,7 @@ import {
 import React, {useEffect, useState} from "react";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import {CREATE_ROOM} from "server/Mutations/room.mutation";
+import {SAVE_ROOM} from "server/Mutations/room.mutation";
 import {useMutation} from "@apollo/client";
 import {IRoomType} from "../types/IRoomType";
 import Characters from "../../../enum/char";
@@ -41,24 +41,21 @@ const CreateRoomModal: React.FC<ICreateRoom> = ({room, propertyId, onSaveRoom}) 
         setOpen(true);
     }
 
-    const [createRoom, {data, loading, error}] = useMutation(CREATE_ROOM, {
+    const [saveRoom, {data, loading, error}] = useMutation(SAVE_ROOM, {
         onCompleted: (data) => {
-            if (data.createRoom) {
+            if (data.saveRoom) {
                 let responseRoom: IRoomType = {
-                    id: data.createRoom.id,
-                    alias: data.createRoom.alias,
-                    m2: data.createRoom.m2,
-                    maxOccupants: data.createRoom.maxOccupants,
-                    coverPicture: data.createRoom.coverPicture,
-                    pictures: data.createRoom.pictures,
-                    propertyId: data.createRoom.propertyId
+                    id: data.saveRoom.id,
+                    alias: data.saveRoom.alias,
+                    m2: data.saveRoom.m2,
+                    maxOccupants: data.saveRoom.maxOccupants,
+                    coverPicture: data.saveRoom.coverPicture,
+                    pictures: data.saveRoom.pictures,
+                    propertyId: data.saveRoom.propertyId
                 }
                 onSaveRoom(responseRoom);
             }
         },
-        onError: (error) => {
-            console.error(error);
-        }
     });
 
     useEffect(() => {
@@ -78,7 +75,6 @@ const CreateRoomModal: React.FC<ICreateRoom> = ({room, propertyId, onSaveRoom}) 
     return (
         <>
             <Tooltip title="Create a new property">
-
                 <ImageListItem>
                     <IconButton
                         onClick={() => {
@@ -100,7 +96,7 @@ const CreateRoomModal: React.FC<ICreateRoom> = ({room, propertyId, onSaveRoom}) 
                     onSubmit={(event) => {
                         event.preventDefault();
 
-                        createRoom({
+                        saveRoom({
                             variables: {
                                 request: roomData,
                                 propertyId: propertyId

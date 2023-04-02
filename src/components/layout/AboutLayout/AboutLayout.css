@@ -6,7 +6,7 @@
 }
 .about-layout .cover::after {
     height: 80vh;
-    width: 100vw;
+    width: 100%;
     background-color: black;
     position: absolute;
     content: ' ';

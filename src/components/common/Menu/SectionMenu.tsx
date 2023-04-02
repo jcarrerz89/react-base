@@ -32,7 +32,7 @@ const SectionMenu: React.FC<ISectionMenu> = ({children}) => {
         <Menu
             id="long-menu"
             MenuListProps={{
-                'aria-labelledby': 'long-button',
+                'aria-labelledby': 'small-button',
             }}
             anchorEl={anchorEl}
             open={open}
@@ -46,7 +46,7 @@ const SectionMenu: React.FC<ISectionMenu> = ({children}) => {
             }}>
 
             {items.map((item, k) => {
-                return <MenuItem key={k}>
+                return <MenuItem key={k} >
                     {item}
                 </MenuItem>
             })}

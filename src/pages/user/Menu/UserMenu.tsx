@@ -91,9 +91,7 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
 );
 
 const UserMenu: React.FC = () => {
-    const theme = useTheme();
     const [open, setOpen] = React.useState(true);
-
     const handleDrawerOpen = () => {
         setOpen(true);
     };

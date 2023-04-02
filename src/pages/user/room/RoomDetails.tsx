@@ -23,6 +23,7 @@ interface IRoomDetails {
 const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
 
     const [open, setOpen] = useState(false);
+    const [roomDetails, setRoomDetails] = useState<IRoomType>(room);
     const onOpen = () => {
         setOpen(true);
     }
@@ -30,8 +31,8 @@ const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
         setOpen(false)
     }
 
-    const onUpdateRoom = (room: IRoomType) => {
-
+    const onUpdateRoom = (updatedRoom: IRoomType) => {
+        setRoomDetails(updatedRoom);
     }
     return <>
         <ImageListItem key={room.id} onClick={() => {
@@ -44,7 +45,7 @@ const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
                 loading="lazy"
             />
 
-            <ImageListItemBar title={room.alias} />
+            <ImageListItemBar title={roomDetails.alias} />
         </ImageListItem>
 
         <Dialog open={open} fullWidth onClose={() => {
@@ -52,7 +53,7 @@ const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
         }}>
             <DialogTitle>
                 <SectionHeader>
-                    <AppSubTitle>{room.alias}</AppSubTitle>
+                    <AppSubTitle>{roomDetails.alias}</AppSubTitle>
                     <SectionMenu>
                         <CreateRoomModal room={room} propertyId={room.propertyId} onSaveRoom={onUpdateRoom} />
                         <DeleteRoomModal room={room} onDeleteRoom={onDeleteRoom} />
@@ -66,7 +67,7 @@ const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
                             <AppElementTitle>㎡</AppElementTitle>
                         </Grid>
                         <Grid item sm={12}>
-                            {room.m2}
+                            {roomDetails.m2}
                         </Grid>
                     </Grid>
                     <Grid item container sm={6}>
@@ -74,7 +75,7 @@ const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
                             <AppElementTitle>Max occupants</AppElementTitle>
                         </Grid>
                         <Grid item sm={12}>
-                            {room.maxOccupants}
+                            {roomDetails.maxOccupants}
                         </Grid>
                     </Grid>
                 </Grid>

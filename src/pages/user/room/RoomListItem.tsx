@@ -11,6 +11,7 @@ const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ ro
     const [roomList, setRoomList] = useState<IRoomType[]>(rooms);
 
     const onCreateRoom = (room: IRoomType) => {
+        console.log('onCreateRoom');
         let rooms = roomList.concat(room);
         setRoomList(rooms);
     }

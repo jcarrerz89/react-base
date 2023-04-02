@@ -7,6 +7,7 @@ import {DeleteForever} from "@mui/icons-material";
 import {useMutation} from "@apollo/client";
 import {DELETE_ROOM} from "../../../server/Mutations/room.mutation";
 import {IRoomType} from "../types/IRoomType";
+import DialogActions from "@mui/material/DialogActions";
 
 interface IDeleteProperty {
     room: IRoomType,
@@ -52,35 +53,27 @@ const DeleteRoomModal: React.FC<IDeleteProperty> = ({room, onDeleteRoom}) => {
                         <Grid item sm={12}>
                             <p>Are you sure you want to delete this room?</p>
                         </Grid>
-                        <Grid
-                            xs={12}
-                            item
-                            container
-                            justifyContent={"space-between"}>
-                            <Grid xs={2} item>
-                                <Button type="reset" onClick={() => {
-                                    onClose();
-                                }}>Cancel</Button>
-                            </Grid>
-                            <Grid xs={2} item>
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    onClick={(event: React.UIEvent) => {
-                                        event.preventDefault();
-
-                                        deleteRoom({
-                                            variables: {
-                                                id: room.id
-                                            }
-                                        });
-                                    }}>
-                                    Delete
-                                </Button>
-                            </Grid>
-                        </Grid>
                     </Grid>
                 </DialogContent>
+                <DialogActions>
+                    <Button type="reset" onClick={() => {
+                        onClose();
+                    }}>Cancel</Button>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        onClick={(event: React.UIEvent) => {
+                            event.preventDefault();
+
+                            deleteRoom({
+                                variables: {
+                                    id: room.id
+                                }
+                            });
+                        }}>
+                        Delete
+                    </Button>
+                </DialogActions>
             </Dialog>
         </>
     );

@@ -1,6 +1,6 @@
 import {gql} from "@apollo/client";
 
-export const CREATE_ROOM = gql(`
+export const SAVE_ROOM = gql(`
     mutation saveRoom($request: RoomInput!, $propertyId: Float!) {
         saveRoom(request: $request, property_id: $propertyId) {
             id,

@@ -3,6 +3,7 @@ import {useCookies} from "react-cookie";
 import isEqual from "react-fast-compare";
 import {useQuery} from "@apollo/client";
 import {HELLO_USER} from "../server/Queries/user.queries";
+import LoadingPage from "../components/common/loading/LoadingPage";
 
 type UserContextProviderProps = {
     children: React.ReactNode
@@ -50,8 +51,7 @@ export const UserContextProvider = ({children}: UserContextProviderProps) => {
     });
 
     if (!onCompleted) {
-        // Improve On Loading animation / page
-        return <>loading...</>
+        return <LoadingPage />
     }
 
     return (

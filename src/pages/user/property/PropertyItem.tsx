@@ -3,12 +3,12 @@ import { KeyboardArrowUp } from "@mui/icons-material";
 import { Collapse, Grid, IconButton } from "@mui/material";
 import RoomListItem from "../room/RoomListItem";
 import Constants from "enum/constants";
-import AppSubTitle from "components/common/Text/AppSubTitle";
+import AppSubTitle from "components/common/text/AppSubTitle";
 import {IPropertyType} from "../types/IPropertyType";
 import DeleteProperty from "./DeleteProperty";
-import SectionContainer from "../../../components/common/Section/SectionContainer";
-import SectionHeader from "../../../components/common/Section/SectionHeader";
-import SectionMenu from "../../../components/common/Menu/SectionMenu";
+import SectionContainer from "../../../components/common/section/SectionContainer";
+import SectionHeader from "../../../components/common/section/SectionHeader";
+import SectionMenu from "../../../components/common/menu/SectionMenu";
 import CreatePropertyModal from "./CreatePropertyModal";
 
 interface IPropertyItem {

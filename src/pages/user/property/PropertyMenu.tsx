@@ -1,6 +1,6 @@
 import { Box, Toolbar, Tooltip, IconButton } from '@mui/material';
 import React from 'react';
-import AppSubTitle from '../../../components/common/Text/AppSubTitle';
+import AppSubTitle from '../../../components/common/text/AppSubTitle';
 import { Container } from '@mui/system';
 import CreatePropertyModal from './CreatePropertyModal';
 

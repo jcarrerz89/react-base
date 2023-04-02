@@ -1,7 +1,7 @@
 import AboutLayout from '../components/layout/AboutLayout/AboutLayout';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import AppSubTitle from '../components/common/Text/AppSubTitle';
+import AppSubTitle from '../components/common/text/AppSubTitle';
 
 const Contact = () => {
     return (

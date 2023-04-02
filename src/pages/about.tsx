@@ -1,8 +1,8 @@
 import AboutLayout from '../components/layout/AboutLayout/AboutLayout';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import AppSubTitle from '../components/common/Text/AppSubTitle';
-import AppTextBlock from '../components/common/Text/AppTextBlock';
+import AppSubTitle from '../components/common/text/AppSubTitle';
+import AppTextBlock from '../components/common/text/AppTextBlock';
 
 const About = () => {
     return (

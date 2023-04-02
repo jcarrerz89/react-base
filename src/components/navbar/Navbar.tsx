@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import MenuUser from './User/MenuUser';
-import Logo from '../common/Brand/Logo';
+import Logo from '../common/brand/Logo';
 
 const pages = ['Search', 'About', 'Contact'];
 
@@ -24,7 +24,6 @@ const Navbar: React.FC<{ fixed: boolean, minimize: boolean }> = ({ fixed, minimi
         const toggle = () => {
             let scrollPosition = window.pageYOffset;
 
-            console.log('toogle');
             if (!fixed) {
                 scrollPosition < 100 ?
                     transparentMode() : whiteMode();
@@ -55,8 +54,6 @@ const Navbar: React.FC<{ fixed: boolean, minimize: boolean }> = ({ fixed, minimi
             }
         });
     }
-
-    // toggle();
 
     return (
         <AppBar position="fixed" style={state.style}>

@@ -5,11 +5,11 @@ import {useQuery} from "@apollo/client";
 import {GET_PROFILE} from "../../../server/Queries/profile.queries";
 import UserProfileModal from "./UserProfileModal";
 import {IProfileType} from "../types/IProfileType";
-import AppSubTitle from "../../../components/common/Text/AppSubTitle";
-import SectionMenu from "../../../components/common/Menu/SectionMenu";
-import AppElementTitle from "../../../components/common/Text/AppElementTitle";
-import SectionContainer from "../../../components/common/Section/SectionContainer";
-import SectionHeader from "../../../components/common/Section/SectionHeader";
+import AppSubTitle from "../../../components/common/text/AppSubTitle";
+import SectionMenu from "../../../components/common/menu/SectionMenu";
+import AppElementTitle from "../../../components/common/text/AppElementTitle";
+import SectionContainer from "../../../components/common/section/SectionContainer";
+import SectionHeader from "../../../components/common/section/SectionHeader";
 import Characters from "../../../enum/char";
 
 const UserDatails: React.FC = () => {

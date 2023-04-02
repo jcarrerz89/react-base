@@ -1,6 +1,6 @@
 import { LinearProgress, Paper, Toolbar} from "@mui/material";
 import React from "react";
-import Logo from "../common/Brand/Logo";
+import Logo from "../common/brand/Logo";
 import MenuUser from "./User/MenuUser";
 
 const WhiteNavbar = () => {
@@ -13,7 +13,6 @@ const WhiteNavbar = () => {
 
                 <MenuUser />
             </Toolbar>
-            <LinearProgress />
         </Paper>
     );
 };

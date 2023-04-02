@@ -1,6 +1,6 @@
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
-import AppSubTitle from '../components/common/Text/AppSubTitle'
+import AppSubTitle from '../components/common/text/AppSubTitle'
 import HomeLayout from '../components/layout/HomeLayout/HomeLayout'
 
 const Home: React.FC = () => {

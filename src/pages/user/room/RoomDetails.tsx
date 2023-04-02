@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
-import SectionHeader from "../../../components/common/Section/SectionHeader";
-import AppSubTitle from "../../../components/common/Text/AppSubTitle";
-import SectionMenu from "../../../components/common/Menu/SectionMenu";
+import SectionHeader from "../../../components/common/section/SectionHeader";
+import AppSubTitle from "../../../components/common/text/AppSubTitle";
+import SectionMenu from "../../../components/common/menu/SectionMenu";
 import DialogActions from "@mui/material/DialogActions";
 import {IRoomType} from "../types/IRoomType";
 import DialogContent from "@mui/material/DialogContent";
@@ -12,7 +12,7 @@ import Constants from "../../../enum/constants";
 import Grid from "@mui/material/Grid";
 import CreateRoomModal from "./CreateRoomModal";
 import DeleteRoomModal from "./DeleteRoomModal";
-import AppElementTitle from "../../../components/common/Text/AppElementTitle";
+import AppElementTitle from "../../../components/common/text/AppElementTitle";
 import Button from "@mui/material/Button";
 import ForwardIcon from '@mui/icons-material/Forward';
 

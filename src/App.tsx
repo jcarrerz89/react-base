@@ -6,22 +6,26 @@ import ApolloClient from './server/ApolloClient';
 import {UserContextProvider} from './context/UserContextProvider';
 import './App.css';
 import {LocalizationProvider} from "@mui/x-date-pickers";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
+import PrimaryThemeProvider from "./theme/PrimaryThemeProvider";
+import LinearProgressBarContextProvider from "./context/LinearProgressBarContextProvider";
 
 function App() {
     return (
         <ApolloProvider client={ApolloClient}>
-
-            <React.StrictMode>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <UserContextProvider>
-                        <BrowserRouter>
-                            <ApplicationRoutes/>
-                        </BrowserRouter>
-                    </UserContextProvider>
-                </LocalizationProvider>
-            </React.StrictMode>
+            <LinearProgressBarContextProvider>
+                <PrimaryThemeProvider>
+                    <React.StrictMode>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <UserContextProvider>
+                                <BrowserRouter>
+                                    <ApplicationRoutes/>
+                                </BrowserRouter>
+                            </UserContextProvider>
+                        </LocalizationProvider>
+                    </React.StrictMode>
+                </PrimaryThemeProvider>
+            </LinearProgressBarContextProvider>
         </ApolloProvider>
     );
 }

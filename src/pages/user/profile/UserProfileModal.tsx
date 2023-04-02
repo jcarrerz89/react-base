@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Characters from "../../../enum/char";
 import {Button, DialogTitle, FormGroup, IconButton, Tooltip} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
@@ -11,6 +11,7 @@ import {IProfileType} from "../types/IProfileType";
 import {useMutation} from "@apollo/client";
 import {UPDATE_PROFILE} from "../../../server/Mutations/profile.mutations";
 import DialogActions from "@mui/material/DialogActions";
+import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
 
 interface IUserProfileModal {
     profile: IProfileType | null,
@@ -18,6 +19,8 @@ interface IUserProfileModal {
 }
 
 const UserProfileModal: React.FC<IUserProfileModal> = ({profile, onUpdateProfile}) => {
+
+    const progressBar = useContext(LinearProgressBarContext);
 
     const [profileData, setProfileData] = useState({
         name: profile ? profile.name : String(Characters.EMPTY),
@@ -53,6 +56,11 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({profile, onUpdateProfile
             }
 
             onUpdateProfile(updatedProfile);
+
+            progressBar.hide();
+        },
+        onError: () => {
+            progressBar.hide();
         }
     });
 
@@ -88,6 +96,7 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({profile, onUpdateProfile
 
                 <form onSubmit={(e) => {
                     e.preventDefault();
+                    progressBar.show();
 
                     updateProfile({
                         variables: {

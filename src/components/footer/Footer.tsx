@@ -1,12 +1,11 @@
-import './Footer.css'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Container from '@mui/material/Container'
 import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
-import AppTitle from '../common/Text/AppTitle'
+import AppTitle from '../common/text/AppTitle'
 import { Button } from '@mui/material'
-import Logo from '../common/Brand/Logo'
+import Logo from '../common/brand/Logo'
 
 const FooterContainer = styled(Paper)(({theme}) => ({
     backgroundColor: '#05204A',

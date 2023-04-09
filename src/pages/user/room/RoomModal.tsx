@@ -14,7 +14,6 @@ import Dialog from "@mui/material/Dialog";
 import React, {useState} from "react";
 import {IRoomType} from "../types/IRoomType";
 import EditIcon from "@mui/icons-material/Edit";
-import {IconButton, Tooltip} from "@mui/material";
 import {DeleteForever} from "@mui/icons-material";
 import SectionMenuItem from "../../../components/common/menu/SectionMenuItem";
 
@@ -24,6 +23,7 @@ interface IRoomModal {
     onDelete: (roomId: number) => void,
     onDismiss: () => void
 }
+
 const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
     const [roomDetails, setRoomDetails] = useState<IRoomType>(room);
     const [openEditRoomModal, setOpenEditRoomModal] = useState(false);

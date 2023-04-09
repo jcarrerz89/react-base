@@ -10,6 +10,9 @@ import SectionContainer from "../../../components/common/section/SectionContaine
 import SectionHeader from "../../../components/common/section/SectionHeader";
 import SectionMenu from "../../../components/common/menu/SectionMenu";
 import CreatePropertyModal from "./CreatePropertyModal";
+import SectionMenuItem from "../../../components/common/menu/SectionMenuItem";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 interface IPropertyItem {
     property: IPropertyType,
@@ -19,10 +22,24 @@ interface IPropertyItem {
 const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) => {
     const [open, setOpen] = useState(false);
     const [item, setItem] = useState<IPropertyType>(property);
+    const [openEditPropertyModal, setOpenEditPropertyModal] = useState(false);
+    const [openDeletePropertyModal, setOpenDeletePropertyModal] = useState(false);
 
     const onUpdateProperty = (property: IPropertyType) => {
-        console.log(property);
         setItem(property);
+    }
+
+    const onOpenEditPropertyModal = () => {
+        setOpenEditPropertyModal(true);
+    }
+    const onCloseEditPropertyModal = () => {
+        setOpenEditPropertyModal(false);
+    }
+    const onOpenDeletePropertyModal = () => {
+        setOpenDeletePropertyModal(true);
+    }
+    const onCloseDeletePropertyModal = () => {
+        setOpenDeletePropertyModal(false);
     }
 
     return (
@@ -33,8 +50,8 @@ const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) =
                     {open ? <KeyboardArrowUp /> : <KeyboardArrowUp />}
                 </IconButton>
                 <SectionMenu>
-                    <CreatePropertyModal property={item} onSaveProperty={onUpdateProperty} />
-                    <DeleteProperty property={item} onDeleteProperty={onDeleteProperty} />
+                    <SectionMenuItem icon={<EditIcon />} label={'edit'} description={'Edit property'} callback={onOpenEditPropertyModal} />
+                    <SectionMenuItem icon={<DeleteForeverIcon />} label={'edit'} description={'Edit property'} callback={onOpenDeletePropertyModal} />
                 </SectionMenu>
             </SectionHeader>
             <Grid item sm={12}>
@@ -52,6 +69,8 @@ const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) =
                     </Grid>
                 </Collapse>
             </Grid>
+            <CreatePropertyModal open={openEditPropertyModal} property={item} onSaveProperty={onUpdateProperty} onDismiss={onCloseEditPropertyModal}/>
+            <DeleteProperty open={openDeletePropertyModal} property={item} onDelete={onDeleteProperty} onDismiss={onCloseDeletePropertyModal}/>
         </SectionContainer>
     );
 };

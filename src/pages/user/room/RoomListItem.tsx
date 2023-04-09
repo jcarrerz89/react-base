@@ -1,10 +1,8 @@
 import React, {useState} from "react";
 import CreateRoomModal from "./CreateRoomModal";
-import {IconButton, ImageList, ImageListItem, ImageListItemBar, Tooltip} from "@mui/material";
-import Constants from "enum/constants";
+import {IconButton, ImageList, ImageListItem, Tooltip} from "@mui/material";
 import {IRoomType} from "../types/IRoomType";
 import RoomViewItem from "./RoomViewItem";
-import {IPropertyType} from "../types/IPropertyType";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
 
 const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ rooms, propertyId }) => {
@@ -33,9 +31,7 @@ const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ ro
         <Tooltip title="Create a new property">
             <ImageListItem>
                 <IconButton
-                    onClick={() => {
-                        setOpenCreateRoomModal(true);
-                    }}
+                    onClick={onOpenCreateRoomModal}
                     sx={{my: 2, color: "Black", display: "block"}}
                 >
                     <AddCircleRoundedIcon/>

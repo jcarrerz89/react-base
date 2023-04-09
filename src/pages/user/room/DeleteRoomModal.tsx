@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import {Button, Grid, IconButton, Tooltip} from "@mui/material";
-import {DeleteForever} from "@mui/icons-material";
+import {Button, Grid} from "@mui/material";
 import {useMutation} from "@apollo/client";
 import {DELETE_ROOM} from "../../../server/gql/room.gql";
 import {IRoomType} from "../types/IRoomType";

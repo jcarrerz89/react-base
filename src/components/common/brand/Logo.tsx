@@ -1,5 +1,4 @@
 import { Toolbar, Typography } from "@mui/material";
-import AdbIcon from '@mui/icons-material/AcUnit';
 
 const Logo = () => {
     return <Toolbar>

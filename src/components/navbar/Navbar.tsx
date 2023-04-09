@@ -5,8 +5,6 @@ import Container from '@mui/material/Container';
 import MenuUser from './User/MenuUser';
 import Logo from '../common/brand/Logo';
 
-const pages = ['Search', 'About', 'Contact'];
-
 const defaultStyle = {
     backgroundColor: 'transparent',
     fontColor: 'white',

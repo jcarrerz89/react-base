@@ -1,4 +1,4 @@
-import { LinearProgress, Paper, Toolbar} from "@mui/material";
+import {Paper, Toolbar} from "@mui/material";
 import React from "react";
 import Logo from "../common/brand/Logo";
 import MenuUser from "./User/MenuUser";

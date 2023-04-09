@@ -36,7 +36,7 @@ interface IPropertyData {
 const CreatePropertyModal: React.FC<ICreateProperty> = ({property, open, onSaveProperty, onDismiss}) => {
     const progressBar = useContext(LinearProgressBarContext);
 
-    const [createProperty, {data, loading, error}] = useMutation(
+    const [createProperty] = useMutation(
         SAVE_PROPERTY,
         {
             onCompleted: (data) => {

@@ -3,7 +3,7 @@ import {GET_PROPERTIES_BY_USER} from "../../../server/gql/property.gql";
 import {useQuery} from "@apollo/client";
 import PropertyItem from "./PropertyItem";
 import CreatePropertyModal from "./CreatePropertyModal";
-import {Grid, IconButton, Tooltip} from "@mui/material";
+import {IconButton, Tooltip} from "@mui/material";
 import {useState} from "react";
 import {IPropertyType} from "../types/IPropertyType";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
@@ -14,7 +14,7 @@ const PropertiesList = () => {
     const [properties, setProperties] = useState(aux);
     const [openCreateProperty, setOpenCreateProperty] = useState(false);
 
-    const {data, loading, error} = useQuery(GET_PROPERTIES_BY_USER, {
+    const {loading, error} = useQuery(GET_PROPERTIES_BY_USER, {
         onCompleted: (data) => {
             const properties = data?.getPropertiesByUser.map((item: any) => {
                 const property: IPropertyType = {

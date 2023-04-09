@@ -2,8 +2,8 @@ import * as React from "react";
 import {styled} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import WhiteNavbar from "../../navbar/WhiteNavbar";
-import UserMenu from "pages/user/menu/UserMenu";
 import SmallFooter from "../../footer/SmallFooter";
+import UserMenu from "../../../pages/user/menu/UserMenu";
 
 const UserDashboardContainer = styled('div')(() => ({
     backgroundColor: "#FBFBFB",

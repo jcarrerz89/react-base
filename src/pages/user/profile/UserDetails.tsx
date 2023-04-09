@@ -27,7 +27,7 @@ const UserDatails: React.FC = () => {
     const [profile, setProfile] = useState<IProfileType | null>(initProfile);
     const userContext = useContext(UserContext);
 
-    const {data, loading, error} = useQuery(GET_PROFILE, {
+    useQuery(GET_PROFILE, {
         onCompleted: (data) => {
             if (data.getUserProfile) {
                 const existingProfile: IProfileType = {

@@ -1,5 +1,4 @@
 import Typography from '@mui/material/Typography';
-import { ReactElement, ReactNode } from 'react';
 
 const AppSubTitle: React.FC<{children: string}> = ({children}) => {
     return <Typography

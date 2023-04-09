@@ -1,5 +1,5 @@
-import { Alert, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
-import React, { ReactPropTypes, useContext, useEffect } from "react";
+import { Alert, Button, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import React from "react";
 import { useCookies } from 'react-cookie';
 import { UserContext } from "../../../../context/UserContextProvider";
 import Box from "@mui/material/Box";

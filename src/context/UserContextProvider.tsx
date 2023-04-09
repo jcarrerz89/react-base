@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 import {useCookies} from "react-cookie";
 import isEqual from "react-fast-compare";
 import {useQuery} from "@apollo/client";

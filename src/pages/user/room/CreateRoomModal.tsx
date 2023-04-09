@@ -35,7 +35,7 @@ const CreateRoomModal: React.FC<ICreateRoomModal> = ({room, open, propertyId, on
     const progressBar = useContext(LinearProgressBarContext);
     const [roomData, setRoomData] = useState<IRoomData>({propertyId: propertyId, alias: '', m2: 1, maxOccupants: 1, description: ''} as IRoomData);
 
-    const [saveRoom, {data, loading, error}] = useMutation(SAVE_ROOM, {
+    const [saveRoom] = useMutation(SAVE_ROOM, {
         onCompleted: (data) => {
             if (data.saveRoom) {
                 let responseRoom: IRoomType = {

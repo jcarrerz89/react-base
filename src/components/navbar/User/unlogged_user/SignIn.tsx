@@ -22,7 +22,7 @@ const SignIn: React.FC = () => {
         password: String(Characters.EMPTY)
     });
 
-    const [login, {data, loading, error}] = useMutation(LOGIN, {
+    const [login] = useMutation(LOGIN, {
         onCompleted: (data) => {
             setCookie('jwt-auth-token', data.login.accessToken);
             const user: UserType = {

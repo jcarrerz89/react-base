@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack'
 import Container from '@mui/material/Container'
 import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
-import AppTitle from '../common/text/AppTitle'
 import { Button } from '@mui/material'
 import Logo from '../common/brand/Logo'
 

@@ -1,22 +1,7 @@
 import React, {useState} from 'react';
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import SectionHeader from "../../../components/common/section/SectionHeader";
-import AppSubTitle from "../../../components/common/text/AppSubTitle";
-import SectionMenu from "../../../components/common/menu/SectionMenu";
-import DialogActions from "@mui/material/DialogActions";
 import {IRoomType} from "../types/IRoomType";
-import DialogContent from "@mui/material/DialogContent";
 import {ImageListItem, ImageListItemBar} from "@mui/material";
 import Constants from "../../../enum/constants";
-import Grid from "@mui/material/Grid";
-import CreateRoomModal from "./CreateRoomModal";
-import DeleteRoomModal from "./DeleteRoomModal";
-import AppElementTitle from "../../../components/common/text/AppElementTitle";
-import Button from "@mui/material/Button";
-import ForwardIcon from '@mui/icons-material/Forward';
-import {Announcement} from "@mui/icons-material";
-import CreateAnnouncementModal from "../announcement/CreateAnnouncementModal";
 import RoomModal from "./RoomModal";
 
 interface IRoomDetails {
@@ -34,9 +19,6 @@ const RoomViewItem:React.FC<IRoomDetails> = ({room, onDelete}) =>  {
         setOpen(false)
     }
 
-    const onUpdateRoom = (updatedRoom: IRoomType) => {
-        setRoomDetails(updatedRoom);
-    }
     return <>
         <ImageListItem key={room.id} onClick={() => {
             onOpen();

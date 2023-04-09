@@ -59,6 +59,7 @@ const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) =
                     <Grid container rowGap={2} padding={2} gap={10}>
                         <Grid item sm={6}>
                             <img
+                                alt="property-cover-picture"
                                 style={{ width: "100%", borderRadius: 10 }}
                                 src={item.coverPicture || Constants.DEFAULT_PROPERTY_COVER_PICTURE}
                             />

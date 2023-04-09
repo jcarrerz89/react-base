@@ -2,7 +2,7 @@ import {gql} from "@apollo/client";
 
 
 export const SAVE_PROPERTY = gql`
-    mutation saveProperty($request: PropertyInput!) {
+    mutation saveProperty($request: PropertyInputType!) {
         saveProperty(request: $request) {
             id,
             alias,
@@ -48,6 +48,7 @@ export const GET_PROPERTIES_BY_USER = gql`
                 alias,
                 maxOccupants,
                 m2,
+                description,
                 coverPicture,
                 pictures,
                 propertyId

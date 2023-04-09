@@ -17,12 +17,13 @@ import Button from "@mui/material/Button";
 import ForwardIcon from '@mui/icons-material/Forward';
 import {Announcement} from "@mui/icons-material";
 import CreateAnnouncementModal from "../announcement/CreateAnnouncementModal";
+import RoomModal from "./RoomModal";
 
 interface IRoomDetails {
     room: IRoomType,
-    onDeleteRoom: (roomId: number) => void
+    onDelete: (roomId: number) => void
 }
-const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
+const RoomViewItem:React.FC<IRoomDetails> = ({room, onDelete}) =>  {
 
     const [open, setOpen] = useState(false);
     const [roomDetails, setRoomDetails] = useState<IRoomType>(room);
@@ -49,47 +50,9 @@ const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
 
             <ImageListItemBar title={roomDetails.alias} />
         </ImageListItem>
+        <RoomModal room={room} open={open} onDismiss={onClose} onDelete={onDelete}/>
 
-        <Dialog open={open} fullWidth onClose={() => {
-            onClose();
-        }}>
-            <DialogTitle>
-                <SectionHeader>
-                    <AppSubTitle>{roomDetails.alias}</AppSubTitle>
-                    <SectionMenu>
-                        <CreateRoomModal room={room} propertyId={room.propertyId} onSaveRoom={onUpdateRoom} />
-                        <DeleteRoomModal room={room} onDeleteRoom={onDeleteRoom} />
-                    </SectionMenu>
-                </SectionHeader>
-            </DialogTitle>
-            <DialogContent>
-                <Grid container>
-                    <Grid item container sm={6}>
-                        <Grid item sm={12}>
-                            <AppElementTitle>㎡</AppElementTitle>
-                        </Grid>
-                        <Grid item sm={12}>
-                            {roomDetails.m2}
-                        </Grid>
-                    </Grid>
-                    <Grid item container sm={6}>
-                        <Grid item sm={12}>
-                            <AppElementTitle>Max occupants</AppElementTitle>
-                        </Grid>
-                        <Grid item sm={12}>
-                            {roomDetails.maxOccupants}
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </DialogContent>
-            <DialogActions>
-                <Button variant={"text"} onClick={onClose}>
-                    Close
-                </Button>
-                <CreateAnnouncementModal room={room} />
-            </DialogActions>
-        </Dialog>
     </>
 }
 
-export default RoomDetails;
+export default RoomViewItem;

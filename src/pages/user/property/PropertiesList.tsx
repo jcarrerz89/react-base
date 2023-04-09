@@ -1,5 +1,5 @@
 import * as React from "react";
-import {GET_PROPERTIES_BY_USER} from "../../../server/Queries/property.queries";
+import {GET_PROPERTIES_BY_USER} from "../../../server/gql/property.gql";
 import {useQuery} from "@apollo/client";
 import PropertyItem from "./PropertyItem";
 import CreatePropertyModal from "./CreatePropertyModal";

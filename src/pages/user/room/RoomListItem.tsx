@@ -1,40 +1,58 @@
 import React, {useState} from "react";
 import CreateRoomModal from "./CreateRoomModal";
-import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
+import {IconButton, ImageList, ImageListItem, ImageListItemBar, Tooltip} from "@mui/material";
 import Constants from "enum/constants";
 import {IRoomType} from "../types/IRoomType";
-import RoomDetails from "./RoomDetails";
+import RoomViewItem from "./RoomViewItem";
 import {IPropertyType} from "../types/IPropertyType";
+import AddCircleRoundedIcon from "@mui/icons-material/Add";
 
 const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ rooms, propertyId }) => {
 
     const [roomList, setRoomList] = useState<IRoomType[]>(rooms);
+    const [openCreateRoomModal, setOpenCreateRoomModal] = useState(false);
 
     const onCreateRoom = (room: IRoomType) => {
-        console.log('onCreateRoom');
         let rooms = roomList.concat(room);
         setRoomList(rooms);
     }
 
-    const onEditRoom = (room: IRoomType) => {
-        console.log(room);
+    const onCloseCreateRoomModal = () => {
+        setOpenCreateRoomModal(false);
+    }
+
+    const onOpenCreateRoomModal = () => {
+        setOpenCreateRoomModal(true);
     }
 
     const onDeleteRoom = (roomId: number) => {
         setRoomList(roomList.filter((room: IRoomType) => room.id !== roomId));
     }
 
-    const addRoomComponent = roomList.length < 9 ?
-        <CreateRoomModal propertyId={propertyId} onSaveRoom={onCreateRoom}/> : null;
+    const addRoomIcon = roomList.length < 9 ?
+        <Tooltip title="Create a new property">
+            <ImageListItem>
+                <IconButton
+                    onClick={() => {
+                        setOpenCreateRoomModal(true);
+                    }}
+                    sx={{my: 2, color: "Black", display: "block"}}
+                >
+                    <AddCircleRoundedIcon/>
+                </IconButton>
+            </ImageListItem>
+        </Tooltip> : null;
 
     return (
         <>
             <ImageList variant="masonry" cols={2} gap={8}>
                 {roomList.map((room, key) => (
-                    <RoomDetails room={room} onDeleteRoom={onDeleteRoom} key={key}/>
+                    <RoomViewItem room={room} onDelete={onDeleteRoom} key={key}/>
                 ))}
-                { addRoomComponent }
+
+                { addRoomIcon }
             </ImageList>
+            <CreateRoomModal propertyId={propertyId} open={openCreateRoomModal} onSaveRoom={onCreateRoom} onDismiss={onCloseCreateRoomModal}/>
         </>
     );
 };

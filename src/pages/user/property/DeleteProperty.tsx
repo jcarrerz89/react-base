@@ -6,7 +6,7 @@ import Dialog from "@mui/material/Dialog";
 import {Button, Grid, IconButton, Tooltip} from "@mui/material";
 import {DeleteForever} from "@mui/icons-material";
 import {useMutation} from "@apollo/client";
-import {DELETE_PROPERTY} from "../../../server/Mutations/property.mutation";
+import {DELETE_PROPERTY} from "../../../server/gql/property.gql";
 import DialogActions from "@mui/material/DialogActions";
 
 interface IDeleteProperty {

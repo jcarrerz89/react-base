@@ -1,13 +1,14 @@
 import {gql} from "@apollo/client";
 
 export const SAVE_ROOM = gql(`
-    mutation saveRoom($request: RoomInput!, $propertyId: Float!) {
-        saveRoom(request: $request, property_id: $propertyId) {
+    mutation saveRoom($request: RoomInputType!) {
+        saveRoom(request: $request) {
             id,
             alias, 
             coverPicture,
             m2,
             maxOccupants,
+            description,
             pictures,
             propertyId
         }
@@ -22,6 +23,7 @@ export const DELETE_ROOM = gql(`
             coverPicture,
             m2,
             maxOccupants,
+            description,
             pictures,
             propertyId,
         }

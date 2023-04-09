@@ -12,3 +12,11 @@ export const SAVE_ANNOUNCEMENT = gql(`
         }
     } 
 `);
+
+export const GET_LATEST_ANNOUNCEMENTS = gql(`
+    query getLatestAnnouncements($limit: Float!) {
+        getLatestAnnouncements(limit: $limit) {
+            id
+        }
+    }
+`);

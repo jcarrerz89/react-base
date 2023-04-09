@@ -5,77 +5,55 @@ import Dialog from "@mui/material/Dialog";
 import {Button, Grid, IconButton, Tooltip} from "@mui/material";
 import {DeleteForever} from "@mui/icons-material";
 import {useMutation} from "@apollo/client";
-import {DELETE_ROOM} from "../../../server/Mutations/room.mutation";
+import {DELETE_ROOM} from "../../../server/gql/room.gql";
 import {IRoomType} from "../types/IRoomType";
 import DialogActions from "@mui/material/DialogActions";
 
 interface IDeleteProperty {
+    open: boolean,
     room: IRoomType,
-    onDeleteRoom: (propertyid: number) => void
+    onDelete: (roomId: number) => void,
+    onDismiss: () => void
 }
 
-const DeleteRoomModal: React.FC<IDeleteProperty> = ({room, onDeleteRoom}) => {
-
-    const [open, setOpen] = useState(false);
+const DeleteRoomModal: React.FC<IDeleteProperty> = ({open, room, onDelete, onDismiss}) => {
 
     const [deleteRoom] = useMutation(DELETE_ROOM, {
             onCompleted: (data) => {
-                onDeleteRoom(data.deleteRoom.id);
-                onClose();
+                onDelete(data.deleteRoom.id);
+                onDismiss();
             }
         }
     );
 
-    const onOpen = () => {
-        setOpen(true);
-    }
-    const onClose = () => {
-        setOpen(false);
-    }
-
     return (
-        <>
-            <Tooltip title="Delete room">
-                <IconButton
-                    sx={{my: 2, color: "Black", display: "block"}}
-                    onClick={() => {
-                        onOpen();
-                    }}>
-                    <DeleteForever/> Delete
-                </IconButton>
-            </Tooltip>
-            <Dialog fullWidth open={open} onClose={() => {
-                onClose();
-            }}>
-                <DialogTitle>Delete room</DialogTitle>
-                <DialogContent>
-                    <Grid container>
-                        <Grid item sm={12}>
-                            <p>Are you sure you want to delete this room?</p>
-                        </Grid>
+        <Dialog fullWidth open={open} onClose={onDismiss}>
+            <DialogTitle>Delete room</DialogTitle>
+            <DialogContent>
+                <Grid container>
+                    <Grid item sm={12}>
+                        <p>Are you sure you want to delete this room?</p>
                     </Grid>
-                </DialogContent>
-                <DialogActions>
-                    <Button type="reset" onClick={() => {
-                        onClose();
-                    }}>Cancel</Button>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        onClick={(event: React.UIEvent) => {
-                            event.preventDefault();
+                </Grid>
+            </DialogContent>
+            <DialogActions>
+                <Button type="reset" onClick={onDismiss}>Cancel</Button>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    onClick={(event: React.UIEvent) => {
+                        event.preventDefault();
 
-                            deleteRoom({
-                                variables: {
-                                    id: room.id
-                                }
-                            });
-                        }}>
-                        Delete
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
+                        deleteRoom({
+                            variables: {
+                                id: room.id
+                            }
+                        });
+                    }}>
+                    Delete
+                </Button>
+            </DialogActions>
+        </Dialog>
     );
 }
 

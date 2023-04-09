@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import {DatePicker} from "@mui/x-date-pickers";
 import {IProfileType} from "../types/IProfileType";
 import {useMutation} from "@apollo/client";
-import {UPDATE_PROFILE} from "../../../server/Mutations/profile.mutations";
+import {UPDATE_PROFILE} from "../../../server/gql/profile.gql";
 import DialogActions from "@mui/material/DialogActions";
 import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
 

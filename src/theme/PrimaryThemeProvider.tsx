@@ -15,9 +15,10 @@ const PrimaryThemeProvider:React.FC<{children: ReactNode}> = ({children}) => {
             },
             background: {
                 paper: '#fff',
-                default: '#f5f5f5',
+                default: '#BBB',
             },
         },
+
         typography: {
             fontFamily: 'Roboto, sans-serif',
             fontSize: 16,
@@ -45,6 +46,17 @@ const PrimaryThemeProvider:React.FC<{children: ReactNode}> = ({children}) => {
                 lineHeight: 1.5,
             },
         },
+        transitions: {
+            duration: {
+                shortest: 1,
+                shorter: 1,
+                short: 1,
+                standard: 2,
+                complex: 2,
+                enteringScreen: 2,
+                leavingScreen: 2,
+            },
+        }
     });
 
     return (

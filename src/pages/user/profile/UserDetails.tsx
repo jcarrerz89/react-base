@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {Grid, Skeleton} from "@mui/material";
 import {UserContext} from "../../../context/UserContextProvider";
 import {useQuery} from "@apollo/client";
-import {GET_PROFILE} from "../../../server/Queries/profile.queries";
+import {GET_PROFILE} from "../../../server/gql/profile.gql";
 import UserProfileModal from "./UserProfileModal";
 import {IProfileType} from "../types/IProfileType";
 import AppSubTitle from "../../../components/common/text/AppSubTitle";

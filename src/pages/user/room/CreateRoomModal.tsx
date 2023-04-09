@@ -5,41 +5,35 @@ import {
     DialogTitle,
     FormGroup,
     Grid,
-    IconButton, ImageListItem,
     TextField,
-    Tooltip,
 } from "@mui/material";
-import React, {useEffect, useState} from "react";
-import AddCircleRoundedIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import {SAVE_ROOM} from "server/Mutations/room.mutation";
+import React, {useContext, useEffect, useState} from "react";
+import {SAVE_ROOM} from "server/gql/room.gql";
 import {useMutation} from "@apollo/client";
 import {IRoomType} from "../types/IRoomType";
-import Characters from "../../../enum/char";
 import DialogActions from "@mui/material/DialogActions";
+import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
 
-interface ICreateRoom {
+interface ICreateRoomModal {
     room?: IRoomType,
     propertyId: number,
-    onSaveRoom: (room: IRoomType) => void
+    open: boolean,
+    onSaveRoom: (room: IRoomType) => void,
+    onDismiss: () => void
 }
 
-const CreateRoomModal: React.FC<ICreateRoom> = ({room, propertyId, onSaveRoom}) => {
-    const [open, setOpen] = useState(false);
-    const [roomData, setRoomData] = useState({
-        id: Number(null),
-        alias: String(Characters.EMPTY),
-        m2: 1,
-        maxOccupants: 1,
-    });
+interface IRoomData {
+    id: number | null,
+    alias: string,
+    m2: number,
+    maxOccupants: number,
+    description: string,
+    propertyId: number
+}
 
-    const onClose = () => {
-        setOpen(false);
-    }
-
-    const onOpen = () => {
-        setOpen(true);
-    }
+const CreateRoomModal: React.FC<ICreateRoomModal> = ({room, open, propertyId, onSaveRoom, onDismiss}) => {
+    const progressBar = useContext(LinearProgressBarContext);
+    const [roomData, setRoomData] = useState<IRoomData>({propertyId: propertyId, alias: '', m2: 1, maxOccupants: 1, description: ''} as IRoomData);
 
     const [saveRoom, {data, loading, error}] = useMutation(SAVE_ROOM, {
         onCompleted: (data) => {
@@ -51,147 +45,150 @@ const CreateRoomModal: React.FC<ICreateRoom> = ({room, propertyId, onSaveRoom}) 
                     maxOccupants: data.saveRoom.maxOccupants,
                     coverPicture: data.saveRoom.coverPicture,
                     pictures: data.saveRoom.pictures,
+                    description: data.saveRoom.description,
                     propertyId: data.saveRoom.propertyId
                 }
                 onSaveRoom(responseRoom);
             }
+            progressBar.hide();
         },
+        onError: () => {
+            progressBar.hide();
+        }
     });
 
     useEffect(() => {
         if (room) {
             setRoomData({
-                id: room.id,
+                id: Number(room.id),
                 alias: room.alias,
-                m2: room.m2,
-                maxOccupants: room.maxOccupants,
+                m2: Number(room.m2),
+                maxOccupants: Number(room.maxOccupants),
+                description: room.description,
+                propertyId: Number(room.propertyId)
             });
         }
     }, [room])
 
-    const icon = room ?
-        <><EditIcon /> Edit</> : <><AddCircleRoundedIcon/></>
-
     return (
-        <>
-            <Tooltip title="Create a new property">
-                <ImageListItem>
-                    <IconButton
-                        onClick={() => {
-                            onOpen();
-                        }}
-                        sx={{my: 2, color: "Black", display: "block"}}
-                    >
-                        {icon}
-                    </IconButton>
-                </ImageListItem>
-            </Tooltip>
-            <Dialog
-                open={open}
-                onClose={() => {
-                    onClose();
+        <Dialog
+            open={open}
+            onClose={onDismiss}>
+            <form
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    progressBar.show();
+
+                    saveRoom({
+                        variables: {
+                            request: roomData,
+                            propertyId: propertyId
+                        },
+                    });
+
+                    onDismiss();
                 }}
             >
-                <form
-                    onSubmit={(event) => {
-                        event.preventDefault();
+                <FormGroup>
+                    <DialogTitle>Add room</DialogTitle>
+                    <DialogContent>
 
-                        saveRoom({
-                            variables: {
-                                request: roomData,
-                                propertyId: propertyId
-                            },
-                        });
+                        <Grid
+                            container
+                            spacing={2}
+                            rowGap={2}
+                            columnGap={1}
+                            columnSpacing={1}
+                            padding={2}
+                            justifyContent={"space-between"}
+                        >
+                            {/* Images input container */}
+                            <Grid xs={12} item columns={10}></Grid>
 
-                        onClose();
-                    }}
-                >
-                    <FormGroup>
-                        <DialogTitle>Add room</DialogTitle>
-                        <DialogContent>
-
-                            <Grid
-                                container
-                                spacing={2}
-                                rowGap={2}
-                                columnGap={1}
-                                columnSpacing={1}
-                                padding={2}
-                                justifyContent={"space-between"}
-                            >
-                                {/* Images input container */}
-                                <Grid xs={12} item columns={10}></Grid>
-
-                                <Grid xs={12} item>
-                                    <TextField
-                                        label="Alias"
-                                        variant="outlined"
-                                        value={roomData.alias}
-                                        type="text"
-                                        fullWidth
-                                        onChange={(e) => {
-                                            setRoomData({
-                                                ...roomData,
-                                                alias: e.target.value,
-                                            });
-                                        }}
-                                    />
-                                </Grid>
-
-                                <Grid xs={5} item>
-                                    <TextField
-                                        label="m2"
-                                        variant="outlined"
-                                        type="number"
-                                        value={roomData.m2}
-                                        inputProps={{min: 1}}
-                                        onChange={(e) => {
-                                            setRoomData({
-                                                ...roomData,
-                                                m2: Number(e.target.value),
-                                            });
-                                        }}
-                                    />
-                                </Grid>
-
-                                <Grid xs={5} item>
-                                    <TextField
-                                        label="max occupants"
-                                        variant="outlined"
-                                        type="number"
-                                        value={roomData.maxOccupants}
-                                        inputProps={{min: 1}}
-                                        onChange={(e) => {
-                                            setRoomData({
-                                                ...roomData,
-                                                maxOccupants: Number(
-                                                    e.target.value
-                                                ),
-                                            });
-                                        }}
-                                    />
-                                </Grid>
-
-
+                            <Grid xs={12} item>
+                                <TextField
+                                    label="Alias"
+                                    variant="outlined"
+                                    value={roomData.alias}
+                                    type="text"
+                                    fullWidth
+                                    onChange={(e) => {
+                                        setRoomData({
+                                            ...roomData,
+                                            alias: e.target.value,
+                                        });
+                                    }}
+                                />
                             </Grid>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button type="reset"
-                                    onClick={() => {
-                                        onClose();
-                                    }}>
-                                Cancel
-                            </Button>
-                            <Button
-                                type="submit"
-                                variant="contained">
-                                {room ? 'Save' : 'Create'}
-                            </Button>
-                        </DialogActions>
-                    </FormGroup>
-                </form>
-            </Dialog>
-        </>
+
+                            <Grid xs={5} item>
+                                <TextField
+                                    label="m2"
+                                    variant="outlined"
+                                    type="number"
+                                    value={roomData.m2}
+                                    inputProps={{min: 1}}
+                                    onChange={(e) => {
+                                        setRoomData({
+                                            ...roomData,
+                                            m2: Number(e.target.value),
+                                        });
+                                    }}
+                                />
+                            </Grid>
+
+                            <Grid xs={5} item>
+                                <TextField
+                                    label="max occupants"
+                                    variant="outlined"
+                                    type="number"
+                                    value={roomData.maxOccupants}
+                                    inputProps={{min: 1}}
+                                    onChange={(e) => {
+                                        setRoomData({
+                                            ...roomData,
+                                            maxOccupants: Number(
+                                                e.target.value
+                                            ),
+                                        });
+                                    }}
+                                />
+                            </Grid>
+
+
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="Text Area"
+                                    variant="outlined"
+                                    fullWidth
+                                    multiline
+                                    rows={4}
+                                    value={roomData.description}
+                                    onChange={(e) => {
+                                        setRoomData({
+                                            ...roomData,
+                                            description: e.target.value
+                                        });
+                                    }}
+                                />
+                            </Grid>
+
+                        </Grid>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button type="reset"
+                                onClick={onDismiss}>
+                            Cancel
+                        </Button>
+                        <Button
+                            type="submit"
+                            variant="contained">
+                            {room ? 'Save' : 'Create'}
+                        </Button>
+                    </DialogActions>
+                </FormGroup>
+            </form>
+        </Dialog>
     );
 };
 

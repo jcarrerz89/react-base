@@ -45,10 +45,8 @@ const SectionMenu: React.FC<ISectionMenu> = ({children}) => {
                 },
             }}>
 
-            {items.map((item, k) => {
-                return <MenuItem key={k} >
-                    {item}
-                </MenuItem>
+            {items.map((item) => {
+                return (item);
             })}
         </Menu>
     </>

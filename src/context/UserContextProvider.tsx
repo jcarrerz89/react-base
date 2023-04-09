@@ -2,7 +2,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import {useCookies} from "react-cookie";
 import isEqual from "react-fast-compare";
 import {useQuery} from "@apollo/client";
-import {HELLO_USER} from "../server/Queries/user.queries";
+import {HELLO_USER} from "../server/gql/user.gql";
 import LoadingPage from "../components/common/loading/LoadingPage";
 
 type UserContextProviderProps = {

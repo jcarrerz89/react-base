@@ -10,27 +10,39 @@ import {
     TextField,
     Tooltip,
 } from "@mui/material";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Characters from "../../../enum/char";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import {SAVE_PROPERTY} from "../../../server/Mutations/property.mutation";
+import {SAVE_PROPERTY} from "../../../server/gql/property.gql";
 import {IPropertyType} from "../types/IPropertyType";
 import DialogActions from "@mui/material/DialogActions";
+import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
 
 interface ICreateProperty {
     property?: IPropertyType,
     onSaveProperty: (property: IPropertyType) => void
 }
 
+interface IPropertyData {
+    id: null | number,
+    alias: string,
+    country: string,
+    district: string,
+    city: string,
+    suburb: string,
+    street: string,
+    number: number,
+    flat: string
+}
+
 const CreatePropertyModal: React.FC<ICreateProperty> = ({property, onSaveProperty}) => {
     const [open, setOpen] = useState(false);
+    const progressBar = useContext(LinearProgressBarContext);
 
     const [createProperty, {data, loading, error}] = useMutation(
         SAVE_PROPERTY,
         {
-            onError: (error) => {
-            },
             onCompleted: (data) => {
                 const property: IPropertyType = {
                     id: data.saveProperty?.id,
@@ -49,6 +61,10 @@ const CreatePropertyModal: React.FC<ICreateProperty> = ({property, onSavePropert
                 }
 
                 onSaveProperty(property);
+                progressBar.hide();
+            },
+            onError: () => {
+                progressBar.hide();
             }
         }
     );
@@ -61,17 +77,7 @@ const CreatePropertyModal: React.FC<ICreateProperty> = ({property, onSavePropert
         setOpen(false);
     }
 
-    const [propertyData, setPropertyData] = useState({
-        id: 0,
-        alias: String(Characters.EMPTY),
-        country: String(Characters.EMPTY),
-        district: String(Characters.EMPTY),
-        city: String(Characters.EMPTY),
-        suburb: String(Characters.EMPTY),
-        street: String(Characters.EMPTY),
-        number: Number(Characters.EMPTY),
-        flat: String(Characters.EMPTY),
-    });
+    const [propertyData, setPropertyData] = useState<IPropertyData>({} as IPropertyData);
 
     useEffect(() => {
         if (property) {
@@ -113,6 +119,7 @@ const CreatePropertyModal: React.FC<ICreateProperty> = ({property, onSavePropert
                 <form
                     onSubmit={(event) => {
                         event.preventDefault();
+                        progressBar.show();
 
                         createProperty({
                             variables: {

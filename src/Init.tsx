@@ -3,7 +3,7 @@ import {UserContext, UserType} from "./context/UserContextProvider";
 import {useCookies} from "react-cookie";
 import isEqual from "react-fast-compare";
 import {useQuery} from "@apollo/client";
-import {HELLO_USER} from "./server/Queries/user.queries";
+import {HELLO_USER} from "./server/gql/user.gql";
 
 const Init: React.FC<{children: React.ReactNode}> = ({children}) => {
     const userContext = useContext(UserContext);

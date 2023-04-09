@@ -15,6 +15,8 @@ import DeleteRoomModal from "./DeleteRoomModal";
 import AppElementTitle from "../../../components/common/text/AppElementTitle";
 import Button from "@mui/material/Button";
 import ForwardIcon from '@mui/icons-material/Forward';
+import {Announcement} from "@mui/icons-material";
+import CreateAnnouncementModal from "../announcement/CreateAnnouncementModal";
 
 interface IRoomDetails {
     room: IRoomType,
@@ -84,9 +86,7 @@ const RoomDetails:React.FC<IRoomDetails> = ({room, onDeleteRoom}) =>  {
                 <Button variant={"text"} onClick={onClose}>
                     Close
                 </Button>
-                <Button variant="contained" color="secondary" startIcon={<ForwardIcon />}>
-                    Announce
-                </Button>
+                <CreateAnnouncementModal room={room} />
             </DialogActions>
         </Dialog>
     </>

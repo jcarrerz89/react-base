@@ -40,3 +40,13 @@ export const EDIT_PROFILE = gql`
         }
     }
 `;
+
+export const HELLO_USER = gql`
+    query {
+        helloUser {
+            id,
+            username,
+            email
+        }
+    }
+`;

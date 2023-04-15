@@ -14,11 +14,13 @@ import DialogActions from "@mui/material/DialogActions";
 import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
 
 interface IUserProfileModal {
+    open: boolean,
     profile: IProfileType | null,
-    onUpdateProfile: (profile: IProfileType) => void
+    onUpdateProfile: (profile: IProfileType) => void,
+    onDismiss: () => void
 }
 
-const UserProfileModal: React.FC<IUserProfileModal> = ({profile, onUpdateProfile}) => {
+const UserProfileModal: React.FC<IUserProfileModal> = ({open, profile, onUpdateProfile, onDismiss}) => {
 
     const progressBar = useContext(LinearProgressBarContext);
 
@@ -64,136 +66,110 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({profile, onUpdateProfile
         }
     });
 
-    const [open, setOpen] = useState(false);
-
-    const onOpen = () => {
-        setOpen(true);
-    }
-
-    const onClose = () => {
-        setOpen(false);
-    }
-
     return (
-        <>
-            <Tooltip title="Create a new property">
-                <IconButton
-                    onClick={() => {
-                        onOpen();
-                    }}
-                    sx={{my: 2, color: "Black", display: "block"}}>
-                    <EditIcon/> Edit
-                </IconButton>
-            </Tooltip>
+        <Dialog
+            fullWidth
+            open={open}
+            onClose={onDismiss}
+        >
 
-            <Dialog
-                fullWidth
-                open={open}
-                onClose={() => {
-                    onClose();
-                }}
-            >
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                progressBar.show();
 
-                <form onSubmit={(e) => {
-                    e.preventDefault();
-                    progressBar.show();
+                updateProfile({
+                    variables: {
+                        request: profileData
+                    }
+                });
 
-                    updateProfile({
-                        variables: {
-                            request: profileData
-                        }
-                    });
-
-                    onClose();
-                }}>
-                    <FormGroup>
-                        <DialogTitle title='Edit profile'>Edit profile</DialogTitle>
-                        <DialogContent>
-                            <Grid container rowGap={2} paddingTop={1}>
-                                <Grid item container sm={12}>
-                                    <Grid item sm={6}>
-
-                                    </Grid>
-                                    <Grid item container sm={6} rowGap={2}>
-                                        <Grid item sm={12}>
-                                            <TextField label="Name"
-                                                       variant="outlined"
-                                                       value={profileData.name}
-                                                       type="text"
-                                                       fullWidth
-                                                       onChange={(e) => {
-                                                           setProfileData({
-                                                               ...profileData,
-                                                               name: e.target.value
-                                                           });
-                                                       }}
-                                            />
-                                        </Grid>
-                                        <Grid item sm={12}>
-                                            <TextField label="Surname"
-                                                       variant="outlined"
-                                                       value={profileData.surname}
-                                                       type="text"
-                                                       fullWidth
-                                                       onChange={(e) => {
-                                                           setProfileData({
-                                                               ...profileData,
-                                                               surname: e.target.value
-                                                           });
-                                                       }}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-
+                onDismiss();
+            }}>
+                <FormGroup>
+                    <DialogTitle title='Edit profile'>Edit profile</DialogTitle>
+                    <DialogContent>
+                        <Grid container rowGap={2} paddingTop={1}>
+                            <Grid item container sm={12}>
                                 <Grid item sm={6}>
-                                    <DatePicker/>
+
                                 </Grid>
-                                <Grid item sm={6}>
-                                    <TextField label="Nationality"
-                                               variant="outlined"
-                                               value={profileData.nationality}
-                                               type="text"
-                                               fullWidth
-                                               onChange={(e) => {
-                                                   setProfileData({
-                                                       ...profileData,
-                                                       nationality: e.target.value
-                                                   });
-                                               }}
-                                    />
-                                </Grid>
-                                <Grid item sm={12}>
-                                    <TextField label="About me"
-                                               variant="outlined"
-                                               value={profileData.description}
-                                               type="te"
-                                               fullWidth
-                                               onChange={(e) => {
-                                                   setProfileData({
-                                                       ...profileData,
-                                                       description: e.target.value
-                                                   });
-                                               }}
-                                    />
+                                <Grid item container sm={6} rowGap={2}>
+                                    <Grid item sm={12}>
+                                        <TextField label="Name"
+                                                   variant="outlined"
+                                                   value={profileData.name}
+                                                   type="text"
+                                                   fullWidth
+                                                   onChange={(e) => {
+                                                       setProfileData({
+                                                           ...profileData,
+                                                           name: e.target.value
+                                                       });
+                                                   }}
+                                        />
+                                    </Grid>
+                                    <Grid item sm={12}>
+                                        <TextField label="Surname"
+                                                   variant="outlined"
+                                                   value={profileData.surname}
+                                                   type="text"
+                                                   fullWidth
+                                                   onChange={(e) => {
+                                                       setProfileData({
+                                                           ...profileData,
+                                                           surname: e.target.value
+                                                       });
+                                                   }}
+                                        />
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button type="reset" onClick={() => {
-                                onClose();
-                            }}>Cancel</Button>
-                            <Button
-                                type="submit"
-                                variant="contained"
-                            >
-                                Update
-                            </Button>
-                        </DialogActions>
-                    </FormGroup>
-                </form>
-            </Dialog>
-        </>
+
+                            <Grid item sm={6}>
+                                <DatePicker/>
+                            </Grid>
+                            <Grid item sm={6}>
+                                <TextField label="Nationality"
+                                           variant="outlined"
+                                           value={profileData.nationality}
+                                           type="text"
+                                           fullWidth
+                                           onChange={(e) => {
+                                               setProfileData({
+                                                   ...profileData,
+                                                   nationality: e.target.value
+                                               });
+                                           }}
+                                />
+                            </Grid>
+                            <Grid item sm={12}>
+                                <TextField label="About me"
+                                           variant="outlined"
+                                           value={profileData.description}
+                                           type="te"
+                                           fullWidth
+                                           onChange={(e) => {
+                                               setProfileData({
+                                                   ...profileData,
+                                                   description: e.target.value
+                                               });
+                                           }}
+                                />
+                            </Grid>
+                        </Grid>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button type="reset" onClick={onDismiss}>Cancel</Button>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                        >
+                            Update
+                        </Button>
+                    </DialogActions>
+                </FormGroup>
+            </form>
+        </Dialog>
     );
 };
 

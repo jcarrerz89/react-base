@@ -11,6 +11,8 @@ import AppElementTitle from "../../../components/common/text/AppElementTitle";
 import SectionContainer from "../../../components/common/section/SectionContainer";
 import SectionHeader from "../../../components/common/section/SectionHeader";
 import Characters from "../../../enum/char";
+import SectionMenuItem from "../../../components/common/menu/SectionMenuItem";
+import EditIcon from "@mui/icons-material/Edit";
 
 const UserDatails: React.FC = () => {
     const initProfile: IProfileType = {
@@ -25,7 +27,15 @@ const UserDatails: React.FC = () => {
         updatedAt: new Date()
     }
     const [profile, setProfile] = useState<IProfileType | null>(initProfile);
+    const [openEditUserProfileModal, setOpenEditUserProfileModal] = useState<boolean>(false);
     const userContext = useContext(UserContext);
+
+    const onOpenEditUserProfileModal = () => {
+        setOpenEditUserProfileModal(true);
+    }
+    const onCloseEditUserProfileModal = () => {
+        setOpenEditUserProfileModal(false);
+    }
 
     useQuery(GET_PROFILE, {
         onCompleted: (data) => {
@@ -60,7 +70,8 @@ const UserDatails: React.FC = () => {
             <SectionHeader>
                 <AppSubTitle>Profile</AppSubTitle>
                 <SectionMenu>
-                    <UserProfileModal profile={profile} onUpdateProfile={onUpdateProfile}/>
+                    <SectionMenuItem icon={<EditIcon />} label="Edit" description="Edit profile" callback={onOpenEditUserProfileModal} />
+
                 </SectionMenu>
             </SectionHeader>
             <Grid container rowGap={5}>
@@ -137,6 +148,7 @@ const UserDatails: React.FC = () => {
                     </Grid>
                 </Grid>
             </Grid>
+            <UserProfileModal open={openEditUserProfileModal} profile={profile} onUpdateProfile={onUpdateProfile} onDismiss={onCloseEditUserProfileModal}/>
         </SectionContainer>
     )
 }

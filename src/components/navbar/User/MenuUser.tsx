@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import LoggedUser from "./logged_user/LoggedUser";
-import UnloggedUser from "./unlogged_user/UnloggedUser";
+import UnloggedUser from "./unlogged_user/UnLoggedUser";
 import { UserContext } from "../../../context/UserContextProvider";
 
 const MenuUser: React.FC = () => {

@@ -130,7 +130,7 @@ const CreatePropertyModal: React.FC<ICreateProperty> = ({property, open, onSaveP
                             </Grid>
                             <Grid xs={6} item>
                                 <TextField
-                                    label="Contry"
+                                    label="Country"
                                     variant="outlined"
                                     value={propertyData.country}
                                     fullWidth

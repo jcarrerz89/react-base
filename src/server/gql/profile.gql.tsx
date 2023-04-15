@@ -2,7 +2,7 @@ import {gql} from "@apollo/client";
 
 
 export const UPDATE_PROFILE = gql(`
-    mutation editProfile($request: ProfileInputRequest!) {
+    mutation editProfile($request: ProfileInputType!) {
         updateProfile(request: $request) {
             name, 
             surname,

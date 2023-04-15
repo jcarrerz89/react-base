@@ -16,6 +16,7 @@ import {IRoomType} from "../types/IRoomType";
 import EditIcon from "@mui/icons-material/Edit";
 import {DeleteForever} from "@mui/icons-material";
 import SectionMenuItem from "../../../components/common/menu/SectionMenuItem";
+import ForwardIcon from "@mui/icons-material/Forward";
 
 interface IRoomModal {
     room: IRoomType,
@@ -26,8 +27,9 @@ interface IRoomModal {
 
 const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
     const [roomDetails, setRoomDetails] = useState<IRoomType>(room);
-    const [openEditRoomModal, setOpenEditRoomModal] = useState(false);
-    const [openDeleteRoomModal, setOpenDeleteRoomModal] = useState(false);
+    const [openEditRoomModal, setOpenEditRoomModal] = useState<boolean>(false);
+    const [openDeleteRoomModal, setOpenDeleteRoomModal] = useState<boolean>(false);
+    const [openAnnouncementModal, setOpenAnnouncementModal] = useState<boolean>(false);
 
     const onOpenEditRoomModal = () => {
         setOpenEditRoomModal(true);
@@ -43,6 +45,12 @@ const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
     }
     const onCloseDeleteRoomModal = () => {
         setOpenDeleteRoomModal(false);
+    }
+    const onOpenAnnouncementModal = () => {
+        setOpenAnnouncementModal(true);
+    }
+    const onCloseAnnouncementRoomModal = () => {
+        setOpenAnnouncementModal(false);
     }
 
     return (
@@ -85,12 +93,15 @@ const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
                 </Grid>
                 <CreateRoomModal room={room} open={openEditRoomModal} propertyId={room.propertyId} onSaveRoom={onUpdateRoom} onDismiss={onCloseEditRoomModal}/>
                 <DeleteRoomModal room={room} open={openDeleteRoomModal} onDelete={onDelete} onDismiss={onCloseDeleteRoomModal}/>
+                <CreateAnnouncementModal open={openAnnouncementModal} room={room} onDismiss={onCloseAnnouncementRoomModal}/>
             </DialogContent>
             <DialogActions>
                 <Button variant={"text"} onClick={onDismiss}>
                     Close
                 </Button>
-                <CreateAnnouncementModal room={room}/>
+                <Button variant="contained" color="secondary" startIcon={<ForwardIcon/>} onClick={onOpenAnnouncementModal}>
+                    Announce
+                </Button>
             </DialogActions>
         </Dialog>
     );

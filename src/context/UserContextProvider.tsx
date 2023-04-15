@@ -4,9 +4,15 @@ import isEqual from "react-fast-compare";
 import {useQuery} from "@apollo/client";
 import {HELLO_USER} from "../server/gql/user.gql";
 import LoadingPage from "../components/common/loading/LoadingPage";
+import {setCookie} from "typescript-cookie";
 
 type UserContextProviderProps = {
     children: React.ReactNode
+}
+
+export type AuthType = {
+    user: UserType,
+    accessToken: string
 }
 
 export type UserType = {
@@ -17,7 +23,9 @@ export type UserType = {
 
 type UserContextType = {
     user: UserType | null,
-    setUser: React.Dispatch<React.SetStateAction<UserType | null>>
+    // @Deprecated
+    setUser: React.Dispatch<React.SetStateAction<UserType | null>>,
+    setAuth: (auth: AuthType) => void,
 }
 
 export const UserContext = createContext<UserContextType>({} as UserContextType);
@@ -50,12 +58,17 @@ export const UserContextProvider = ({children}: UserContextProviderProps) => {
         }
     });
 
+    const setAuth = (auth: AuthType) => {
+        setUser(auth.user);
+        setCookie('jwt-auth-token', auth.accessToken);
+    }
+
     if (!onCompleted) {
         return <LoadingPage />
     }
 
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <UserContext.Provider value={{user, setUser, setAuth}}>
             {onCompleted && children}
         </UserContext.Provider>
     );

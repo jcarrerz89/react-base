@@ -14,9 +14,17 @@ export const SAVE_ANNOUNCEMENT = gql(`
 `);
 
 export const GET_LATEST_ANNOUNCEMENTS = gql(`
-    query getLatestAnnouncements($limit: Float!) {
-        getLatestAnnouncements(limit: $limit) {
-            id
+    query getLatestAnnouncements($take: Float!) {
+        getLatestAnnouncements(take: $take) {
+            id,
+            description,
+            availableAt,
+            room {
+                id, 
+                description,
+                m2, 
+                maxOccupants
+            }
         }
     }
 `);

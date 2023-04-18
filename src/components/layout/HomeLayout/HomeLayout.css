@@ -1,14 +1,14 @@
 
 .home-layout .cover {
-    height: 90vh;
+    height: 40rem;
     width: 100%;
-    background-image: url('/src/assets/images/wellcome_cover.jpeg');
+    background-image: url('/src/assets/images/home-cover.jpg');
     background-position: bottom;
     background-size: cover;
 
 }
 .home-layout .cover::after {
-    height: 90vh;
+    height: 40rem;
     width: 100%;
     background-color: black;
     position: absolute;

@@ -1,15 +1,12 @@
 import Container from '@mui/material/Container'
-import AppSubTitle from '../components/common/text/AppSubTitle'
 import HomeLayout from '../components/layout/HomeLayout/HomeLayout'
 import {GET_LATEST_ANNOUNCEMENTS} from "../server/gql/announcement.gql";
 import {useQuery} from "@apollo/client";
 import React, {useState} from "react";
 import {IAnnouncementType} from "./user/types/IAnnouncementType";
-import {Image} from "@mui/icons-material";
 import Constants from "../enum/constants";
 import {ImageListItem, ImageListItemBar} from "@mui/material";
 import Grid from "@mui/material/Grid";
-import AppElementTitle from "../components/common/text/AppElementTitle";
 
 const Home: React.FC = () => {
 
@@ -42,7 +39,7 @@ const Home: React.FC = () => {
     return (
         <HomeLayout>
             <Container fixed>
-                <AppSubTitle>What's new</AppSubTitle>
+                <h3>What's new</h3>
 
                 <Grid container columnGap={2} paddingTop={5} paddingBottom={5}>
                     {announcements.map((announcement: IAnnouncementType) => {
@@ -63,7 +60,7 @@ const Home: React.FC = () => {
                                 {announcement.description}
                             </Grid>
                             <Grid item sm={12}>
-                                <AppElementTitle>Available at:</AppElementTitle>
+                                <h3>Available at:</h3>
                             </Grid>
                             <Grid item sm={12}>
                                 {/*{announcement.availableAt}*/}

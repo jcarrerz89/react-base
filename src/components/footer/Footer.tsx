@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack'
 import Container from '@mui/material/Container'
 import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
-import { Button } from '@mui/material'
+import {Button, Typography} from '@mui/material'
 import Logo from '../common/brand/Logo'
 
 const FooterContainer = styled(Paper)(({theme}) => ({
@@ -42,7 +42,7 @@ const Footer = () => {
                 </Grid>
                 <Grid container spacing={1}>
                     <Grid item xs={6}>
-                        <small>Created by @AuraFactoy</small>
+                        <Typography variant="subtitle1">Created by @AuraFactoy</Typography>
                     </Grid>
                     <Grid item xs={6}>
                     </Grid>

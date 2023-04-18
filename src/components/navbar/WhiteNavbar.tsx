@@ -5,7 +5,7 @@ import MenuUser from "./User/MenuUser";
 
 const WhiteNavbar = () => {
     return (
-        <Paper elevation={3}>
+        <Paper elevation={0} style={{marginBottom: 20}}>
             <Toolbar sx={{ "justify-content": "space-between" }}>
                 <Logo />
 

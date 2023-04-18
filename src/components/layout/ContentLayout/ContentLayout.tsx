@@ -13,9 +13,9 @@ const ContentLayoutContainer = styled('div')(() => ({
 const ContentLayout: React.FC<{ children: React.ReactNode }> = ({children}) => {
     return (
         <ContentLayoutContainer>
-            <Navbar fixed={false} minimize={false}/>
+            <Navbar expandable={false}/>
 
-            <div className='cover' />
+            <div className='cover'/>
 
             {children}
 

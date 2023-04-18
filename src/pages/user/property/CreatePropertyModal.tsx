@@ -6,7 +6,7 @@ import {
     DialogTitle,
     FormGroup,
     Grid,
-    TextField,
+    TextField, Typography,
 } from "@mui/material";
 import React, {useContext, useEffect, useState} from "react";
 import {SAVE_PROPERTY} from "../../../server/gql/property.gql";
@@ -21,11 +21,11 @@ interface ICreateProperty {
     onDismiss: () => void
 }
 
-interface IPropertyData {
+type IPropertyData = {
     id: null | number,
-    alias: string,
-    country: string,
-    district: string,
+    alias?: string ,
+    country?: string,
+    district?: string,
     city: string,
     suburb: string,
     street: string,

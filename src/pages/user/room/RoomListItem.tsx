@@ -5,7 +5,7 @@ import {IRoomType} from "../types/IRoomType";
 import RoomViewItem from "./RoomViewItem";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
 
-const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ rooms, propertyId }) => {
+const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({rooms, propertyId}) => {
 
     const [roomList, setRoomList] = useState<IRoomType[]>(rooms);
     const [openCreateRoomModal, setOpenCreateRoomModal] = useState(false);
@@ -41,14 +41,13 @@ const RoomListItem: React.FC<{ rooms: IRoomType[]; propertyId: number }> = ({ ro
 
     return (
         <>
-            <ImageList variant="masonry" cols={2} gap={8}>
-                {roomList.map((room, key) => (
-                    <RoomViewItem room={room} onDelete={onDeleteRoom} key={key}/>
-                ))}
+            {roomList.map((room, key) => (
+                <RoomViewItem room={room} onDelete={onDeleteRoom} key={key}/>
+            ))}
 
-                { addRoomIcon }
-            </ImageList>
-            <CreateRoomModal propertyId={propertyId} open={openCreateRoomModal} onSaveRoom={onCreateRoom} onDismiss={onCloseCreateRoomModal}/>
+            {addRoomIcon}
+            <CreateRoomModal propertyId={propertyId} open={openCreateRoomModal} onSaveRoom={onCreateRoom}
+                             onDismiss={onCloseCreateRoomModal}/>
         </>
     );
 };

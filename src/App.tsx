@@ -14,17 +14,17 @@ function App() {
     return (
         <ApolloProvider client={ApolloClient}>
             <LinearProgressBarContextProvider>
-                <PrimaryThemeProvider>
-                    <React.StrictMode>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <UserContextProvider>
+                <React.StrictMode>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <UserContextProvider>
+                            <PrimaryThemeProvider>
                                 <BrowserRouter>
                                     <ApplicationRoutes/>
                                 </BrowserRouter>
-                            </UserContextProvider>
-                        </LocalizationProvider>
-                    </React.StrictMode>
-                </PrimaryThemeProvider>
+                            </PrimaryThemeProvider>
+                        </UserContextProvider>
+                    </LocalizationProvider>
+                </React.StrictMode>
             </LinearProgressBarContextProvider>
         </ApolloProvider>
     );

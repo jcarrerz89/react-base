@@ -5,7 +5,7 @@ import {
     DialogTitle,
     FormGroup,
     Grid,
-    TextField,
+    TextField, Typography,
 } from "@mui/material";
 import React, {useContext, useEffect, useState} from "react";
 import {SAVE_ROOM} from "server/gql/room.gql";
@@ -90,7 +90,9 @@ const CreateRoomModal: React.FC<ICreateRoomModal> = ({room, open, propertyId, on
                 }}
             >
                 <FormGroup>
-                    <DialogTitle>Add room</DialogTitle>
+                    <DialogTitle>
+                        <Typography variant="h2">Add room</Typography>
+                    </DialogTitle>
                     <DialogContent>
 
                         <Grid

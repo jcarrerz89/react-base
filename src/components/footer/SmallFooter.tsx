@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 
 const FooterContainer = styled('footer')(({theme}) => ({
     backgroundColor: theme.palette.background.paper,
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
     width: '100%',
 }));

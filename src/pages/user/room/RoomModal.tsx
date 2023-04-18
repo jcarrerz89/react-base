@@ -1,12 +1,10 @@
 import DialogTitle from "@mui/material/DialogTitle";
 import SectionHeader from "../../../components/common/section/SectionHeader";
-import AppSubTitle from "../../../components/common/text/AppSubTitle";
 import SectionMenu from "../../../components/common/menu/SectionMenu";
 import CreateRoomModal from "./CreateRoomModal";
 import DeleteRoomModal from "./DeleteRoomModal";
 import DialogContent from "@mui/material/DialogContent";
 import Grid from "@mui/material/Grid";
-import AppElementTitle from "../../../components/common/text/AppElementTitle";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import CreateAnnouncementModal from "../announcement/CreateAnnouncementModal";
@@ -57,7 +55,7 @@ const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
         <Dialog open={open} fullWidth onClose={onDismiss}>
             <DialogTitle>
                 <SectionHeader>
-                    <AppSubTitle>{roomDetails.alias}</AppSubTitle>
+                    <h2>{roomDetails.alias}</h2>
                     <SectionMenu>
                         <SectionMenuItem icon={<EditIcon/>} label={"Edit"} description={"Edit room"} callback={onOpenEditRoomModal} />
                         <SectionMenuItem icon={<DeleteForever/>} label={"Delete"} description={"Delete room"} callback={onOpenDeleteRoomModal} />
@@ -68,7 +66,7 @@ const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
                 <Grid container rowSpacing={3}>
                     <Grid item container sm={6}>
                         <Grid item sm={12}>
-                            <AppElementTitle>㎡</AppElementTitle>
+                            <h3>㎡</h3>
                         </Grid>
                         <Grid item sm={12}>
                             {roomDetails.m2}
@@ -76,7 +74,7 @@ const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
                     </Grid>
                     <Grid item container sm={6}>
                         <Grid item sm={12}>
-                            <AppElementTitle>Max occupants</AppElementTitle>
+                            <h3>Max occupants</h3>
                         </Grid>
                         <Grid item sm={12}>
                             {roomDetails.maxOccupants}
@@ -84,7 +82,7 @@ const RoomModal:React.FC<IRoomModal> = ({room, open, onDismiss, onDelete}) => {
                     </Grid>
                     <Grid item container sm={12}>
                         <Grid item sm={12}>
-                            <AppElementTitle>Description</AppElementTitle>
+                            <h3>Description</h3>
                         </Grid>
                         <Grid item sm={12}>
                             {roomDetails.description}

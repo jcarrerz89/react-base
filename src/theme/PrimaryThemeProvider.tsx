@@ -1,12 +1,31 @@
 import React, {ReactNode} from 'react';
 import {ThemeProvider} from "@mui/material";
-
 import {createTheme} from '@mui/material/styles';
+// @ts-ignore
+import Monserrat from './../fonts/Montserrat/Montserrat-VariableFont_wght.ttf';
+import {Colors} from "./Colors";
 
-const PrimaryThemeProvider:React.FC<{children: ReactNode}> = ({children}) => {
-
-    const theme = createTheme({
+const PrimaryThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
+    const createLightTheme = () => createTheme({
+        components: {
+            MuiCssBaseline: {
+                styleOverrides: `
+                    @font-face {
+                        font-family: 'Monserrat';
+                        font-style: normal;
+                        font-display: swap;
+                        font-weight: 400;
+                        src: local('Monserrat'), local('Monserrat-Regular'), url(${Monserrat}) format('ttf');
+                        unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+                    }
+                `,
+            }
+        },
+        shape: {
+            borderRadius: 3,
+        },
         palette: {
+            mode: 'light',
             primary: {
                 main: '#1976d2',
             },
@@ -14,14 +33,13 @@ const PrimaryThemeProvider:React.FC<{children: ReactNode}> = ({children}) => {
                 main: '#dc004e',
             },
             background: {
-                paper: '#fff',
+                paper: 'rgb(255, 255, 255, 0.7)',
                 default: '#BBB',
             },
         },
-
         typography: {
-            fontFamily: 'Roboto, sans-serif',
-            fontSize: 16,
+            fontFamily: 'Monserrat, sans-serif',
+            fontSize: 12,
             fontWeightRegular: 400,
             fontWeightMedium: 500,
             fontWeightBold: 700,
@@ -29,35 +47,81 @@ const PrimaryThemeProvider:React.FC<{children: ReactNode}> = ({children}) => {
                 fontSize: '2.5rem',
                 fontWeight: 700,
                 lineHeight: 1.2,
+                textTransform: 'capitalize',
+                color: Colors.SECONDARY_TEXT
             },
             h2: {
-                fontSize: '2rem',
-                fontWeight: 700,
-                lineHeight: 1.2,
-            },
-            h3: {
                 fontSize: '1.5rem',
                 fontWeight: 700,
                 lineHeight: 1.2,
+                textTransform: 'capitalize',
+                color: Colors.SECONDARY_TEXT
+            },
+            h3: {
+                fontSize: '1rem',
+                fontWeight: 600,
+                lineHeight: 1.2,
+                textTransform: 'capitalize',
+                color: Colors.TERTIARY_TEXT,
+            },
+            h4: {
+                fontSize: '.9rem',
+                color: Colors.TERTIARY_TEXT,
+                fontWeight: 400
+            },
+            subtitle1: {
+                fontSize: '1rem',
+                fontWeight: 700,
+                lineHeight: 1.2,
+                textTransform: 'capitalize',
+                color: '#CCC',
+            },
+            subtitle2: {
+                fontSize: '.8rem',
+                fontWeight: 600,
+                lineHeight: 1,
+                color: Colors.TERTIARY_TEXT
             },
             body1: {
-                fontSize: '1rem',
                 fontWeight: 400,
-                lineHeight: 1.5,
+                lineHeight: 1,
             },
+            button: {
+                backgroundColor: "transparent",
+                fontWeight: 400,
+                lineHeight: 1,
+            },
+
         },
         transitions: {
             duration: {
-                shortest: 1,
-                shorter: 1,
-                short: 1,
-                standard: 2,
-                complex: 2,
-                enteringScreen: 2,
-                leavingScreen: 2,
+                shortest: 150,
+                shorter: 200,
+                short: 250,
+                // most basic recommended timing
+                standard: 300,
+                // this is to be used in complex animations
+                complex: 375,
+                // recommended when something is entering screen
+                enteringScreen: 225,
+                // recommended when something is leaving screen
+                leavingScreen: 195,
             },
-        }
+            easing: {
+                // This is the most common easing curve.
+                easeInOut: 'cubic-bezier(1.4, 0, 0.2, 1)',
+                // Objects enter the screen at full velocity from off-screen and
+                // slowly decelerate to a resting point.
+                easeOut: 'cubic-bezier(1.0, 0, 0.2, 1)',
+                // Objects leave the screen at full velocity. They do not decelerate when off-screen.
+                easeIn: 'cubic-bezier(1.4, 0, 1, 1)',
+                // The sharp curve is used by objects that may return to the screen at any time.
+                sharp: 'cubic-bezier(1.4, 0, 0.6, 1)',
+            },
+        },
     });
+
+    const theme = createLightTheme();
 
     return (
         <ThemeProvider theme={theme}>

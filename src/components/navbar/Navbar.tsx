@@ -5,27 +5,36 @@ import Container from '@mui/material/Container';
 import MenuUser from './User/MenuUser';
 import Logo from '../common/brand/Logo';
 
-const defaultStyle = {
-    backgroundColor: 'transparent',
-    fontColor: 'white',
-    padding: '1rem 2rem'
+const defaultBackgroundColor = 'transparent';
+const altBackgroundColor = 'rgba(0, 0, 0, .7)';
+
+const defaultFontColor = 'white';
+const altFontColor = 'black';
+
+const defaultPadding = '.5rem 1rem';
+
+type State = {
+    backgroundColor?: string,
+    fontColor?: string,
+    padding?: string
 }
 
-const Navbar: React.FC<{ fixed: boolean, minimize: boolean }> = ({ fixed, minimize }) => {
+const Navbar: React.FC<{ expandable: boolean }> = ({ expandable }) => {
 
-    const [state, setState] = useState({
-        collapse: false,
-        style: defaultStyle
-    });
+    const defaultState: State = {
+        backgroundColor: defaultBackgroundColor,
+        fontColor: defaultFontColor,
+        padding: defaultPadding
+    }
+
+    const [state, setState] = useState<State>(defaultState);
 
     useEffect(() => {
         const toggle = () => {
             let scrollPosition = window.pageYOffset;
 
-            if (!fixed) {
-                scrollPosition < 100 ?
-                    transparentMode() : whiteMode();
-            }
+            scrollPosition < 300 ?
+                transparentMode() : whiteMode();
         }
 
         window.addEventListener("scroll", toggle);
@@ -37,24 +46,20 @@ const Navbar: React.FC<{ fixed: boolean, minimize: boolean }> = ({ fixed, minimi
 
     const transparentMode = () => {
         setState({
-            collapse: false,
-            style: defaultStyle
+            ...state,
+            backgroundColor: defaultBackgroundColor,
         });
     }
 
     const whiteMode = () => {
         setState({
-            collapse: true,
-            style: {
-                backgroundColor: 'rgba(0, 0, 0, .7)',
-                fontColor: 'black',
-                padding: '0.1rem 2rem'
-            }
+            ...state,
+            backgroundColor: altBackgroundColor,
         });
     }
 
     return (
-        <AppBar position="fixed" style={state.style}>
+        <AppBar position="fixed" style={{backgroundColor: state.backgroundColor, color: state.fontColor, padding: state.padding, boxShadow: 'none'}}>
             <Container maxWidth="xl">
                 <Toolbar sx={{ 'justify-content': 'space-between'}}>
                     <Logo />

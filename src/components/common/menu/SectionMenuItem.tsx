@@ -1,5 +1,6 @@
 import React from "react";
-import {IconButton, MenuItem, Tooltip} from "@mui/material";
+import {MenuItem, Tooltip, Typography} from "@mui/material";
+import Button from "@mui/material/Button";
 
 interface ISectionMenuItem {
     icon: any,
@@ -12,9 +13,9 @@ const SectionMenuItem:React.FC<ISectionMenuItem> = ({icon, label, description, c
     return (
         <MenuItem key={label}>
             <Tooltip title={description} onClick={callback}>
-                <IconButton sx={{my: 2, color: "Black", display: "block"}}>
-                    {icon} {label}
-                </IconButton>
+                <Button variant="text" color="primary" startIcon={icon}>
+                    <Typography variant="button">{label}</Typography>
+                </Button>
             </Tooltip>
         </MenuItem>
     );

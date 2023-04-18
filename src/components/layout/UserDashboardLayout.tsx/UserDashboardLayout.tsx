@@ -4,24 +4,28 @@ import Box from "@mui/material/Box";
 import WhiteNavbar from "../../navbar/WhiteNavbar";
 import SmallFooter from "../../footer/SmallFooter";
 import UserMenu from "../../../pages/user/menu/UserMenu";
+import BackgroundCover from "assets/images/mountains.jpg";
 
 const UserDashboardContainer = styled('div')(() => ({
-    backgroundColor: "#FBFBFB",
-    width: '100%',
-    height: '100%'
+    width: '100hh',
+    height: '100vh',
+    backgroundImage: `url(${BackgroundCover})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no - repeat',
+    backgroundSize: 'cover'
 }));
 
 const UserDashboardLayout: React.FC<{ children: React.ReactNode }> = ({children}) => {
     return (
-        <UserDashboardContainer>
+        <UserDashboardContainer id={'test-id-name'}>
             <WhiteNavbar/>
             <Box sx={{display: "flex"}}>
                 <UserMenu/>
-                <Box component="main" sx={{flexGrow: 1, p: 3}}>
+                <Box id="dashboard-content" component="div" paddingX={5} sx={{overflow: 'auto'}}>
                     {children}
                 </Box>
             </Box>
-            <SmallFooter />
+            <SmallFooter/>
         </UserDashboardContainer>
     );
 };

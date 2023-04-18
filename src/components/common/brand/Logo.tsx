@@ -4,7 +4,7 @@ const Logo = () => {
     return <Toolbar>
         {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />*/}
         <Typography
-            variant="h6"
+            variant="h3"
             noWrap
             component="a"
             href="/"
@@ -21,7 +21,7 @@ const Logo = () => {
 
         {/*<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />*/}
         <Typography
-            variant="h5"
+            variant="h3"
             noWrap
             component="a"
             href=""

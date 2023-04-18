@@ -1,0 +1,10 @@
+
+export enum Colors {
+    PRIMARY_TEXT = '#202020',
+    SECONDARY_TEXT = '#0E6BA8',
+    TERTIARY_TEXT = '#505050',
+
+    BACKGROUND_CLEAR = '#FFF',
+
+    BACKGROUND_DARK = '#000',
+}

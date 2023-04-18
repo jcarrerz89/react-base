@@ -18,7 +18,7 @@ const SectionHeader:React.FC<ISectionHeader> = ({children}) => {
     }
 
 
-    return <Grid container justifyContent={'space-between'}>
+    return <Grid container justifyContent={'space-between'} marginBottom={2}>
         <Grid item sm={8}>
             {title}
         </Grid>

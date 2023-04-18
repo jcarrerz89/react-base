@@ -4,8 +4,8 @@ import Grid from "@mui/material/Grid";
 
 const SectionContainer:React.FC<{children: ReactNode}> = ({children}) => {
     return (
-        <Paper elevation={3}>
-            <Grid container style={{padding: 10}} marginBottom={3}>
+        <Paper elevation={1} >
+            <Grid container style={{paddingTop: 10, paddingLeft: 20, paddingRight: 10, paddingBottom: 20}} marginBottom={3}>
                 {children}
             </Grid>
         </Paper>

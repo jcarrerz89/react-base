@@ -1,7 +1,6 @@
 import AboutLayout from '../components/layout/AboutLayout/AboutLayout';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import AppSubTitle from '../components/common/text/AppSubTitle';
 
 const Contact = () => {
     return (
@@ -10,7 +9,7 @@ const Contact = () => {
                 <Grid container>
                     <Grid item xs={12}>
                         <div className="content">
-                            <AppSubTitle>Get in touch</AppSubTitle>
+                            <h2>Get in touch</h2>
                         </div>
                     </Grid>
                 </Grid>

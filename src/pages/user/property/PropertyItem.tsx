@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import { KeyboardArrowUp } from "@mui/icons-material";
-import { Collapse, Grid, IconButton } from "@mui/material";
+import {Avatar, Collapse, Grid, IconButton, Typography} from "@mui/material";
 import RoomListItem from "../room/RoomListItem";
 import Constants from "enum/constants";
-import AppSubTitle from "components/common/text/AppSubTitle";
 import {IPropertyType} from "../types/IPropertyType";
 import DeleteProperty from "./DeleteProperty";
 import SectionContainer from "../../../components/common/section/SectionContainer";
@@ -45,7 +44,7 @@ const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) =
     return (
         <SectionContainer>
             <SectionHeader>
-                <AppSubTitle>{property.alias}</AppSubTitle>
+                <Typography variant="h2">{property.alias}</Typography>
                 <IconButton aria-label="expand row" size="medium" onClick={() => setOpen(!open)} sx={{float: 'right'}}>
                     {open ? <KeyboardArrowUp /> : <KeyboardArrowUp />}
                 </IconButton>
@@ -56,20 +55,22 @@ const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) =
             </SectionHeader>
             <Grid item sm={12}>
                 <Collapse in={open} timeout="auto" unmountOnExit key={property.id}>
-                    <Grid container rowGap={2} padding={2} gap={10}>
-                        <Grid item sm={6}>
-                            <img
+                    <Grid container rowGap={2} padding={2} gap={5}>
+                        <Grid item sm={4}>
+                            <Avatar
                                 alt="property-cover-picture"
-                                style={{ width: "100%", borderRadius: 10 }}
+                                style={{ width: '12rem', height: '12rem' }}
                                 src={item.coverPicture || Constants.DEFAULT_PROPERTY_COVER_PICTURE}
                             />
                         </Grid>
-                        <Grid item sm={5}>
+                        <Grid item sm={7}>
                             <RoomListItem rooms={item.rooms} propertyId={item.id} />
                         </Grid>
                     </Grid>
                 </Collapse>
             </Grid>
+
+            {/* Property modals */}
             <CreatePropertyModal open={openEditPropertyModal} property={item} onSaveProperty={onUpdateProperty} onDismiss={onCloseEditPropertyModal}/>
             <DeleteProperty open={openDeletePropertyModal} property={item} onDelete={onDeleteProperty} onDismiss={onCloseDeletePropertyModal}/>
         </SectionContainer>

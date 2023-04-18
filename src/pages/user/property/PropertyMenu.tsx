@@ -1,8 +1,6 @@
-import { Box, Toolbar, Tooltip, IconButton } from '@mui/material';
+import { Box, Toolbar } from '@mui/material';
 import React from 'react';
-import AppSubTitle from '../../../components/common/text/AppSubTitle';
 import { Container } from '@mui/system';
-import CreatePropertyModal from './CreatePropertyModal';
 
 const PropertyMenu = () => {
     const create = () => {
@@ -12,7 +10,7 @@ const PropertyMenu = () => {
         <Container>
             <Toolbar>
                 <Box sx={{ flexGrow: 1}}>
-                    <AppSubTitle>Property</AppSubTitle>
+                    <h2>Property</h2>
                 </Box>
             </Toolbar>
         </Container>

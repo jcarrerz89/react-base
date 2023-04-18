@@ -1,8 +1,6 @@
 import AboutLayout from '../components/layout/AboutLayout/AboutLayout';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import AppSubTitle from '../components/common/text/AppSubTitle';
-import AppTextBlock from '../components/common/text/AppTextBlock';
 
 const About = () => {
     return (
@@ -11,34 +9,34 @@ const About = () => {
                 <Grid container>
                     <Grid item xs={12}>
                         <div className="content">
-                            <AppSubTitle>Why we built Blue Bells?</AppSubTitle>
-                                <AppTextBlock>Let's face it, who want to buy a house today?</AppTextBlock>
+                            <h2>Why we built Blue Bells?</h2>
+                            <p>Let's face it, who want to buy a house today?</p>
 
-                                <AppTextBlock>Society changes and our life styles cheanges along with it, and what used to be
-                                    the goal of a lifete on previous generations, it is not anymore. 
-                                    
-                                    Price when up. When whant's to assume a 30 years mortage today? 
-                                    Not when is so funny to travel and to move around, and work in remote! 
-                                </AppTextBlock>
-                                <AppTextBlock>
-                                    We live in globilized world, in a digital era, and we should maximize
-                                    the opportunieties that's bringing to us. </AppTextBlock>
+                            <p>Society changes and our life styles changes along with it, and what used to be
+                                the goal of a lifetime of the previous generations, it is not anymore.
 
-                                <AppTextBlock> And yet, find a place to stay for long terms is not an easy thing. Is not 
-                                    about finding accommodation, is find a new place to call home. That's what 
-                                    Blue Bells is for. 
-                                </AppTextBlock>
+                                Price when up. When want's to assume a 30 years mortgage today?
+                                Not when is so funny to travel and to move around, and work in remote!
+                            </p>
+                            <p>
+                                We live in globalised world, in a digital era, and we should maximize
+                                the opportunities that's bringing to us. </p>
 
-                                <AppTextBlock> We build Blue Bells to make your
-                                    experience of looking for a new home, something incredible easy.</AppTextBlock>
+                            <p> And yet, find a place to stay for long terms is not an easy thing. Is not
+                                about finding accommodation, is find a new place to call home. That's what
+                                Blue Bells is for.
+                            </p>
 
-                                <AppTextBlock>Either if you visitng a city for a few months and with a single bag, 
-                                    or you are bringing you own bed with you and moving houses around. 
-                                    Either if you are moving to a country and you're struggling
-                                    to speak the language, there is always someone looking to share his 
-                                    place with the right person. </AppTextBlock>
+                            <p> We build Blue Bells to make your
+                                experience of looking for a new home, something incredible easy.</p>
 
-                                <AppTextBlock>Let's find it!</AppTextBlock>
+                            <p>Either if you visiting a city for a few months and with a single bag,
+                                or you are bringing you own bed with you and moving houses around.
+                                Either if you are moving to a country and you're struggling
+                                to speak the language, there is always someone looking to share his
+                                place with the right person. </p>
+
+                            <p>Let's find it!</p>
                         </div>
                     </Grid>
                 </Grid>

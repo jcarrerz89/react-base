@@ -1,7 +1,6 @@
 import React from 'react';
 import SectionContainer from "../../components/common/section/SectionContainer";
 import SectionHeader from "../../components/common/section/SectionHeader";
-import AppSubTitle from "../../components/common/text/AppSubTitle";
 import UserDashboardLayout from "../../components/layout/UserDashboardLayout.tsx/UserDashboardLayout";
 
 const UserInbox = () => {
@@ -9,7 +8,7 @@ const UserInbox = () => {
         <UserDashboardLayout>
             <SectionContainer>
                 <SectionHeader>
-                    <AppSubTitle>Inbox</AppSubTitle>
+                    <h2>Inbox</h2>
                 </SectionHeader>
             </SectionContainer>
         </UserDashboardLayout>

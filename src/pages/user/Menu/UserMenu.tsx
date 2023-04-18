@@ -102,93 +102,91 @@ const UserMenu: React.FC = () => {
 
     return (
 
-        <Paper elevation={3} style={{marginTop: 24}}>
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
-                    <IconButton onClick={open ? handleDrawerClose : handleDrawerOpen}>
-                        {open ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
-                    </IconButton>
-                </DrawerHeader>
-                <Divider/>
-                <List>
-                    <ListItem key={'inbox'} disablePadding sx={{display: 'block'}}>
-                        <ListItemButton href='/profile/inbox'
-                                        sx={{
-                                            minHeight: 48,
-                                            justifyContent: open ? 'initial' : 'center',
-                                            px: 2.5,
-                                        }}>
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}>
-                                <EmailIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Inbox" sx={{opacity: open ? 1 : 0}}/>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'profile'} disablePadding sx={{display: 'block'}}>
-                        <ListItemButton href='/profile'
-                                        sx={{
-                                            minHeight: 48,
-                                            justifyContent: open ? 'initial' : 'center',
-                                            px: 2.5,
-                                        }}>
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}>
-                                <PersonIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Profile" sx={{opacity: open ? 1 : 0}}/>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'property'} disablePadding sx={{display: 'block'}}>
-                        <ListItemButton href='/profile/properties'
-                                        sx={{
-                                            minHeight: 48,
-                                            justifyContent: open ? 'initial' : 'center',
-                                            px: 2.5,
-                                        }}>
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}>
-                                <NightShelterIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Property" sx={{opacity: open ? 1 : 0}}/>
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-                <Divider/>
-                <List>
-                    <ListItem key="Extension" disablePadding sx={{display: 'block'}}>
-                        <ListItemButton href="/profile/settings"
+        <Drawer variant="permanent" open={open}>
+            <DrawerHeader>
+                <IconButton onClick={open ? handleDrawerClose : handleDrawerOpen}>
+                    {open ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
+                </IconButton>
+            </DrawerHeader>
+            <Divider/>
+            <List>
+                <ListItem key={'inbox'} disablePadding sx={{display: 'block'}}>
+                    <ListItemButton href='/profile/inbox'
+                                    sx={{
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
+                                    }}>
+                        <ListItemIcon
                             sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
+                                minWidth: 0,
+                                mr: open ? 3 : 'auto',
+                                justifyContent: 'center',
                             }}>
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}>
-                                <ExtensionIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Settings" sx={{opacity: open ? 1 : 0}}/>
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-            </Drawer>
-        </Paper>
+                            <EmailIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Inbox" sx={{opacity: open ? 1 : 0}}/>
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key={'profile'} disablePadding sx={{display: 'block'}}>
+                    <ListItemButton href='/profile'
+                                    sx={{
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
+                                    }}>
+                        <ListItemIcon
+                            sx={{
+                                minWidth: 0,
+                                mr: open ? 3 : 'auto',
+                                justifyContent: 'center',
+                            }}>
+                            <PersonIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Profile" sx={{opacity: open ? 1 : 0}}/>
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key={'property'} disablePadding sx={{display: 'block'}}>
+                    <ListItemButton href='/profile/properties'
+                                    sx={{
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
+                                    }}>
+                        <ListItemIcon
+                            sx={{
+                                minWidth: 0,
+                                mr: open ? 3 : 'auto',
+                                justifyContent: 'center',
+                            }}>
+                            <NightShelterIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Property" sx={{opacity: open ? 1 : 0}}/>
+                    </ListItemButton>
+                </ListItem>
+            </List>
+            <Divider/>
+            <List>
+                <ListItem key="Extension" disablePadding sx={{display: 'block'}}>
+                    <ListItemButton href="/profile/settings"
+                                    sx={{
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
+                                    }}>
+                        <ListItemIcon
+                            sx={{
+                                minWidth: 0,
+                                mr: open ? 3 : 'auto',
+                                justifyContent: 'center',
+                            }}>
+                            <ExtensionIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Settings" sx={{opacity: open ? 1 : 0}}/>
+                    </ListItemButton>
+                </ListItem>
+            </List>
+        </Drawer>
     );
 }
 

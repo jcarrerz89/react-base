@@ -3,7 +3,7 @@ import {Avatar, Grid, Skeleton, Typography} from "@mui/material";
 import {UserContext} from "../../../context/UserContextProvider";
 import {useQuery} from "@apollo/client";
 import {GET_PROFILE} from "../../../server/gql/profile.gql";
-import UserProfileModal from "./UserProfileModal";
+import UserProfileContactModal from "./UserProfileContactModal";
 import {IProfileType} from "../types/IProfileType";
 import SectionMenu from "../../../components/common/menu/SectionMenu";
 import SectionContainer from "../../../components/common/section/SectionContainer";
@@ -11,45 +11,43 @@ import SectionHeader from "../../../components/common/section/SectionHeader";
 import Characters from "../../../enum/char";
 import SectionMenuItem from "../../../components/common/menu/SectionMenuItem";
 import EditIcon from "@mui/icons-material/Edit";
+import UserProfileAboutMeModal from "./UserProfileAboutMeModal";
+import UserProfilePersonalModal from "./UserProfilePersonalModal";
 
 const UserDatails: React.FC = () => {
-    const initProfile: IProfileType = {
-        id: 0,
-        name: String(Characters.EMPTY),
-        surname: String(Characters.EMPTY),
-        nationality: String(Characters.EMPTY),
-        dateOfBirth: String(Characters.EMPTY),
-        image: String(Characters.EMPTY),
-        description: String(Characters.EMPTY),
-        createdAt: new Date(),
-        updatedAt: new Date()
-    }
-    const [profile, setProfile] = useState<IProfileType | null>(initProfile);
-    const [openEditUserProfileModal, setOpenEditUserProfileModal] = useState<boolean>(false);
+    const [profile, setProfile] = useState<IProfileType | null>(null);
     const userContext = useContext(UserContext);
 
-    const onOpenEditUserProfileModal = () => {
-        setOpenEditUserProfileModal(true);
+    const [openEditUserProfileContactModal, setOpenEditUserProfileContactModal] = useState<boolean>(false);
+    const onOpenEditUserProfileContactModal = () => {
+        setOpenEditUserProfileContactModal(true);
     }
-    const onCloseEditUserProfileModal = () => {
-        setOpenEditUserProfileModal(false);
+    const onCloseEditUserProfileContactModal = () => {
+        setOpenEditUserProfileContactModal(false);
+    }
+
+    const [openEditUserProfilePersonalModal, setOpenEditUserProfilePersonalModal] = useState<boolean>(false);
+    const onOpenEditUserPersonalModal = () => {
+        setOpenEditUserProfilePersonalModal(true);
+    }
+    const onCloseEditUserPersonalModal = () => {
+        setOpenEditUserProfilePersonalModal(false);
+    }
+
+    const [openEditUserProfileAboutMeModal, setOpenEditUserProfileAboutMeModal] = useState<boolean>(false);
+    const onOpenEditUserProfileAboutMeModal = () => {
+        setOpenEditUserProfileAboutMeModal(true);
+    }
+    const onCloseEditUserProfileAboutMeModal = () => {
+        setOpenEditUserProfileAboutMeModal(false);
     }
 
     useQuery(GET_PROFILE, {
         onCompleted: (data) => {
             if (data.getUserProfile) {
-                const existingProfile: IProfileType = {
-                    id: data.getUserProfile.id,
-                    name: data.getUserProfile.name,
-                    surname: data.getUserProfile.surname,
-                    nationality: data.getUserProfile.nationality,
-                    dateOfBirth: data.getUserProfile.dateOfBirth,
-                    image: data.getUserProfile.image,
-                    description: data.getUserProfile.description,
-                    createdAt: data.getUserProfile.createdAt,
-                    updatedAt: data.getUserProfile.updatedAt
-                }
-                setProfile(existingProfile);
+                const profile = {}
+                Object.assign(profile, data.getUserProfile);
+                setProfile(profile as IProfileType);
             }
         },
         onError: (error) => {
@@ -57,8 +55,11 @@ const UserDatails: React.FC = () => {
         }
     });
 
-    const onUpdateProfile = (profile: IProfileType) => {
-        setProfile(profile);
+    const onUpdateProfile = (updatedProfile: IProfileType) => {
+        const object = {};
+        Object.assign(object, profile);
+        Object.assign(object, updatedProfile);
+        setProfile(object as IProfileType);
     }
 
     const skeleton = <Skeleton variant="text" width={210} height={118}/>
@@ -81,7 +82,7 @@ const UserDatails: React.FC = () => {
                         <Typography variant="h2">Contact</Typography>
                         <SectionMenu>
                             <SectionMenuItem icon={<EditIcon/>} label="Edit" description="Edit profile"
-                                             callback={onOpenEditUserProfileModal}/>
+                                             callback={onOpenEditUserProfileContactModal}/>
                         </SectionMenu>
                     </SectionHeader>
                     <Grid container rowGap={3}>
@@ -108,7 +109,7 @@ const UserDatails: React.FC = () => {
                                 <Typography variant="h4">Phone number</Typography>
                             </Grid>
                             <Grid item sm={6}>
-                                {/*{profile ? <Typography variant="body1">{userContext.user?.email}</Typography> : skeleton}*/}
+                                {profile ? <Typography variant="body1">{profile.phoneNumber}</Typography> : skeleton}
                             </Grid>
                         </Grid>
                         <Grid item container sm={12}>
@@ -116,7 +117,7 @@ const UserDatails: React.FC = () => {
                                 <Typography variant="h4">Website</Typography>
                             </Grid>
                             <Grid item sm={6}>
-                                {/*{profile ? <Typography variant="body1">{userContext.user?.email}</Typography> : skeleton}*/}
+                                {profile ? <Typography variant="body1">{profile.website}</Typography> : skeleton}
                             </Grid>
                         </Grid>
                     </Grid>
@@ -128,7 +129,7 @@ const UserDatails: React.FC = () => {
                         <Typography variant="h2">Personal details</Typography>
                         <SectionMenu>
                             <SectionMenuItem icon={<EditIcon/>} label="Edit" description="Edit profile"
-                                             callback={onOpenEditUserProfileModal}/>
+                                             callback={onOpenEditUserPersonalModal}/>
                         </SectionMenu>
                     </SectionHeader>
                     <Grid container rowGap={3}>
@@ -165,9 +166,9 @@ const UserDatails: React.FC = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <UserProfileModal open={openEditUserProfileModal} profile={profile}
-                                      onUpdateProfile={onUpdateProfile}
-                                      onDismiss={onCloseEditUserProfileModal}/>
+                    <UserProfileContactModal open={openEditUserProfileContactModal} profile={profile}
+                                             onUpdateProfile={onUpdateProfile}
+                                             onDismiss={onCloseEditUserProfileContactModal}/>
                 </SectionContainer>
             </Grid>
             <Grid item sm={6}>
@@ -176,7 +177,7 @@ const UserDatails: React.FC = () => {
                         <Typography variant="h2">About me</Typography>
                         <SectionMenu>
                             <SectionMenuItem icon={<EditIcon/>} label="Edit" description="Edit profile"
-                                             callback={onOpenEditUserProfileModal}/>
+                                             callback={onOpenEditUserProfileAboutMeModal}/>
                         </SectionMenu>
                     </SectionHeader>
                     <Grid container rowGap={3}>
@@ -185,7 +186,7 @@ const UserDatails: React.FC = () => {
                                 <Typography variant="h4">Occupation</Typography>
                             </Grid>
                             <Grid item sm={6}>
-                                {/*{profile ? <Typography variant="body1">{profile.name}</Typography> : skeleton}*/}
+                                {profile ? <Typography variant="body1">{profile.occupation}</Typography> : skeleton}
                             </Grid>
                         </Grid>
                         <Grid item container sm={12}>
@@ -197,11 +198,18 @@ const UserDatails: React.FC = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <UserProfileModal open={openEditUserProfileModal} profile={profile}
-                                      onUpdateProfile={onUpdateProfile}
-                                      onDismiss={onCloseEditUserProfileModal}/>
                 </SectionContainer>
             </Grid>
+
+            <UserProfileContactModal open={openEditUserProfileContactModal} profile={profile}
+                                     onUpdateProfile={onUpdateProfile}
+                                     onDismiss={onCloseEditUserProfileContactModal}/>
+            <UserProfileAboutMeModal open={openEditUserProfileAboutMeModal} profile={profile}
+                                     onUpdateProfile={onUpdateProfile}
+                                     onDismiss={onCloseEditUserProfileAboutMeModal}/>
+            <UserProfilePersonalModal open={openEditUserProfilePersonalModal} profile={profile}
+                                      onUpdateProfile={onUpdateProfile}
+                                      onDismiss={onCloseEditUserPersonalModal}/>
         </Grid>
     )
 }

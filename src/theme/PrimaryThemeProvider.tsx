@@ -45,7 +45,7 @@ const PrimaryThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => 
                             width: '15ch',
                             backgroundColor: Colors.BACKGROUND_CLEAR
                         }
-                    }
+                    },
                 }
             },
         },

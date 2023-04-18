@@ -4,6 +4,9 @@ export interface IProfileType {
     surname?: string;
     nationality?: string;
     dateOfBirth?: string;
+    phoneNumber?: string;
+    website?: string;
+    occupation?: string;
     description?: string;
     image?: string;
     createdAt?: Date;

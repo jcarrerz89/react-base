@@ -19,17 +19,18 @@ interface IUserProfileModal {
     onDismiss: () => void
 }
 
-const UserProfileModal: React.FC<IUserProfileModal> = ({open, profile, onUpdateProfile, onDismiss}) => {
+type UserProfilePersonalType = {
+    name?: string,
+    surname?: string,
+    dateOfBirth?: string,
+    nationality?: string
+}
+
+const UserProfileContactModal: React.FC<IUserProfileModal> = ({open, profile, onUpdateProfile, onDismiss}) => {
 
     const progressBar = useContext(LinearProgressBarContext);
 
-    const [profileData, setProfileData] = useState({
-        name: profile ? profile.name : String(Characters.EMPTY),
-        surname: profile ? profile.surname : String(Characters.EMPTY),
-        dateOfBirth: profile ? profile.dateOfBirth : String(Characters.EMPTY),
-        nationality: profile ? profile.nationality : String(Characters.EMPTY),
-        description: profile ? profile.description : String(Characters.EMPTY)
-    });
+    const [profileData, setProfileData] = useState({} as UserProfilePersonalType);
 
     useEffect(() => {
         if (profile) {
@@ -38,7 +39,6 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({open, profile, onUpdateP
                 surname: profile.surname,
                 dateOfBirth: profile.dateOfBirth,
                 nationality: profile.nationality,
-                description: profile.description
             })
         }
     }, [profile]);
@@ -51,9 +51,6 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({open, profile, onUpdateP
                 surname: data.updateProfile.surname,
                 dateOfBirth: data.updateProfile.dateOfBirth,
                 nationality: data.updateProfile.nationality,
-                description: data.updateProfile.description,
-                createdAt: data.updateProfile.updatedAt,
-                updatedAt: data.updateProfile.createdAt
             }
 
             onUpdateProfile(updatedProfile);
@@ -141,20 +138,6 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({open, profile, onUpdateP
                                            }}
                                 />
                             </Grid>
-                            <Grid item sm={12}>
-                                <TextField label="About me"
-                                           variant="outlined"
-                                           value={profileData.description}
-                                           type="te"
-                                           fullWidth
-                                           onChange={(e) => {
-                                               setProfileData({
-                                                   ...profileData,
-                                                   description: e.target.value
-                                               });
-                                           }}
-                                />
-                            </Grid>
                         </Grid>
                     </DialogContent>
                     <DialogActions>
@@ -172,4 +155,4 @@ const UserProfileModal: React.FC<IUserProfileModal> = ({open, profile, onUpdateP
     );
 };
 
-export default UserProfileModal;
+export default UserProfileContactModal;

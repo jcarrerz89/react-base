@@ -4,12 +4,19 @@ import {gql} from "@apollo/client";
 export const UPDATE_PROFILE = gql(`
     mutation editProfile($request: ProfileInputType!) {
         updateProfile(request: $request) {
-            name, 
-            surname,
-            dateOfBirth,
-            nationality,
-            description,
+            id
+            name
+            surname
+            dateOfBirth
+            nationality
+            occupation
+            phoneNumber
+            website
             image
+            description
+            createdAt
+            updatedAt
+            deletedAt
         }
     }
 `);
@@ -22,6 +29,9 @@ export const GET_PROFILE = gql`
             surname
             dateOfBirth
             nationality
+            occupation
+            phoneNumber
+            website
             image
             description
             createdAt

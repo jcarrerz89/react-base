@@ -50,7 +50,7 @@ const PropertyItem: React.FC<IPropertyItem> = ({ property, onDeleteProperty }) =
                 </IconButton>
                 <SectionMenu>
                     <SectionMenuItem icon={<EditIcon />} label={'edit'} description={'Edit property'} callback={onOpenEditPropertyModal} />
-                    <SectionMenuItem icon={<DeleteForeverIcon />} label={'edit'} description={'Edit property'} callback={onOpenDeletePropertyModal} />
+                    <SectionMenuItem icon={<DeleteForeverIcon />} label={'delete'} description={'Delete property'} callback={onOpenDeletePropertyModal} />
                 </SectionMenu>
             </SectionHeader>
             <Grid item sm={12}>

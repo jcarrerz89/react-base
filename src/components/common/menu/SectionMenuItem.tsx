@@ -11,7 +11,7 @@ interface ISectionMenuItem {
 
 const SectionMenuItem:React.FC<ISectionMenuItem> = ({icon, label, description, callback}) => {
     return (
-        <MenuItem key={label}>
+        <MenuItem key={label} dense>
             <Tooltip title={description} onClick={callback}>
                 <Button variant="text" color="primary" startIcon={icon}>
                     <Typography variant="button">{label}</Typography>

@@ -38,11 +38,6 @@ const SectionMenu: React.FC<ISectionMenu> = ({children}) => {
             open={open}
             onClose={() => {
                 setOpen(false);
-            }}
-            PaperProps={{
-                style: {
-                    width: '25ch',
-                },
             }}>
 
             {items.map((item) => {

@@ -91,7 +91,7 @@ const CreateRoomModal: React.FC<ICreateRoomModal> = ({room, open, propertyId, on
             >
                 <FormGroup>
                     <DialogTitle>
-                        <Typography variant="h2">Add room</Typography>
+                        <Typography>Add room</Typography>
                     </DialogTitle>
                     <DialogContent>
 

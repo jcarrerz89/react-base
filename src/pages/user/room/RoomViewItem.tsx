@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {IRoomType} from "../types/IRoomType";
-import {Avatar, Box, ImageListItem, ImageListItemBar, Typography} from "@mui/material";
+import {Avatar, Typography} from "@mui/material";
 import Constants from "../../../enum/constants";
 import RoomModal from "./RoomModal";
 import Grid from "@mui/material/Grid";
@@ -13,7 +13,7 @@ interface IRoomDetails {
 const RoomViewItem: React.FC<IRoomDetails> = ({room, onDelete}) => {
 
     const [open, setOpen] = useState(false);
-    const [roomDetails, setRoomDetails] = useState<IRoomType>(room);
+    const [roomDetails] = useState<IRoomType>(room);
     const onOpen = () => {
         setOpen(true);
     }

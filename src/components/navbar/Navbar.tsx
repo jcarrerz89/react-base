@@ -9,7 +9,6 @@ const defaultBackgroundColor = 'transparent';
 const altBackgroundColor = 'rgba(0, 0, 0, .7)';
 
 const defaultFontColor = 'white';
-const altFontColor = 'black';
 
 const defaultPadding = '.5rem 1rem';
 

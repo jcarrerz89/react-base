@@ -6,7 +6,7 @@ import {
     DialogTitle,
     FormGroup,
     Grid,
-    TextField, Typography,
+    TextField
 } from "@mui/material";
 import React, {useContext, useEffect, useState} from "react";
 import {SAVE_PROPERTY} from "../../../server/gql/property.gql";

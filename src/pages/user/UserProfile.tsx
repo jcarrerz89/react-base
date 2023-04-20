@@ -1,5 +1,5 @@
 import React from 'react';
-import UserDashboardLayout from '../../components/layout/userDashboardLayout.tsx/UserDashboardLayout';
+import UserDashboardLayout from '../../components/layout/userDashboardLayout/UserDashboardLayout';
 import UserDetails from "./profile/UserProfileDetails";
 
 const UserProfile: React.FC = () => {

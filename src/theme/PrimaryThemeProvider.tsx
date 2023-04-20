@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 import {ThemeProvider} from "@mui/material";
 import {createTheme} from '@mui/material/styles';
 // @ts-ignore
-import Monserrat from './../fonts/Montserrat/Montserrat-VariableFont_wght.ttf';
+import Monserrat from '../fonts/montserrat/Montserrat-VariableFont_wght.ttf';
 import {Colors} from "./Colors";
 
 const PrimaryThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {

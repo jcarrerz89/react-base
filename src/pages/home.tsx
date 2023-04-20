@@ -1,5 +1,5 @@
 import Container from '@mui/material/Container'
-import HomeLayout from '../components/layout/HomeLayout/HomeLayout'
+import HomeLayout from '../components/layout/homeLayout/HomeLayout'
 import {GET_LATEST_ANNOUNCEMENTS} from "../server/gql/announcement.gql";
 import {useQuery} from "@apollo/client";
 import React, {useState} from "react";

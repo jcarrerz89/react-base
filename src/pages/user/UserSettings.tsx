@@ -1,4 +1,4 @@
-import UserDashboardLayout from "../../components/layout/UserDashboardLayout.tsx/UserDashboardLayout";
+import UserDashboardLayout from "../../components/layout/userDashboardLayout.tsx/UserDashboardLayout";
 import SectionContainer from "../../components/common/section/SectionContainer";
 import SectionHeader from "../../components/common/section/SectionHeader";
 

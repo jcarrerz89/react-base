@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import MenuUser from './User/MenuUser';
+import MenuUser from './user/MenuUser';
 import Logo from '../common/brand/Logo';
 
 const defaultBackgroundColor = 'transparent';

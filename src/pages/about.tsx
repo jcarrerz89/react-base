@@ -1,4 +1,4 @@
-import AboutLayout from '../components/layout/AboutLayout/AboutLayout';
+import AboutLayout from '../components/layout/aboutLayout/AboutLayout';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 

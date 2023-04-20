@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src/",
+    "baseUrl": "./src",
     "paths": {
-      "@server": ["server/*"],
-      "@enum": ["enum/*"],
-      "@components": ["src/components/*"]
+      "@enum/*": ["enum/*"],
+      "@pages/*": ["pages/*"],
+      "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
+      "@server/*": ["server/*"],
+      "@context/*": ["context/*"],
     },
     "target": "es5",
     "lib": [
@@ -29,6 +32,5 @@
   "include": [
     "src",
     "src/enum"
-  ],
-  
+  ]
 }

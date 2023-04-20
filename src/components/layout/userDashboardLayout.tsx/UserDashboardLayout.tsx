@@ -1,10 +1,10 @@
 import React from "react";
 import {styled} from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import WhiteNavbar from "../../navbar/WhiteNavbar";
-import SmallFooter from "../../footer/SmallFooter";
-import UserMenu from "../../../pages/user/menu/UserMenu";
-import BackgroundCover from "assets/images/mountains.jpg";
+import WhiteNavbar from "@components/navbar/WhiteNavbar";
+import SmallFooter from "@components/footer/SmallFooter";
+import UserMenu from "@pages/user/menu/UserMenu";
+import BackgroundCover from "@assets/images/mountains.jpg";
 
 const UserDashboardContainer = styled('div')(() => ({
     width: '100hh',

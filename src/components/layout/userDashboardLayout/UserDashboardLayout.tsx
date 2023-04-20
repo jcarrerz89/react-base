@@ -3,7 +3,7 @@ import {styled} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import WhiteNavbar from "@components/navbar/WhiteNavbar";
 import SmallFooter from "@components/footer/SmallFooter";
-import UserMenu from "@pages/user/menu/UserMenu";
+// import UserMenu from "@pages/user/menu/userMenu";
 import BackgroundCover from "@assets/images/mountains.jpg";
 
 const UserDashboardContainer = styled('div')(() => ({
@@ -20,7 +20,7 @@ const UserDashboardLayout: React.FC<{ children: React.ReactNode }> = ({children}
         <UserDashboardContainer id={'test-id-name'}>
             <WhiteNavbar/>
             <Box sx={{display: "flex"}}>
-                <UserMenu/>
+                {/*<UserMenu/>*/}
                 <Box id="dashboard-content" component="div" paddingX={5} sx={{overflow: 'auto'}}>
                     {children}
                 </Box>

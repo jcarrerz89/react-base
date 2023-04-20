@@ -19,6 +19,7 @@ export type UserType = {
     id: number
     username: string
     email: string
+    options: object
 }
 
 type UserContextType = {
@@ -46,6 +47,7 @@ export const UserContextProvider = ({children}: UserContextProviderProps) => {
                     id: data.helloUser.id,
                     username: data.helloUser.username,
                     email: data.helloUser.email,
+                    options: data.helloUser.options,
                 };
 
                 setUser(user);

@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Characters from "../../../enum/char";
 import {Button, DialogTitle, FormGroup} from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";

@@ -1,6 +1,13 @@
+import {Avatar} from "@mui/material";
+import React from "react";
+import Icon from "../../../assets/images/favicon-192x192.png";
 
 const Favicon = () => {
-    return <img src="/favicon.png" width={30} height={30} />
+    return<Avatar
+        alt="property-cover-picture"
+        style={{ width: '4rem', height: '4rem' }}
+        src={Icon}
+    />
 }
 
 export default Favicon

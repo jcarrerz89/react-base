@@ -29,6 +29,13 @@ const PrimaryThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => 
                     },
                 }
             },
+            MuiDialogActions: {
+                defaultProps: {
+                    style: {
+                        padding: '1.5rem'
+                    }
+                }
+            },
             MuiMenu: {
                 defaultProps: {
                     transformOrigin: {
@@ -48,6 +55,23 @@ const PrimaryThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => 
                     },
                 }
             },
+            MuiButton: {
+                defaultProps: {
+                    style: {
+                        paddingLeft: '1.2rem',
+                        paddingRight: '1.2rem',
+                        paddingTop: '.3rem',
+                        paddingBottom: '.3rem',
+                    },
+                }
+            },
+            MuiAvatar: {
+                defaultProps: {
+                    style: {
+                        margin: '0 auto'
+                    }
+                }
+            }
         },
         shape: {
             borderRadius: 3,
@@ -55,11 +79,15 @@ const PrimaryThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => 
         palette: {
             mode: 'light',
             primary: {
-                main: '#1976d2',
+                main: Colors.PRIMARY,
             },
             secondary: {
-                main: '#dc004e',
+                main: Colors.QUATERNARY,
             },
+            warning: {
+                main: Colors.SECONDARY,
+            },
+
             background: {
                 paper: 'rgb(255, 255, 255, 0.7)',
                 default: '#BBB',

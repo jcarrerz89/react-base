@@ -4,10 +4,11 @@ import Container from '@mui/material/Container'
 import {styled} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import {Button, Typography} from '@mui/material'
-import Logo from '../common/brand/Logo'
+import Favicon from "../common/brand/Favicon";
+import {Colors} from "../../theme/Colors";
 
 const FooterContainer = styled(Paper)(({theme}) => ({
-    backgroundColor: '#05204A',
+    backgroundColor: Colors.SECONDARY_TEXT,
     padding: '3rem 3rem 1rem 3rem',
     color: '#FFF'
 }));
@@ -18,7 +19,7 @@ const Footer = () => {
             <Container fixed>
                 <Grid container spacing={6}>
                     <Grid item md={4} xs={12}>
-                        <Logo />
+                        <Favicon />
                     </Grid>
                     <Grid item md={4}>
                         <Stack spacing={3}>

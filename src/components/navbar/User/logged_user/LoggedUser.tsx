@@ -1,10 +1,11 @@
-import { Alert, Button, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
-import React from "react";
-import { useCookies } from 'react-cookie';
-import { UserContext } from "../../../../context/UserContextProvider";
+import {Alert, Button, IconButton, Menu, MenuItem, Toolbar} from "@mui/material";
+import React, {useState} from "react";
+import {useCookies} from 'react-cookie';
+import {UserContext} from "../../../../context/UserContextProvider";
 import Box from "@mui/material/Box";
 import MenuIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
+import OnBoardingModal from "../../../../pages/onboarding/OnBoardingModal";
 
 const LoggedUser: React.FC = () => {
 
@@ -21,9 +22,17 @@ const LoggedUser: React.FC = () => {
         setAnchorElNav(null);
     };
 
+    const [openOnboarding, setOpenOnboarding] = useState(false);
+    const onOpenOnboarding = () => {
+        setOpenOnboarding(true);
+    }
+    const onCloseOnboarding = () => {
+        setOpenOnboarding(false);
+    }
+
     const logout = () => {
         userContext.setUser(null);
-        removeCookie('jwt-auth-token', { path: '/', domain: 'localhost' });
+        removeCookie('jwt-auth-token', {path: '/', domain: 'localhost'});
 
         return (
             <Alert severity="success">
@@ -37,17 +46,24 @@ const LoggedUser: React.FC = () => {
             {data => {
                 return (
                     <Toolbar>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                             <Button
-                                href="/profile"
-                                sx={{ my: 2, display: 'block' }}>
+                                variant="contained"
+                                color="secondary"
+                                onClick={onOpenOnboarding}>
+                                Set up
+                            </Button>
+                            <Button
+                                variant="text"
+                                href="/profile">
                                 {data?.user?.username}
                             </Button>
-                            <Button sx={{ my: 2, display: 'block' }} onClick={logout}>
-                                    <LogoutIcon />
+                            <Button
+                                variant="text" onClick={logout}>
+                                <LogoutIcon/>
                             </Button>
                         </Box>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
@@ -55,7 +71,7 @@ const LoggedUser: React.FC = () => {
                                 aria-haspopup="true"
                                 onClick={handleOpenNavMenu}
                                 color="inherit">
-                                <MenuIcon />
+                                <MenuIcon/>
                             </IconButton>
                             <Menu
                                 id="logged-user-menu"
@@ -72,18 +88,18 @@ const LoggedUser: React.FC = () => {
                                 open={Boolean(anchorElNav)}
                                 onClose={handleCloseNavMenu}
                                 sx={{
-                                    display: { xs: 'block', md: 'none' },
+                                    display: {xs: 'block', md: 'none'},
                                 }}>
-
                                 <MenuItem>
                                     Profile
                                 </MenuItem>
                                 <MenuItem onClick={logout}>
-                                    <LogoutIcon />
+                                    <LogoutIcon/>
                                 </MenuItem>
                             </Menu>
                         </Box>
 
+                        <OnBoardingModal open={openOnboarding} onDismiss={onCloseOnboarding} />
                     </Toolbar>
                 )
             }}

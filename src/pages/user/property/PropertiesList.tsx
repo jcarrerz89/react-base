@@ -9,7 +9,6 @@ import {IPropertyType} from "../types/IPropertyType";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
 
 const PropertiesList = () => {
-
     const aux: IPropertyType[] = [];
     const [properties, setProperties] = useState(aux);
     const [openCreateProperty, setOpenCreateProperty] = useState(false);

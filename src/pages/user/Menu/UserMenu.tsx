@@ -15,10 +15,8 @@ import EmailIcon from '@mui/icons-material/Email';
 import NightShelterIcon from '@mui/icons-material/NightShelter';
 import PersonIcon from '@mui/icons-material/Person';
 import ExtensionIcon from '@mui/icons-material/Extension';
-import {Paper} from "@mui/material";
 
 const drawerWidth = 240;
-
 const openedMixin = (theme: Theme): CSSObject => ({
     position: 'relative',
     width: drawerWidth,
@@ -51,9 +49,9 @@ const DrawerHeader = styled('div')(({theme}) => ({
     ...theme.mixins.toolbar,
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-    open?: boolean;
-}
+// interface AppBarProps extends MuiAppBarProps {
+//     open?: boolean;
+// }
 
 // const AppBar = styled(MuiAppBar, {shouldForwardProp: (prop) => prop !== 'open'})<AppBarProps>(({theme, open}) => ({
 //     zIndex: theme.zIndex.drawer + 1,

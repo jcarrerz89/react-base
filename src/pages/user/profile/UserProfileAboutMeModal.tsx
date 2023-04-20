@@ -1,16 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Characters from "../../../enum/char";
 import {Button, DialogTitle, FormGroup} from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import {DatePicker} from "@mui/x-date-pickers";
-import {IProfileType} from "../types/IProfileType";
 import {useMutation} from "@apollo/client";
 import {UPDATE_PROFILE} from "../../../server/gql/profile.gql";
 import DialogActions from "@mui/material/DialogActions";
 import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
+import {IProfileType} from "../types/IProfileType";
 
 interface IUserProfileModal {
     open: boolean,

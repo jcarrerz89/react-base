@@ -5,6 +5,7 @@ export const SIGN_UP = gql`
         signUp(username: $username, email: $email, password: $password){
             user { 
                 username
+                options
             }, 
             accessToken
         } 
@@ -16,33 +17,9 @@ export const LOGIN = gql`
         login(request: $request) {
             user { 
                 username
+                options
             }, 
             accessToken
-        }
-    }
-`;
-
-export const REGISTER = gql`
-    mutation register($email: String!) {
-        signUp(email: $email){
-            user { 
-                username
-            }, 
-            accessToken
-        } 
-    }
-`;
-
-export const EDIT_PROFILE = gql`
-    mutation editProfile($input: UserInput!) {
-        editProfile(input: $input) {
-            id
-            name
-            surname
-            dateOfBirth
-            nationality
-            profileImage
-            description
         }
     }
 `;
@@ -50,8 +27,8 @@ export const EDIT_PROFILE = gql`
 export const HELLO_USER = gql`
     query {
         helloUser {
-            id,
-            username,
+            id
+            username
             email
         }
     }

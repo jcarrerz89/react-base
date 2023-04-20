@@ -1,5 +1,12 @@
 
 export enum Colors {
+
+    PRIMARY = '#5252A3',
+    SECONDARY = '#EC4E20',
+    TERTIARY = '#353531',
+    QUATERNARY = '#FF9505',
+
+
     PRIMARY_TEXT = '#202020',
     SECONDARY_TEXT = '#0E6BA8',
     TERTIARY_TEXT = '#505050',

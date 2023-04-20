@@ -2,7 +2,6 @@ import { Toolbar, Typography } from "@mui/material";
 
 const Logo = () => {
     return <Toolbar>
-        {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />*/}
         <Typography
             variant="h3"
             noWrap
@@ -19,7 +18,6 @@ const Logo = () => {
             }}> Blue Bells
         </Typography>
 
-        {/*<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />*/}
         <Typography
             variant="h3"
             noWrap

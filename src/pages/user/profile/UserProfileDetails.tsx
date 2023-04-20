@@ -8,7 +8,6 @@ import {IProfileType} from "../types/IProfileType";
 import SectionMenu from "../../../components/common/menu/SectionMenu";
 import SectionContainer from "../../../components/common/section/SectionContainer";
 import SectionHeader from "../../../components/common/section/SectionHeader";
-import Characters from "../../../enum/char";
 import SectionMenuItem from "../../../components/common/menu/SectionMenuItem";
 import EditIcon from "@mui/icons-material/Edit";
 import UserProfileAboutMeModal from "./UserProfileAboutMeModal";
@@ -69,8 +68,8 @@ const UserDatails: React.FC = () => {
             <Grid item sm={5}>
                 <SectionContainer>
                     <Grid item sm={12}>
-                        {profile ? <img src={profile.image}/> : skeleton}
-                        <Avatar alt="Remy Sharp"
+                        {profile ? <img src={profile.image} alt="avatar" /> : skeleton}
+                        <Avatar alt="avatar"
                                 src="/static/images/avatar/1.jpg"
                                 sx={{width: 180, height: 180, margin: '0 auto'}}/>
                     </Grid>

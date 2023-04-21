@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {IRoomType} from "../types/IRoomType";
+import {IRoomType} from "../../../types/IRoomType";
 import {Dialog, DialogTitle, FormGroup} from "@mui/material";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";

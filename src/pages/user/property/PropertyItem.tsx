@@ -3,7 +3,7 @@ import { KeyboardArrowUp } from "@mui/icons-material";
 import {Avatar, Collapse, Grid, IconButton, Typography} from "@mui/material";
 import RoomListItem from "../room/RoomListItem";
 import Constants from "enum/constants";
-import {IPropertyType} from "../types/IPropertyType";
+import {IPropertyType} from "../../../types/IPropertyType";
 import DeleteProperty from "./DeleteProperty";
 import SectionContainer from "../../../components/common/section/SectionContainer";
 import SectionHeader from "../../../components/common/section/SectionHeader";

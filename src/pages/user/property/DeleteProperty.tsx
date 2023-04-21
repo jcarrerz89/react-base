@@ -1,4 +1,4 @@
-import {IPropertyType} from "../types/IPropertyType";
+import {IPropertyType} from "../../../types/IPropertyType";
 import React from "react";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {IRoomType} from "../types/IRoomType";
+import {IRoomType} from "../../../types/IRoomType";
 import {Avatar, Typography} from "@mui/material";
 import Constants from "../../../enum/constants";
 import RoomModal from "./RoomModal";

@@ -65,7 +65,11 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
     }),
 );
 
-const UserMenu: React.FC = () => {
+interface IUserDashboardMenu {
+    onSwitch: (view: string) => void
+}
+
+const UserDashboardMenu: React.FC<IUserDashboardMenu> = ({onSwitch}) => {
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -85,8 +89,8 @@ const UserMenu: React.FC = () => {
             </DrawerHeader>
             <Divider/>
             <List>
-                <ListItem key={'inbox'} disablePadding sx={{display: 'block'}}>
-                    <ListItemButton href='/profile/inbox'
+                <ListItem key={'activity'} disablePadding sx={{display: 'block'}}>
+                    <ListItemButton onClick={() => onSwitch('activity')}
                                     sx={{
                                         minHeight: 48,
                                         justifyContent: open ? 'initial' : 'center',
@@ -100,11 +104,11 @@ const UserMenu: React.FC = () => {
                             }}>
                             <EmailIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Inbox" sx={{opacity: open ? 1 : 0}}/>
+                        <ListItemText primary="Activity" sx={{opacity: open ? 1 : 0}}/>
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'profile'} disablePadding sx={{display: 'block'}}>
-                    <ListItemButton href='/profile'
+                    <ListItemButton onClick={() => onSwitch('profile')}
                                     sx={{
                                         minHeight: 48,
                                         justifyContent: open ? 'initial' : 'center',
@@ -122,7 +126,7 @@ const UserMenu: React.FC = () => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'property'} disablePadding sx={{display: 'block'}}>
-                    <ListItemButton href='/profile/properties'
+                    <ListItemButton onClick={() => onSwitch('property')}
                                     sx={{
                                         minHeight: 48,
                                         justifyContent: open ? 'initial' : 'center',
@@ -143,7 +147,7 @@ const UserMenu: React.FC = () => {
             <Divider/>
             <List>
                 <ListItem key="Extension" disablePadding sx={{display: 'block'}}>
-                    <ListItemButton href="/profile/settings"
+                    <ListItemButton onClick={() => onSwitch('settings')}
                                     sx={{
                                         minHeight: 48,
                                         justifyContent: open ? 'initial' : 'center',
@@ -165,4 +169,4 @@ const UserMenu: React.FC = () => {
     );
 }
 
-export default UserMenu;
+export default UserDashboardMenu;

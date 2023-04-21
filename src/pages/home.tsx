@@ -3,7 +3,7 @@ import HomeLayout from '../components/layout/homeLayout/HomeLayout'
 import {GET_LATEST_ANNOUNCEMENTS} from "../server/gql/announcement.gql";
 import {useQuery} from "@apollo/client";
 import React, {useState} from "react";
-import {IAnnouncementType} from "./user/types/IAnnouncementType";
+import {IAnnouncementType} from "../types/IAnnouncementType";
 import Constants from "../enum/constants";
 import {ImageListItem, ImageListItemBar} from "@mui/material";
 import Grid from "@mui/material/Grid";

@@ -1,15 +1,15 @@
-import UserDashboardLayout from "../../components/layout/userDashboardLayout/UserDashboardLayout";
-import SectionContainer from "../../components/common/section/SectionContainer";
-import SectionHeader from "../../components/common/section/SectionHeader";
+import SectionContainer from "@components/common/section/SectionContainer";
+import SectionHeader from "@components/common/section/SectionHeader";
+import { Typography } from "@mui/material";
 
 const UserSettings = () => {
-    return <UserDashboardLayout>
+    return (
         <SectionContainer>
             <SectionHeader>
-                <h2>Settings</h2>
+                <Typography variant="h2">Settings</Typography>
             </SectionHeader>
         </SectionContainer>
-    </UserDashboardLayout>
+    )
 }
 
 export default UserSettings;

@@ -5,7 +5,7 @@ import Dialog from "@mui/material/Dialog";
 import {Button, Grid} from "@mui/material";
 import {useMutation} from "@apollo/client";
 import {DELETE_ROOM} from "../../../server/gql/room.gql";
-import {IRoomType} from "../types/IRoomType";
+import {IRoomType} from "../../../types/IRoomType";
 import DialogActions from "@mui/material/DialogActions";
 
 interface IDeleteProperty {

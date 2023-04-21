@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import CreateRoomModal from "./CreateRoomModal";
 import {IconButton, ImageListItem, Tooltip} from "@mui/material";
-import {IRoomType} from "../types/IRoomType";
+import {IRoomType} from "../../../types/IRoomType";
 import RoomViewItem from "./RoomViewItem";
 import AddCircleRoundedIcon from "@mui/icons-material/Add";
 

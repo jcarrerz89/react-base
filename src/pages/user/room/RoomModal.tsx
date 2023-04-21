@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import CreateAnnouncementModal from "../announcement/CreateAnnouncementModal";
 import Dialog from "@mui/material/Dialog";
 import React, {useState} from "react";
-import {IRoomType} from "../types/IRoomType";
+import {IRoomType} from "../../../types/IRoomType";
 import EditIcon from "@mui/icons-material/Edit";
 import {DeleteForever} from "@mui/icons-material";
 import SectionMenuItem from "../../../components/common/menu/SectionMenuItem";

@@ -1,11 +1,11 @@
 import {Alert, Button, IconButton, Menu, MenuItem, Toolbar} from "@mui/material";
 import React, {useState} from "react";
 import {useCookies} from 'react-cookie';
-import {UserContext} from "../../../../context/UserContextProvider";
+import {UserContext} from "@context/UserContextProvider";
 import Box from "@mui/material/Box";
 import MenuIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
-import OnBoardingModal from "../../../../pages/onboarding/OnBoardingModal";
+import OnBoardingModal from "@components/onboarding/OnBoardingModal";
 
 const LoggedUser: React.FC = () => {
 
@@ -55,7 +55,7 @@ const LoggedUser: React.FC = () => {
                             </Button>
                             <Button
                                 variant="text"
-                                href="/profile">
+                                href="/me">
                                 {data?.user?.username}
                             </Button>
                             <Button

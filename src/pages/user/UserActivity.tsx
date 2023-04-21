@@ -2,17 +2,16 @@ import React from 'react';
 import SectionContainer from "../../components/common/section/SectionContainer";
 import SectionHeader from "../../components/common/section/SectionHeader";
 import UserDashboardLayout from "../../components/layout/userDashboardLayout/UserDashboardLayout";
+import { Typography } from '@mui/material';
 
-const UserInbox = () => {
+const UserActivity = () => {
     return (
-        <UserDashboardLayout>
-            <SectionContainer>
-                <SectionHeader>
-                    <h2>Inbox</h2>
-                </SectionHeader>
-            </SectionContainer>
-        </UserDashboardLayout>
+        <SectionContainer>
+            <SectionHeader>
+                <Typography variant="h2">Activity</Typography>
+            </SectionHeader>
+        </SectionContainer>
     );
 }
 
-export default UserInbox;
+export default UserActivity;

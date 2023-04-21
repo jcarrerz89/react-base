@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, {useContext, useEffect, useState} from "react";
 import {SAVE_PROPERTY} from "../../../server/gql/property.gql";
-import {IPropertyType} from "../types/IPropertyType";
+import {IPropertyType} from "../../../types/IPropertyType";
 import DialogActions from "@mui/material/DialogActions";
 import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
 

@@ -10,7 +10,7 @@ import {
 import React, {useContext, useEffect, useState} from "react";
 import {SAVE_ROOM} from "server/gql/room.gql";
 import {useMutation} from "@apollo/client";
-import {IRoomType} from "../types/IRoomType";
+import {IRoomType} from "../../../types/IRoomType";
 import DialogActions from "@mui/material/DialogActions";
 import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
 

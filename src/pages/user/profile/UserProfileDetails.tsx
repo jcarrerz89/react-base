@@ -68,10 +68,10 @@ const UserDatails: React.FC = () => {
             <Grid item sm={5}>
                 <SectionContainer>
                     <Grid item sm={12}>
-                        {profile ? <img src={profile.image} alt="avatar" /> : skeleton}
+                        {profile ?                         
                         <Avatar alt="avatar"
                                 src="/static/images/avatar/1.jpg"
-                                sx={{width: 180, height: 180, margin: '0 auto'}}/>
+                                sx={{width: 180, height: 180, margin: '0 auto'}}/>  : skeleton }
                     </Grid>
                 </SectionContainer>
             </Grid>

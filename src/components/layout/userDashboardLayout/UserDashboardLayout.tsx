@@ -20,7 +20,7 @@ const UserDashboardLayout: React.FC<{ children: React.ReactNode }> = ({children}
         <UserDashboardContainer id={'test-id-name'}>
             <WhiteNavbar/>
             <Box sx={{display: "flex"}}>
-                {/*<UserMenu/>*/}
+                <UserMenu/>
                 <Box id="dashboard-content" component="div" paddingX={5} sx={{overflow: 'auto'}}>
                     {children}
                 </Box>

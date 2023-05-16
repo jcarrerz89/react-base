@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingGif from './../../../assets/images/loading.webp';
+import LoadingGif from '@assets/images/loading.webp';
 import { styled } from '@mui/system';
 
 const FullPageContainer = styled('div')({

@@ -1,6 +1,6 @@
 import {Avatar} from "@mui/material";
 import React from "react";
-import Icon from "../../../assets/images/favicon-192x192.png";
+import Icon from "@assets/images/favicon.webp";
 
 const Favicon = () => {
     return<Avatar

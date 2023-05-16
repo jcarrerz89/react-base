@@ -5,7 +5,6 @@ import {UserContext} from "@context/UserContextProvider";
 import Box from "@mui/material/Box";
 import MenuIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
-import OnBoardingModal from "@components/onboarding/OnBoardingModal";
 
 const LoggedUser: React.FC = () => {
 
@@ -25,9 +24,6 @@ const LoggedUser: React.FC = () => {
     const [openOnboarding, setOpenOnboarding] = useState(false);
     const onOpenOnboarding = () => {
         setOpenOnboarding(true);
-    }
-    const onCloseOnboarding = () => {
-        setOpenOnboarding(false);
     }
 
     const logout = () => {
@@ -98,8 +94,6 @@ const LoggedUser: React.FC = () => {
                                 </MenuItem>
                             </Menu>
                         </Box>
-
-                        <OnBoardingModal open={openOnboarding} onDismiss={onCloseOnboarding} />
                     </Toolbar>
                 )
             }}

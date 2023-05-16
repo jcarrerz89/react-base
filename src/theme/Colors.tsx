@@ -1,17 +1,14 @@
 
 export enum Colors {
+    PRIMARY = '#',
+    SECONDARY = '#',
+    TERTIARY = '#',
+    QUATERNARY = '#',
 
-    PRIMARY = '#5252A3',
-    SECONDARY = '#EC4E20',
-    TERTIARY = '#353531',
-    QUATERNARY = '#FF9505',
-
-
-    PRIMARY_TEXT = '#202020',
-    SECONDARY_TEXT = '#0E6BA8',
-    TERTIARY_TEXT = '#505050',
+    PRIMARY_TEXT = '#',
+    SECONDARY_TEXT = '#',
+    TERTIARY_TEXT = '#',
 
     BACKGROUND_CLEAR = '#FFF',
-
     BACKGROUND_DARK = '#000',
 }

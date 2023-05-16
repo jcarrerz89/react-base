@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {LinearProgress} from "@mui/material";
-import {LinearProgressBarContext} from "../../../context/LinearProgressBarContextProvider";
+import {LinearProgressBarContext} from "@context/LinearProgressBarContextProvider";
 
 const LinearProgressBar = () => {
 

@@ -6,10 +6,6 @@ import DialogContent from "@mui/material/DialogContent";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import DialogActions from "@mui/material/DialogActions";
-import {LOGIN} from "../../../../server/gql/user.gql";
-import {useMutation} from '@apollo/client';
-import Characters from '../../../../enum/char';
-import {UserContext} from '../../../../context/UserContextProvider';
 import {FormGroup} from "@mui/material";
 
 interface ISignInModal {
@@ -19,32 +15,9 @@ interface ISignInModal {
 
 const SignInModal: React.FC<ISignInModal> = ({open, onDismiss}) => {
 
-    const userContext = useContext(UserContext);
-    const [formState, setFormState] = React.useState({
-        user: String(Characters.EMPTY),
-        password: String(Characters.EMPTY)
-    });
-
-    const [login] = useMutation(LOGIN, {
-        onCompleted: (data) => {
-            userContext.setAuth(data.login);
-        }
-    });
-
     return (
         <Dialog fullWidth open={open} onClose={onDismiss}>
-            <form onSubmit={(event) => {
-                event.preventDefault();
-
-                login({
-                    variables: {
-                        request: {
-                            username: formState.user,
-                            password: formState.password
-                        }
-                    }
-                });
-            }}>
+            <form>
                 <FormGroup>
                     <DialogTitle>Sign In</DialogTitle>
                     <DialogContent>
@@ -54,26 +27,12 @@ const SignInModal: React.FC<ISignInModal> = ({open, onDismiss}) => {
                                            id="user"
                                            label="Email or Username"
                                            type="text"
-                                           value={formState.user}
-                                           onChange={e => {
-                                               setFormState({
-                                                   ...formState,
-                                                   user: e.target.value
-                                               })
-                                           }}
                                            fullWidth></TextField>
                             </Grid>
                             <Grid item sm={12}>
                                 <TextField id="user"
                                            label="Password"
                                            type="password"
-                                           value={formState.password}
-                                           onChange={e => {
-                                               setFormState({
-                                                   ...formState,
-                                                   password: e.target.value
-                                               })
-                                           }}
                                            fullWidth></TextField>
                             </Grid>
                         </Grid>

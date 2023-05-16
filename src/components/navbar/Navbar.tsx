@@ -7,9 +7,7 @@ import Logo from '../common/brand/Logo';
 
 const defaultBackgroundColor = 'transparent';
 const altBackgroundColor = 'rgba(0, 0, 0, .7)';
-
 const defaultFontColor = 'white';
-
 const defaultPadding = '.5rem 1rem';
 
 type State = {

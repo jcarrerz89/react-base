@@ -11,7 +11,6 @@ const SectionMenu: React.FC<ISectionMenu> = ({children}) => {
 
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
     const items = Array.isArray(children) ? children : [children];
 
     return <>

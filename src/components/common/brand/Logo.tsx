@@ -15,7 +15,7 @@ const Logo = () => {
                 letterSpacing: '.2rem',
                 color: 'inherit',
                 textDecoration: 'none',
-            }}> Blue Bells
+            }}> Logo
         </Typography>
 
         <Typography
@@ -32,8 +32,7 @@ const Logo = () => {
                 letterSpacing: '.1rem',
                 color: 'inherit',
                 textDecoration: 'none',
-            }}>
-            Blue Bells
+            }}> Logo
         </Typography>
     </Toolbar>
 }

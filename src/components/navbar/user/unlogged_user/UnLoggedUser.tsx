@@ -6,7 +6,6 @@ import {Toolbar, IconButton, Menu, MenuItem} from "@mui/material";
 import MenuIcon from '@mui/icons-material/PersonOutline';
 import Button from "@mui/material/Button";
 
-
 const UnLoggedUser = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [openSignUp, setOpenSignUp] = useState<boolean>(false);
@@ -24,11 +23,9 @@ const UnLoggedUser = () => {
     const onCloseSignIn = () => {
         setOpenSignIn(false);
     }
-
     const handleOpenNavMenu = (event: any) => {
         setAnchorElNav(event.currentTarget);
     }
-
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     }

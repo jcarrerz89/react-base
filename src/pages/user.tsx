@@ -1,11 +1,7 @@
-import React, {Profiler, useState} from 'react';
+import React, {useState} from 'react';
 import Box from "@mui/material/Box";
 import UserDashboardLayout from '@components/layout/userDashboardLayout/UserDashboardLayout';
 import UserDashboardMenu from "@components/menu/UserDashboardMenu";
-import UserProfile from './user/UserProfile';
-import UserProperty from './user/UserProperty';
-import UserActivity from './user/UserActivity';
-import UserSettings from './user/UserSettings';
 
 const User = () => {
     const [view, setView] = useState('profile');
@@ -17,17 +13,16 @@ const User = () => {
     function cases() {
         switch(view) {
             case 'activity': 
-                return <UserActivity />
+                return <></>
                 break;
             case 'property': 
-                return <UserProperty />
+                return <></>
                 break;
             case 'settings': 
-                return <UserSettings />
+                return <></>
                 break;
-            
             default: 
-                return <UserProfile />
+                return <></>
                 break;
         }
     }

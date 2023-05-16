@@ -3,7 +3,6 @@ import {styled} from "@mui/material/styles";
 import WhiteNavbar from "@components/navbar/WhiteNavbar";
 import SmallFooter from "@components/footer/SmallFooter";
 import BackgroundCover from "@assets/images/mountains.jpg";
-import User from "@pages/user";
 
 const UserDashboardContainer = styled('div')(() => ({
     width: '100hh',
